@@ -5,12 +5,12 @@ import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
 
-public class Player extends Mob
+public class MapPlayer extends Mob
 {
 	private InputHandler input;
 	private int color = Colors.get(-1, 111, 145, 543);
 
-	public Player(Level level, int x, int y, InputHandler input)
+	public MapPlayer(Level level, int x, int y, InputHandler input)
 	{
 		super(level, "Player", x, y, 1);
 		this.input = input;
