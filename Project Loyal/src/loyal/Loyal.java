@@ -17,7 +17,7 @@ import loyal.Graphics.Colors;
 import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
-import loyal.entities.Player;
+import loyal.entities.MapPlayer;
 import loyal.level.Level;
 
 /**
@@ -44,7 +44,7 @@ public class Loyal extends Canvas implements Runnable
 	private Screen screen;
 	public InputHandler input;
 	public Level level;
-	public Player player;
+	public MapPlayer player;
 	
 	public Loyal()
 	{
@@ -87,7 +87,7 @@ public class Loyal extends Canvas implements Runnable
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
 		input = new InputHandler(this);
 		level = new Level(64,64);
-		player = new Player(level,0,0,input);
+		player = new MapPlayer(level,0,0,input);
 		level.addEntity(player);
 	}
 	

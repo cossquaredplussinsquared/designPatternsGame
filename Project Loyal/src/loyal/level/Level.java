@@ -5,7 +5,7 @@ import java.util.List;
 
 import loyal.Graphics.Screen;
 import loyal.entities.Entity;
-import loyal.entities.Player;
+import loyal.entities.MapPlayer;
 import loyal.level.tiles.Tile;
 
 public class Level
