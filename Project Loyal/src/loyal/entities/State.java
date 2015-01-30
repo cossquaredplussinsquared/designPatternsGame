@@ -19,8 +19,8 @@ public class State {
 		}
 	}
 	
-	public void setStat(int index, int value){
-		stateArray[index] = value;
+	public void setStat(Stat stat, int value){
+		stateArray[stat.index] = value;
 	}
 	
 	public int getStat(int index){
