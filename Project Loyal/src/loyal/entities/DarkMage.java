@@ -1,24 +1,22 @@
-// Creating singleton to make one Bad King Final Boss
-
 package loyal.entities;
 
 import java.util.Scanner;
 
 import loyal.entities.State.Stat;
 
-public class King extends BadGuys{
-	King king = new King();
+public class DarkMage extends BadGuys{
+	DarkMage darkMage = new DarkMage();
 	private Stat stat;
 	
 	private void SetStats(){
-		State kingState = king.getState();
-		kingState.setStat(stat.HEALTH, 100);
-		kingState.setStat(stat.MANA, 20);
-		kingState.setStat(stat.STRENGTH, 15);
-		kingState.setStat(stat.MAGICPOWER, 20);
-		kingState.setStat(stat.ARMOR, 50);
-		kingState.setStat(stat.MAGICRESIST, 10);
-		kingState.setStat(stat.LEVEL, 20);
+		State darkMageState = darkMage.getState();
+		darkMageState.setStat(stat.HEALTH, 30);
+		darkMageState.setStat(stat.MANA, 50);
+		darkMageState.setStat(stat.STRENGTH, 5);
+		darkMageState.setStat(stat.MAGICPOWER, 15);
+		darkMageState.setStat(stat.ARMOR, 5);
+		darkMageState.setStat(stat.MAGICRESIST, 20);
+		darkMageState.setStat(stat.LEVEL, 10);
 	}
 	
 	@Override
