@@ -1,4 +1,4 @@
-package loyal.entities;
+package loyal.Battle.Characters;
 
 public class State {
 	// default state is 1 health nothing else

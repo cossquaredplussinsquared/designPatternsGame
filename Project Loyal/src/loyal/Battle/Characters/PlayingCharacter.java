@@ -1,8 +1,9 @@
-package loyal.entities;
+package loyal.Battle.Characters;
 
 import java.util.ArrayList;
 
-import loyal.entities.State.Stat;
+import loyal.Battle.Actions.CharacterAction;
+import loyal.Battle.Characters.State.Stat;
 
 public abstract class PlayingCharacter implements Interactable {
 	

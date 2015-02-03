@@ -1,4 +1,4 @@
-package loyal.entities;
+package loyal.Battle.Characters;
 
 public abstract class BadGuys extends PlayingCharacter {
 	

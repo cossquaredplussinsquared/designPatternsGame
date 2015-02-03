@@ -1,10 +1,10 @@
 // Creating singleton to make one Bad King Final Boss
 
-package loyal.entities;
+package loyal.Battle.Characters;
 
 import java.util.Scanner;
 
-import loyal.entities.State.Stat;
+import loyal.Battle.Characters.State.Stat;
 
 public class King extends BadGuys{
 	King king = new King();

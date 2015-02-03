@@ -1,22 +1,24 @@
-package loyal.entities;
+// Creating factory to pump orcs out
+
+package loyal.Battle.Characters;
 
 import java.util.Scanner;
 
-import loyal.entities.State.Stat;
+import loyal.Battle.Characters.State.Stat;
 
-public class BlackKnight extends BadGuys{
-	BlackKnight blackKnight = new BlackKnight();
+public class Orc extends BadGuys{
+	Orc orc = new Orc();
 	private Stat stat;
-
+	
 	private void SetStats(){
-		State blackKnightState = blackKnight.getState();
-		blackKnightState.setStat(stat.HEALTH, 50);
-		blackKnightState.setStat(stat.MANA, 15);
-		blackKnightState.setStat(stat.STRENGTH, 20);
-		blackKnightState.setStat(stat.MAGICPOWER, 10);
-		blackKnightState.setStat(stat.ARMOR, 30);
-		blackKnightState.setStat(stat.MAGICRESIST, 10);
-		blackKnightState.setStat(stat.LEVEL, 15);
+		State orcState = orc.getState();
+		orcState.setStat(stat.HEALTH, 10);
+		orcState.setStat(stat.MANA, 10);
+		orcState.setStat(stat.STRENGTH, 10);
+		orcState.setStat(stat.MAGICPOWER, 5);
+		orcState.setStat(stat.ARMOR, 20);
+		orcState.setStat(stat.MAGICRESIST, 10);
+		orcState.setStat(stat.LEVEL, 5);
 	}
 	
 	@Override
@@ -75,4 +77,5 @@ public class BlackKnight extends BadGuys{
 	private void Flee(){
 		//depends on if we want there to be a chance of flee or not
 	}
+	
 }
