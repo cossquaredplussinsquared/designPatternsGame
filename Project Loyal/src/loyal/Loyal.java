@@ -86,7 +86,8 @@ public class Loyal extends Canvas implements Runnable
 		
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
 		input = new InputHandler(this);
-		level = new Level(64,64);
+		level = new Level("/Levels/water_test_level.png");
+		level = new Level("/Levels/water_test_level.png");
 		player = new MapPlayer(level,0,0,input);
 		level.addEntity(player);
 	}
