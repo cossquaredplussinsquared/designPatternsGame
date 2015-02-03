@@ -23,8 +23,8 @@ public class State {
 		stateArray[stat.index] = value;
 	}
 	
-	public int getStat(int index){
-		return stateArray[index];
+	public int getStat(Stat defensiveStat){
+		return stateArray[defensiveStat.index];
 	}
 
 }
