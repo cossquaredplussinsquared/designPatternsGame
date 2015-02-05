@@ -6,13 +6,12 @@ import loyal.Battle.Actions.CharacterAction;
 import loyal.Battle.Characters.State.Stat;
 
 public abstract class PlayingCharacter implements Interactable {
-	
 
 	private PlayingCharacter[] targets;
 	private ArrayList<CharacterAction> actions;
 	private CharacterAction currentAction;
 	private State state;
-	
+
 	// When you are creating your characters you need to create actions for each
 	// of the abilities you want them to have. Those actions are going to be
 	// used in the interaction function and will be set by the battle object
@@ -28,7 +27,7 @@ public abstract class PlayingCharacter implements Interactable {
 	abstract public void Interaction(PlayingCharacter sources,
 			PlayingCharacter[] targets);
 
-	public State getState(){
+	public State getState() {
 		return state;
 	}
 
@@ -47,27 +46,26 @@ public abstract class PlayingCharacter implements Interactable {
 	public void addAction(CharacterAction action) {
 		actions.add(action);
 	}
-	
-//	use this to cause an action to happen on this target 
-//	usage: 
-//	basicAttack(PlayingCharacter source, PlayingCharacter[] targets){
-//		
-//		Stat stat = new Stat();
-//		int damage = source.getState().getStat(stat.STRENGTH);
-//		
-//		for(PlayingCharacter target : targets){
-//			target.causeAction(stat.HEALT, stat.ARMOR, damage);
-//		}
-//}
-	public void causeAction(Stat targetStat, Stat defensiveStat, int valueChange){
-		int modifiedValue = 0;
-		if(defensiveStat == null){
-			modifiedValue = valueChange;
+
+	// use this to cause an action to happen on this target
+	// usage:
+	// basicAttack(PlayingCharacter source, PlayingCharacter[] targets){
+	//
+	// Stat stat = new Stat();
+	// int damage = source.getState().getStat(stat.STRENGTH);
+	//
+	// for(PlayingCharacter target : targets){
+	// target.causeAction(stat.HEALT, stat.ARMOR, damage);
+	// }
+	// }
+	public void causeAction(Stat targetStat, Stat defensiveStat, int valueChange) {
+		int modifiedValue = valueChange;
+		if (state.getStat(defensiveStat) != 0) {
+			double defense = 1 - state.getStat(defensiveStat) / 1000.0;
+			if (defense > 0)
+				modifiedValue = (int) (valueChange * defense);
 		}
-		else if(state.getStat(defensiveStat) != 0){
-			modifiedValue = valueChange / state.getStat(defensiveStat);
-		}
-		
+
 		state.setStat(targetStat, state.getStat(targetStat) + modifiedValue);
 	}
 
@@ -76,8 +74,8 @@ public abstract class PlayingCharacter implements Interactable {
 	public void removeActions(ArrayList<CharacterAction> removedActions) {
 		actions.removeAll(removedActions);
 	}
-	
-	public void setAction(CharacterAction action){
+
+	public void setAction(CharacterAction action) {
 		currentAction = action;
 	}
 }
