@@ -3,8 +3,15 @@ package loyal.Battle;
 import java.util.ArrayList;
 
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.Battle.Characters.State.Stat;
 
 public class Battle {
+	
+	private int playerWin = 1, playerEscape = 2, computerWin = 3;
+	private boolean playersTurn = false;
+	
+	private BattleController playerMenu = new BattleMenu();
+	private BattleController AI = new BattleAI();
 
 	// battle will have two arrays of playing characters.
 	// battle will be called and be passed those two arrays of characters. It
@@ -25,6 +32,53 @@ public class Battle {
 		this.activeEnemies = activeEnemies;
 		this.activePlayers = activePlayers;
 	}
+	
+	public int startBattle(){
+		BattleController currentController = null;
+		int winner = checkWinner();
+		playersTurn = startingTurnDecision();
+		while(winner == 0){
+			if(playersTurn){
+				currentController = playerMenu;
+				currentController.setActivePlayers(activePlayers, activeEnemies);
+			}
+			else {
+				currentController = AI;
+				currentController.setActivePlayers(activeEnemies, activePlayers);
+			}
+			
+			
+			
+		}
+		return winner;
+	}
+
+	private boolean startingTurnDecision() {
+		return Math.random() > .005 ;
+	}
+
+	private int checkWinner() {
+		int winner = 0;
+		winner = isAlive(activePlayers);
+		if(winner == 1){
+			return computerWin;
+		}
+		winner = isAlive(activeEnemies);
+		if(winner == 1){
+			return playerWin;
+		}
+		return 0;
+	}
+
+	private int isAlive(ArrayList<PlayingCharacter> characterGroup) {
+		for(PlayingCharacter p: characterGroup){
+			if(!(p.getState().getStat(Stat.HEALTH)<=0))
+				return 0;
+		}
+		return 1;
+		
+	}
+	
 	
 	
 
