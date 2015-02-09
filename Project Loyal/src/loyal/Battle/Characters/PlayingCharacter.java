@@ -50,9 +50,7 @@ public abstract class PlayingCharacter implements Interactable {
 	// use this to cause an action to happen on this target
 	// usage:
 	// basicAttack(PlayingCharacter source, PlayingCharacter[] targets){
-	//
-	// Stat stat = new Stat();
-	// int damage = source.getState().getStat(stat.STRENGTH);
+	// int damage = source.getState().getStat(Stat.STRENGTH);
 	//
 	// for(PlayingCharacter target : targets){
 	// target.causeAction(stat.HEALT, stat.ARMOR, damage);

@@ -1,10 +1,7 @@
 package loyal.Battle.Actions;
 
-public abstract class CharacterAction implements Comparable {
+public abstract interface CharacterAction extends Comparable {
 
-	@Override
-	public int compareTo(Object arg0){
-		return 0;
-	};
+	
 
 }
