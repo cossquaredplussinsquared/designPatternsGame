@@ -1,78 +1,63 @@
 package loyal.Battle.Characters;
 
-import java.util.Scanner;
+import java.util.Random;
 
 import loyal.Battle.Characters.State.Stat;
 
 public class BlackKnight extends BadGuys{
 	BlackKnight blackKnight = new BlackKnight();
-	private Stat stat;
+	private Stat stat;// = new Stat();
 
 	private void SetStats(){
 		State blackKnightState = blackKnight.getState();
-		blackKnightState.setStat(stat.HEALTH, 50);
+		blackKnightState.setStat(stat.HEALTH, 40);
 		blackKnightState.setStat(stat.MANA, 15);
 		blackKnightState.setStat(stat.STRENGTH, 20);
 		blackKnightState.setStat(stat.MAGICPOWER, 10);
-		blackKnightState.setStat(stat.ARMOR, 30);
+		blackKnightState.setStat(stat.ARMOR, 20);
 		blackKnightState.setStat(stat.MAGICRESIST, 10);
 		blackKnightState.setStat(stat.LEVEL, 15);
 	}
-	
+
 	@Override
 	public void Interaction(PlayingCharacter sources, PlayingCharacter[] targets) {
-		int choice = Menu();
-		if (choice == 1)
-			Attack(sources, targets);
-		else if (choice == 2)
-			Magic(sources, targets);
-		else if (choice == 3)
-			Special(sources, targets);
-		else if (choice == 4)
-			Inventory(sources, targets);
-		else
-			Flee();
-	}
-	
-	private int Menu() {
-		System.out.println("1. Attack\n"
-				+ "2. Magic attack\n"
-				+ "3. Special attack\n"
-				+ "4. Inventory\n"
-				+ "5. Flee");
-		
-		Scanner kb = new Scanner(System.in);
-		int choice;
-		
-		do
-		{
-			choice = kb.nextInt();
-		} while (choice > 5 || choice < 1);
-		
-		return choice;
-	}
-	
-	private void Inventory(PlayingCharacter sources, PlayingCharacter[] targets) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void Special(PlayingCharacter sources, PlayingCharacter[] targets) {
-		// TODO Auto-generated method stub
+	private void basicAttack(PlayingCharacter source, PlayingCharacter[] targets){
+		int damage = source.getState().getStat(stat.STRENGTH);
 		
-	}
-
-	private void Magic(PlayingCharacter sources, PlayingCharacter[] targets) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void Attack(PlayingCharacter sources, PlayingCharacter[] targets) {
-		// TODO Auto-generated method stub
-		
+		for(PlayingCharacter target : targets){
+			target.causeAction(stat.HEALTH, stat.ARMOR, damage);
+		}
 	}
 	
-	private void Flee(){
-		//depends on if we want there to be a chance of flee or not
+	private void magicAttack(PlayingCharacter source, PlayingCharacter[] targets){
+		int damage = source.getState().getStat(stat.MAGICPOWER), mana = source.getState().getStat(stat.MANA);
+		
+		State blackKnightState = blackKnight.getState();
+		blackKnightState.setStat(stat.MANA, mana = mana - 5);
+		
+		for(PlayingCharacter target : targets){
+			target.causeAction(stat.HEALTH, stat.MAGICRESIST, damage);
+		}
+	}
+	
+	//dependent on if we do potion heal or character heal
+/*	private void heal(PlayingCharacter source, PlayingCharacter[] targets){
+		int damage = source.getState().getStat(stat.STRENGTH);
+		
+		for(PlayingCharacter target : targets){
+			target.causeAction(stat.HEALTH, stat.ARMOR, damage);
+		}
+	}*/
+	
+	private void strongAttack(PlayingCharacter source, PlayingCharacter[] targets){
+		int damage = source.getState().getStat(stat.STRENGTH) * 2;
+		
+		for(PlayingCharacter target : targets){
+			target.causeAction(stat.HEALTH, stat.ARMOR, damage);
+		}
 	}
 }

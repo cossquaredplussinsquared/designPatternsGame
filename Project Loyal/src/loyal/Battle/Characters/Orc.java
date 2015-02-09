@@ -20,62 +20,46 @@ public class Orc extends BadGuys{
 		orcState.setStat(stat.MAGICRESIST, 10);
 		orcState.setStat(stat.LEVEL, 5);
 	}
-	
+
 	@Override
 	public void Interaction(PlayingCharacter sources, PlayingCharacter[] targets) {
-		int choice = Menu();
-		if (choice == 1)
-			Attack(sources, targets);
-		else if (choice == 2)
-			Magic(sources, targets);
-		else if (choice == 3)
-			Special(sources, targets);
-		else if (choice == 4)
-			Inventory(sources, targets);
-		else
-			Flee();
-	}
-	
-	private int Menu() {
-		System.out.println("1. Attack\n"
-				+ "2. Magic attack\n"
-				+ "3. Special attack\n"
-				+ "4. Inventory\n"
-				+ "5. Flee");
-		
-		Scanner kb = new Scanner(System.in);
-		int choice;
-		
-		do
-		{
-			choice = kb.nextInt();
-		} while (choice > 5 || choice < 1);
-		
-		return choice;
-	}
-	
-	private void Inventory(PlayingCharacter sources, PlayingCharacter[] targets) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void Special(PlayingCharacter sources, PlayingCharacter[] targets) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void Magic(PlayingCharacter sources, PlayingCharacter[] targets) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void Attack(PlayingCharacter sources, PlayingCharacter[] targets) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void Flee(){
-		//depends on if we want there to be a chance of flee or not
+	private void basicAttack(PlayingCharacter source, PlayingCharacter[] targets){
+		int damage = source.getState().getStat(stat.STRENGTH);
+		
+		for(PlayingCharacter target : targets){
+			target.causeAction(stat.HEALTH, stat.ARMOR, damage);
+		}
 	}
 	
+	private void magicAttack(PlayingCharacter source, PlayingCharacter[] targets){
+		int damage = source.getState().getStat(stat.MAGICPOWER), mana = source.getState().getStat(stat.MANA);
+		
+		State orcState = orc.getState();
+		orcState.setStat(stat.MANA, mana = mana - 5);
+		
+		for(PlayingCharacter target : targets){
+			target.causeAction(stat.HEALTH, stat.MAGICRESIST, damage);
+		}
+	}
+	
+	//dependent on if we do potion heal or character heal
+/*	private void heal(PlayingCharacter source, PlayingCharacter[] targets){
+		int damage = source.getState().getStat(stat.STRENGTH);
+		
+		for(PlayingCharacter target : targets){
+			target.causeAction(stat.HEALTH, stat.ARMOR, damage);
+		}
+	}*/
+	
+	private void strongAttack(PlayingCharacter source, PlayingCharacter[] targets){
+		int damage = source.getState().getStat(stat.STRENGTH) * 2;
+		
+		for(PlayingCharacter target : targets){
+			target.causeAction(stat.HEALTH, stat.ARMOR, damage);
+		}
+	}
 }
