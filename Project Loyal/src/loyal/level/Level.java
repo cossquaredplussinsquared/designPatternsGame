@@ -15,7 +15,7 @@ import loyal.level.tiles.Tile;
 
 public class Level
 {
-	public byte[] tiles;
+	public int[] tiles;
 	public int width;
 	public int height;
 	public List<Entity> entities = new ArrayList<Entity>();
@@ -33,7 +33,7 @@ public class Level
 		{
 			this.width = 64;
 			this.height = 64;
-			tiles = new byte[width*height];
+			tiles = new int[width*height];
 			this.generateLevel();
 		}
 	}
@@ -45,7 +45,7 @@ public class Level
 			this.image = ImageIO.read(Level.class.getResource(this.imagePath));
 			this.width = image.getWidth();
 			this.height = image.getHeight();
-			tiles = new byte[width*height];
+			tiles = new int[width*height];
 			this.loadTiles();
 		}
 		catch(IOException e)

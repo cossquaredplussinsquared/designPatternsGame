@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 
@@ -18,6 +20,7 @@ import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
 import loyal.entities.MapPlayer;
+import loyal.entities.pointer;
 import loyal.level.Level;
 
 /**
@@ -28,8 +31,8 @@ public class Loyal extends Canvas implements Runnable
 {
 	private static final long serialVersionUID = 1L;
 	
-	public static final int WIDTH = 160;
-	public static final int HEIGHT = WIDTH/12*9;
+	public static final int WIDTH = 256;
+	public static final int HEIGHT = 192;
 	public static final int SCALE = 3;
 	public static final String NAME = "Loyal";
 	
@@ -44,7 +47,8 @@ public class Loyal extends Canvas implements Runnable
 	private Screen screen;
 	public InputHandler input;
 	public Level level;
-	public MapPlayer player;
+	public loyal.entities.pointer player;
+	public ArrayList<String> menu = new ArrayList();
 	
 	public Loyal()
 	{
@@ -86,9 +90,16 @@ public class Loyal extends Canvas implements Runnable
 		
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
 		input = new InputHandler(this);
-		level = new Level("/Levels/water_test_level.png");
-		level = new Level("/Levels/water_test_level.png");
-		player = new MapPlayer(level,0,0,input);
+		//level = new Level("/Levels/world_overveiw_world2.png");
+		//player = new MapPlayer(level,2,10,input);
+		//level.addEntity(player);
+		menu.add("Play Game");
+		menu.add("settings");
+		menu.add("help");
+		menu.add("I want to sleep");
+		menu.add("QUIT");
+		level = new Level("/Levels/test_menu.png");
+		player = new pointer(level, "pointer", 20, 96, input, 8, 96, 128, menu, screen);
 		level.addEntity(player);
 	}
 	
