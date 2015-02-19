@@ -60,16 +60,7 @@ public class pointer extends Mob
 		
 		if(input.right.isPressed())
 		{
-			menu.
-			level = new Level("/Levels/world_overveiw_world2.png");
-			Entity player = new MapPlayer(level,2,10,input);
-			level.addEntity(player);
 			
-			int xOffset = player.x - (screen.width/2);
-			int yOffset = player.y - (screen.height/2);
-			
-			level.renderTiles(this.screen, xOffset, yOffset);
-			level.renderEntities(screen);
 		}
 		
 		if(xa != 0 || ya != 0)
