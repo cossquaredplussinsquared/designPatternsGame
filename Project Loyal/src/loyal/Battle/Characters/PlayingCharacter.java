@@ -53,7 +53,7 @@ public abstract class PlayingCharacter implements Interactable {
 	// int damage = source.getState().getStat(Stat.STRENGTH);
 	//
 	// for(PlayingCharacter target : targets){
-	// target.causeAction(stat.HEALT, stat.ARMOR, damage);
+	// target.causeAction(Stat.HEALT, Stat.ARMOR, damage);
 	// }
 	// }
 	public void causeAction(Stat targetStat, Stat defensiveStat, int valueChange) {

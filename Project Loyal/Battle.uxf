@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>376</x>
+      <y>404</y>
+      <w>184</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>/loyal.Battle.Characters::PlayingCharacter/
+--
+-targets: PlayingCharacter[]
+-actions: ArrayList&lt;CharacterAction&gt;
+-currentAction: CharacterAction
+-state: State
+--
++Interaction(PlayingCharacter sources, PlayingCharacter[] targets): void
++getState(): State
++getTargets(): PlayingCharacter[]
++setTargets(PlayingCharacter[] targets): void
++getActions(): ArrayList&lt;CharacterAction&gt;
++addAction(CharacterAction action): void
++causeAction(Stat targetStat, Stat defensiveStat, int valueChange): void
++removeActions(ArrayList&lt;CharacterAction&gt; removedActions): void
++setAction(CharacterAction action): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>556</x>
+      <y>92</y>
+      <w>288</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+loyal.Battle::BattleController
+--
+--
++setActivePlayers(ArrayList&lt;PlayingCharacter&gt; activeEnemies, ArrayList&lt;PlayingCharacter&gt; activePlayers): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>196</x>
+      <y>320</y>
+      <w>184</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+loyal.Battle.Characters::Interactable
+--
+--
++Interaction(PlayingCharacter sources, PlayingCharacter[] targets): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>180</y>
+      <w>288</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>loyal.Battle::BattleAI
+--
+--
++setActivePlayers(ArrayList&lt;PlayingCharacter&gt; activeEnemies, ArrayList&lt;PlayingCharacter&gt; activePlayers): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>656</x>
+      <y>296</y>
+      <w>288</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>loyal.Battle::BattleMenu
+--
+--
++setActivePlayers(ArrayList&lt;PlayingCharacter&gt; activeEnemies, ArrayList&lt;PlayingCharacter&gt; activePlayers): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>556</x>
+      <y>464</y>
+      <w>96</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>220.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>644</x>
+      <y>456</y>
+      <w>108</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>loyal.Battle.Characters::State
+--
+-stateArray = { 1, 0, 0, 0, 0, 0, 0, 0 }: int[]
+--
++setStat(Stat stat, int value): void
++getStat(Stat defensiveStat): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>424</x>
+      <y>232</y>
+      <w>148</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>loyal.Battle::PlayingCharacterCounter
+--
+-cur: PlayingCharacter
+-turn: int
+--
++PlayingCharacterCounter(PlayingCharacter cur): ctor
++getCharacter(): PlayingCharacter
++decrementTurn(): void
++getTurn(): int
++compareTo(Object arg0): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>328</x>
+      <y>352</y>
+      <w>56</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>452</x>
+      <y>300</y>
+      <w>40</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>80.0;260.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>304</x>
+      <y>240</y>
+      <w>84</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;CharacterParty&gt;&gt;
+Package::loyal.Battle
+--
++addCharacters(PlayingCharacter, PlayingCharacterGraphic)
++getPlayingCharacters()
++getPlayingCharacterGraphics() 
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>336</x>
+      <y>280</y>
+      <w>88</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..n</panel_attributes>
+    <additional_attributes>190.0;310.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>64</y>
+      <w>264</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>loyal.Battle::Battle
+--
+-playerWin = 1, playerEscape = 2, computerWin = 3: int
+-playersTurn = false: boolean
+-playerMenu = new BattleMenu(): BattleController
+-AI = new BattleAI(): BattleController
+-activePlayers, activeEnemies: ArrayList&lt;PlayingCharacter&gt;
+-inactivePlayers, inactiveEnemies: ArrayList&lt;PlayingCharacterCounter&gt;
+--
++Battle(ArrayList&lt;PlayingCharacter&gt; activePlayers, ArrayList&lt;PlayingCharacter&gt; activeEnemies): ctor
++startBattle(): int
+-startingTurnDecision(): boolean
+-checkWinner(): int
+-isAlive(ArrayList&lt;PlayingCharacter&gt; characterGroup): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>88</y>
+      <w>72</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=2</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>584</x>
+      <y>124</y>
+      <w>40</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>124</y>
+      <w>28</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;430.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>364</x>
+      <y>160</y>
+      <w>44</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=2</panel_attributes>
+    <additional_attributes>10.0;200.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>444</x>
+      <y>160</y>
+      <w>48</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>90.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

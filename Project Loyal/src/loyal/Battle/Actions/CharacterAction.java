@@ -1,6 +1,6 @@
 package loyal.Battle.Actions;
 
-public abstract interface CharacterAction extends Comparable {
+public abstract interface CharacterAction {
 
 	
 
