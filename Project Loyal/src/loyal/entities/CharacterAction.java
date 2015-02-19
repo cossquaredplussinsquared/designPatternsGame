@@ -1,10 +1,10 @@
 package loyal.entities;
 
-public abstract class CharacterAction implements Comparable {
-
-	@Override
-	public int compareTo(Object arg0){
-		return 0;
-	};
+public interface CharacterAction
+{
+	public void castCharacterAction(PlayingCharacter target);
+	public String getName();
+	public String toString();
+	public AbilityType getAbilityType();
 
 }

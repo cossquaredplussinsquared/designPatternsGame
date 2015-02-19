@@ -1,6 +1,7 @@
 package loyal.entities;
 
-public class State {
+public class State
+{
 	// default state is 1 health nothing else
 	private int[] stateArray = {1,0,0,0,0,0,0};
 	
@@ -9,7 +10,8 @@ public class State {
 	// State.setStat(stat.HEALTH, 4);
 	// int currentHealth = State.getStat(stat.HEALTH);
 	
-	public enum Stat {
+	public enum Stat
+	{
 		HEALTH(0), MANA(1), STRENGTH(2), MAGICPOWER(3), ARMOR(4), MAGICRESIST(5), LEVEL(6);
 
 		private int index;

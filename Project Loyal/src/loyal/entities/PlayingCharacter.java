@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public abstract class PlayingCharacter implements Interactable {
 	
-
+	private String name;
 	private PlayingCharacter[] targets;
 	private ArrayList<CharacterAction> actions;
 	private CharacterAction currentAction;
+	private ArrayList<PlayingCharacter> allies;
 	private State state;
+	private CharacterType type;
 	
 	// When you are creating your characters you need to create actions for each
 	// of the abilities you want them to have. Those actions are going to be
@@ -53,5 +55,32 @@ public abstract class PlayingCharacter implements Interactable {
 	
 	public void setAction(CharacterAction action){
 		currentAction = action;
+	}
+	
+	public CharacterType getType()
+	{
+		return this.type;
+	}
+	
+	public ArrayList<PlayingCharacter> getAllies()
+	{
+		return this.allies;
+	}
+	
+	public int compareTo(PlayingCharacter pi)
+	{
+		if(this.name.compareTo(pi.name) == 0)
+			return this.getType().compareTo(pi.getType());
+		return this.name.compareTo(pi.name);
+	}
+
+	public CharacterType getCharacterType()
+	{
+		return this.type;
+	}
+	
+	public String getName()
+	{
+		return this.name;
 	}
 }
