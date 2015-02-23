@@ -1,6 +1,9 @@
-package loyal.entities;
+package loyal.Battle.Characters;
 
 import java.util.ArrayList;
+
+import loyal.Battle.Actions.CharacterAction;
+import loyal.Battle.Characters.State.Stat;
 
 public abstract class PlayingCharacter implements Interactable {
 	
@@ -43,6 +46,29 @@ public abstract class PlayingCharacter implements Interactable {
 
 	public void addAction(CharacterAction action) {
 		actions.add(action);
+	}
+	
+//	use this to cause an action to happen on this target 
+//	usage: 
+//	basicAttack(PlayingCharacter source, PlayingCharacter[] targets){
+//		
+//		Stat stat = new Stat();
+//		int damage = source.getState().getStat(stat.STRENGTH);
+//		
+//		for(PlayingCharacter target : targets){
+//			target.causeAction(stat.HEALT, stat.ARMOR, damage);
+//		}
+//}
+	public void causeAction(Stat targetStat, Stat defensiveStat, int valueChange){
+		int modifiedValue = 0;
+		if(defensiveStat == null){
+			modifiedValue = valueChange;
+		}
+		else if(state.getStat(defensiveStat) != 0){
+			modifiedValue = valueChange / state.getStat(defensiveStat);
+		}
+		
+		state.setStat(targetStat, state.getStat(targetStat) + modifiedValue);
 	}
 
 	// this allows us to remove actions on the fly if something happens (e.g.
