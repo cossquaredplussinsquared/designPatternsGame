@@ -40,6 +40,7 @@ public class InputHandler implements KeyListener
 	public Key down = new Key();
 	public Key left = new Key();
 	public Key right = new Key();
+	public Key enter = new Key();
 	
 	public void keyPressed(KeyEvent e)
 	{
