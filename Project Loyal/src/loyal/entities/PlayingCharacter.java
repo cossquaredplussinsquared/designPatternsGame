@@ -2,6 +2,8 @@ package loyal.entities;
 
 import java.util.ArrayList;
 
+import loyal.entities.State.Stat;
+
 public abstract class PlayingCharacter implements Interactable {
 	
 	private String name;
@@ -82,5 +84,15 @@ public abstract class PlayingCharacter implements Interactable {
 	public String getName()
 	{
 		return this.name;
+	}
+	
+	public PlayingCharacter[] getTartgets()
+	{
+		return this.targets;
+	}
+	
+	public boolean isDead()
+	{
+		return (state.getStat(Stat.HEALTH) <= 0);
 	}
 }

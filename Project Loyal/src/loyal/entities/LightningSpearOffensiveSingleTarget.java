@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 import loyal.entities.State.Stat;
 
-public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveAbility
+public class LightningSpearOffensiveSingleTarget extends SingleTargetOffensiveAbility
 {
-	
-	public AirSlashSingleTargetOffenSiveAbility(PlayingCharacter playingCharacter)
+
+	public LightningSpearOffensiveSingleTarget(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WARRIOR;
+		type = CharacterType.CLERIC;
 		checkCompability();
-		name = "Air Slash";
-		description = "Powerfull physical attack in the air";
+		name = "Lightning Spear";
+		description = "A miracle that launches a great light spear..";
 	}
 
 	@Override
 	protected void applyAbility(ArrayList<PlayingCharacter> targets)
 	{
-		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
+		double damage = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
 		damage += baseValue + perLevel + level;
 		
 		if(gen.nextInt(100) <= playingCharacter.getState().getStat(Stat.DEXTERITY))
@@ -42,4 +42,5 @@ public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveA
 		}
 		
 	}
+	
 }

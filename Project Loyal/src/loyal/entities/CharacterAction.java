@@ -6,5 +6,4 @@ public interface CharacterAction
 	public String getName();
 	public String toString();
 	public AbilityType getAbilityType();
-
 }

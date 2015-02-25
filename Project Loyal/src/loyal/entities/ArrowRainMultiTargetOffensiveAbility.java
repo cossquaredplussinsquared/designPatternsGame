@@ -4,27 +4,29 @@ import java.util.ArrayList;
 
 import loyal.entities.State.Stat;
 
-public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveAbility
+public class ArrowRainMultiTargetOffensiveAbility extends MultiTargetOffensiveAbility
 {
-	
-	public AirSlashSingleTargetOffenSiveAbility(PlayingCharacter playingCharacter)
+
+	public ArrowRainMultiTargetOffensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WARRIOR;
+		type = CharacterType.HUNTER;
 		checkCompability();
-		name = "Air Slash";
-		description = "Powerfull physical attack in the air";
+		name = "Arrow Rain";
+		description = "Arrows rain from the sky";
 	}
 
 	@Override
 	protected void applyAbility(ArrayList<PlayingCharacter> targets)
 	{
-		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
+		double damage = playingCharacter.getState().getStat(Stat.DEXTERITY) * scaling 
+			      + playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
+	
 		damage += baseValue + perLevel + level;
-		
+	
 		if(gen.nextInt(100) <= playingCharacter.getState().getStat(Stat.DEXTERITY))
 		{
-			damage = damage * 2;
+			damage = 2 * damage;
 		}
 		
 		PlayingCharacter[] arrayOftargets = playingCharacter.getTargets();
@@ -40,6 +42,7 @@ public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveA
 				arrayOftargets[i].getState().setStat(Stat.HEALTH, currentHealth);
 			}
 		}
-		
+			
 	}
+	
 }

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 import loyal.entities.State.Stat;
 
-public class MagicShieldDefensiveSingleTargetAbility extends SingleTargetDefensiveAbility
+public class MagicBarrierDefensiveSingleTargetAbility extends SingleTargetDefensiveAbility
 {
 
-	public MagicShieldDefensiveSingleTargetAbility(PlayingCharacter playingCharacter)
+	public MagicBarrierDefensiveSingleTargetAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WIZZARD;
+		type = CharacterType.CLERIC;
 		checkCompability();
-		name = "Magic shield";
-		description = "Summon a protective aura around the player that reduces damage.";
+		name = "Magic Barrier";
+		description = "Reduces damage taken by magical and physical attacks.";
 	}
 
 	@Override

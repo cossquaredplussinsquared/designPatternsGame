@@ -4,27 +4,27 @@ import java.util.ArrayList;
 
 import loyal.entities.State.Stat;
 
-public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveAbility
+public class SootingSunlightDefensiveSingleTargetAbility extends MultiTargetDefensiveAbility
 {
-	
-	public AirSlashSingleTargetOffenSiveAbility(PlayingCharacter playingCharacter)
+
+	public SootingSunlightDefensiveSingleTargetAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WARRIOR;
+		type = CharacterType.CLERIC;
 		checkCompability();
-		name = "Air Slash";
-		description = "Powerfull physical attack in the air";
+		name = "Sooting Sunlight";
+		description = "Heals caster and nearby allies.";
 	}
 
 	@Override
 	protected void applyAbility(ArrayList<PlayingCharacter> targets)
 	{
-		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
-		damage += baseValue + perLevel + level;
+		double upgrade = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
+		upgrade += baseValue + perLevel + level;
 		
 		if(gen.nextInt(100) <= playingCharacter.getState().getStat(Stat.DEXTERITY))
 		{
-			damage = damage * 2;
+			upgrade = 3 * upgrade;
 		}
 		
 		PlayingCharacter[] arrayOftargets = playingCharacter.getTargets();
@@ -36,10 +36,11 @@ public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveA
 			else
 			{
 				double currentHealth = arrayOftargets[i].getState().getStat(Stat.HEALTH);
-				currentHealth = currentHealth - damage;
+				currentHealth = currentHealth + upgrade;
 				arrayOftargets[i].getState().setStat(Stat.HEALTH, currentHealth);
 			}
 		}
 		
 	}
+
 }

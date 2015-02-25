@@ -2,10 +2,10 @@ package loyal.entities;
 
 import java.util.ArrayList;
 
-public abstract class MultiTargetDeffensiveAbility extends OffensiveAbility
+public abstract class MultiTargetDefensiveAbility extends DefensiveAbility
 {
 
-	public MultiTargetDeffensiveAbility(PlayingCharacter playingCharacter)
+	public MultiTargetDefensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
 	}

@@ -1,9 +1,9 @@
 package loyal.entities;
 import java.util.ArrayList;
 
-public abstract class DeffensiveAbility extends Ability
+public abstract class DefensiveAbility extends Ability
 {
-	public DeffensiveAbility(PlayingCharacter playingCharacter)
+	public DefensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
 		abilityType = AbilityType.OFFENSIVE;
