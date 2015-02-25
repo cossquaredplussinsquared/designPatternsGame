@@ -1,4 +1,4 @@
-package loyal.entities;
+package loyal.Battle.Characters;
 
 public abstract class GoodGuys extends PlayingCharacter {
 	// Implement as you see fit but look to the PlayingCharacter class for comments and code that is inherited

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>42</x>
+      <y>108</y>
+      <w>198</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>loyal::InputHandler
+--
++up = new Key(): Key
++down = new Key(): Key
++left = new Key(): Key
++right = new Key(): Key
+--
++InputHandler(Loyal game): ctor
++keyPressed(KeyEvent e): void
++keyReleased(KeyEvent e): void
++keyTyped(KeyEvent e): void
++toggleKey(int keyCode, boolean isPressed): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>312</x>
+      <y>54</y>
+      <w>372</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>loyal::Loyal
+--
+-serialVersionUID = 1L: long
++WIDTH = 160: int
++HEIGHT = WIDTH / 12 * 9: int
++SCALE = 3: int
++NAME = "Loyal": String
++tickCount = 0: int
++running = false: boolean
+-frame: JFrame
+-image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB): BufferedImage
+-pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData(): int[]
+-colors = new int[6 * 6 * 6]: int[]
+-screen: Screen
++input: InputHandler
++level: Level
++player: MapPlayer
+--
++Loyal(): ctor
++init(): void
++start(): void
++stop(): void
++run(): void
++tick(): void
++render(): void
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>234</x>
+      <y>156</y>
+      <w>90</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+</diagram>
