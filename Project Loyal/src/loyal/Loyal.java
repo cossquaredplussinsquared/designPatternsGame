@@ -66,6 +66,18 @@ public class Loyal extends Canvas implements Runnable
 	
 	public void init()
 	{
+		colorBasicFill();
+		
+		
+		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
+		input = new InputHandler(this);
+		level = new Level("/Levels/water_test_level.png");
+		player = new MapPlayer(level,0,0,input);
+		level.addEntity(player);
+	}
+
+
+	private void colorBasicFill() {
 		int index = 0;
 		
 		for(int r=0; r<6; r++)
@@ -82,14 +94,6 @@ public class Loyal extends Canvas implements Runnable
 				}
 			}
 		}
-		
-		
-		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
-		input = new InputHandler(this);
-		level = new Level("/Levels/water_test_level.png");
-		level = new Level("/Levels/water_test_level.png");
-		player = new MapPlayer(level,0,0,input);
-		level.addEntity(player);
 	}
 	
 	
