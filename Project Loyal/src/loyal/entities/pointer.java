@@ -3,10 +3,8 @@ package loyal.entities;
 import java.util.ArrayList;
 
 import loyal.InputHandler;
-<<<<<<< HEAD
+
 import loyal.Loyal;
-=======
->>>>>>> PaulWorkSpace
 import loyal.Graphics.Colors;
 import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
@@ -22,14 +20,9 @@ public class pointer extends Mob
 	private int start;
 	private int end;
 	private ArrayList<String> menu = new ArrayList();
-<<<<<<< HEAD
-	private Screen screen;
-
-	public pointer(Level level, String name, int x, int y, InputHandler input, int jump, int start, int end, ArrayList<String> menu, Screen screen)
-=======
 
 	public pointer(Level level, String name, int x, int y, InputHandler input, int jump, int start, int end, ArrayList<String> menu)
->>>>>>> PaulWorkSpace
+
 	{
 		super(level, name, x, y, 1);
 		this.input = input;
@@ -40,10 +33,6 @@ public class pointer extends Mob
 		{
 			this.menu.add(menu.get(i));
 		}
-<<<<<<< HEAD
-		this.screen = screen;
-=======
->>>>>>> PaulWorkSpace
 	}
 
 	public boolean hasCollided(int xa, int ya)
@@ -68,12 +57,7 @@ public class pointer extends Mob
 		{
 			ya = ya + jump;
 		}
-		
-<<<<<<< HEAD
-		if(input.right.isPressed())
-=======
 		if(input.enter.isPressed())
->>>>>>> PaulWorkSpace
 		{
 			
 		}
@@ -105,11 +89,7 @@ public class pointer extends Mob
 		screen.render(xOffset + modifier, yOffset, xTile+yTile*32, color, 0x00, scale);
 		for(int i=0; i<this.menu.size(); i++)
 		{
-<<<<<<< HEAD
-			Font.render(this.menu.get(i),screen,x+16,start-8+8*i,Colors.get(-1,-1,-1,555),1);
-=======
 			Font.render(this.menu.get(i),screen,x+16,start-8+16*i,Colors.get(-1,-1,-1,555),1);
->>>>>>> PaulWorkSpace
 		}
 	}
 

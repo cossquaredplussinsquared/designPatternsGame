@@ -24,11 +24,8 @@ public class BigTile extends Tile
 
 	public void render(Screen screen, Level level, int x, int y)
 	{
-<<<<<<< HEAD
-		int id = this.id;
-=======
 		byte id = this.id;
->>>>>>> PaulWorkSpace
+
 		for(int i = 0; i<this.height; i++)
 		{
 			for(int j = 0; j<this.width; j++)
