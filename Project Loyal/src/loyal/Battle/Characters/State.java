@@ -5,8 +5,7 @@ public class State {
 	private int[] stateArray = {1,0,0,0,0,0,0,0};
 	
 	//Usage is:
-	// Stat stat = new Stat();
-	// State.setStat(stat.HEALTH, 4);
+	// State.setStat(Stat.HEALTH, 4);
 	// int currentHealth = State.getStat(stat.HEALTH);
 	
 	//SPEED is used by the battle control and is the number of turns that the character will be out of play until next turn. 

@@ -1,7 +1,7 @@
-package loyal.Battle.Actions;
+package loyal.entities;
 
+import loyal.Battle.Actions.AbilityType;
 import loyal.Battle.Characters.PlayingCharacter;
-
 
 public interface CharacterAction
 {
