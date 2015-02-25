@@ -1,4 +1,4 @@
-package loyal.Battle.Characters;
+package loyal.entities;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,6 @@ import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
-import loyal.entities.Mob;
 import loyal.level.Level;
 
 public class pointer extends Mob

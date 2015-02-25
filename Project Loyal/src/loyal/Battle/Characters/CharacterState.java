@@ -13,7 +13,7 @@ public class CharacterState implements State {
 	public enum Stat {
 		HEALTH(0), MANA(1), STRENGTH(2), MAGICPOWER(3), ARMOR(4), MAGICRESIST(5), LEVEL(6), SPEED(7);
 
-		private int index;
+		int index;
 
 		private Stat(int index) {
 			this.index = index;
@@ -26,6 +26,17 @@ public class CharacterState implements State {
 	
 	public int getStat(Stat defensiveStat){
 		return stateArray[defensiveStat.index];
+	}
+
+	@Override
+	public int[] getCurrentStatus() {
+		// TODO Auto-generated method stub
+		return stateArray;
+	}
+
+	@Override
+	public State undecorate() {
+		return this;
 	}
 
 }

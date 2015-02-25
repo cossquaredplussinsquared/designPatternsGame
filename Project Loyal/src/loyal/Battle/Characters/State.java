@@ -7,5 +7,9 @@ public interface State {
 	int getStat(Stat health);
 
 	void setStat(Stat health, int i);
+	
+	int[] getCurrentStatus();
+
+	State undecorate();
 
 }
