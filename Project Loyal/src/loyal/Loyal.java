@@ -215,4 +215,5 @@ public class Loyal extends Canvas implements Runnable
 	{
 		new Loyal().start();
 	}
+
 }

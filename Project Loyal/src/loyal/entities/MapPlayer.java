@@ -11,6 +11,7 @@ public class MapPlayer extends Mob
 	private int color = Colors.get(-1, 111, 145, 543);
 	private int scale = 1;
 	protected boolean isSwimming = false;
+	protected boolean tallGrass = false;
 	private int tickCount;
 
 	public MapPlayer(Level level, int x, int y, InputHandler input)
@@ -93,14 +94,27 @@ public class MapPlayer extends Mob
 		{
 			isMoving = false;
 		}
-		if(level.getTile(this.x>>3, this.y>>3).getId() == 3)
+		
+		
+		if(level.getTile(this.x>>3, this.y>>3).getId() == 4)
 		{
 			isSwimming = true;
 		}
-		if(isSwimming && level.getTile(this.x>>3, this.y>>3).getId() != 3)
+		if(isSwimming && level.getTile(this.x>>3, this.y>>3).getId() != 4)
 		{
 			isSwimming = false;
 		}
+		
+		
+		if(level.getTile(this.x>>3, this.y>>3).getId() == 5)
+		{
+			tallGrass = true;
+		}
+		if(tallGrass && level.getTile(this.x>>3, this.y>>3).getId() != 5)
+		{
+			tallGrass = false;
+		}
+		
 		tickCount++;
 	}
 
@@ -161,7 +175,7 @@ public class MapPlayer extends Mob
 		screen.render(xOffset + (modifier*flipTop), yOffset, xTile+yTile*32, color, flipTop, scale);
 		screen.render(xOffset+modifier - (modifier*flipTop), yOffset, xTile+1+yTile*32, color, flipTop, scale);
 		
-		if(!isSwimming)
+		if(!isSwimming && !tallGrass)
 		{
 			screen.render(xOffset + (modifier*flipBottom), yOffset+modifier, xTile+(yTile+1)*32, color, flipBottom, scale);
 			screen.render(xOffset+modifier - (modifier*flipBottom), yOffset+modifier, xTile+1+(yTile+1)*32, color, flipBottom, scale);
