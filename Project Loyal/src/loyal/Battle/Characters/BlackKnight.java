@@ -1,8 +1,6 @@
 package loyal.Battle.Characters;
 
-import java.util.Random;
-
-import loyal.Battle.Characters.State.Stat;
+import loyal.Battle.Characters.CharacterState.Stat;
 
 public class BlackKnight extends BadGuys{
 	BlackKnight blackKnight = new BlackKnight();

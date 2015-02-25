@@ -2,8 +2,8 @@ package loyal.Battle;
 
 import java.util.ArrayList;
 
+import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.PlayingCharacter;
-import loyal.Battle.Characters.State.Stat;
 
 public class Battle {
 	

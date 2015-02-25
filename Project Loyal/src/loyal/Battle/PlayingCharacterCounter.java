@@ -1,7 +1,7 @@
 package loyal.Battle;
 
+import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.PlayingCharacter;
-import loyal.Battle.Characters.State.Stat;
 
 public class PlayingCharacterCounter implements Comparable{
 	private PlayingCharacter cur;

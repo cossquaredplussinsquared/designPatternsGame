@@ -1,8 +1,6 @@
 package loyal.Battle.Characters;
 
-import java.util.Scanner;
-
-import loyal.Battle.Characters.State.Stat;
+import loyal.Battle.Characters.CharacterState.Stat;
 
 public class DarkMage extends BadGuys{
 	DarkMage darkMage = new DarkMage();

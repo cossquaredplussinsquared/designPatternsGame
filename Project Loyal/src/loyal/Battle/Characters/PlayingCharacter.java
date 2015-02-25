@@ -3,7 +3,7 @@ package loyal.Battle.Characters;
 import java.util.ArrayList;
 
 import loyal.Battle.Actions.CharacterAction;
-import loyal.Battle.Characters.State.Stat;
+import loyal.Battle.Characters.CharacterState.Stat;
 
 public abstract class PlayingCharacter implements Interactable {
 
