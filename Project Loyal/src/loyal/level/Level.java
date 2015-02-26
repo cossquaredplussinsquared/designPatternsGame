@@ -180,5 +180,15 @@ public class Level
 	{
 		this.entities.add(entity);
 	}
+	
+	public void removeEntity(Entity entity)
+	{
+		this.entities.remove(entity);
+	}
+	
+	public Entity getEntity(int pos)
+	{
+		return entities.get(pos);
+	}
 }
 

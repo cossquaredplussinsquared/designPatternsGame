@@ -15,6 +15,7 @@ import loyal.Graphics.Colors;
 import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
+import loyal.entities.Entity;
 import loyal.entities.MapPlayer;
 import loyal.entities.pointer;
 import loyal.level.Level;
@@ -39,12 +40,13 @@ public class Loyal extends Canvas implements Runnable
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 	private int[] colors = new int[6*6*6];
-	
 	private Screen screen;
+	
+	public ArrayList<Entity> entities = new ArrayList();
 	public InputHandler input;
 	public Level level;
 	public pointer player;
-	
+	public LevelGenerator generator;
 	
 	public Loyal()
 	{
@@ -66,13 +68,25 @@ public class Loyal extends Canvas implements Runnable
 	
 	public void init()
 	{
-		int index = 0;
+		colorBasicFill();
+		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
+		input = new InputHandler(this);
+		
 		ArrayList<String> menu = new ArrayList();
 		menu.add("Start");
 		menu.add("Load");
 		menu.add("Option");
 		menu.add("Quit");
 		
+		player = new pointer(level,"pointer",20,100,input,16,100,148, menu, this);
+		entities.add(player);
+		
+		generator = new LevelGenerator("/Levels/test_menu.png", entities);
+	}
+	
+	private void colorBasicFill()
+	{
+		int index = 0;
 		for(int r=0; r<6; r++)
 		{
 			for(int g=0; g<6; g++)
@@ -82,21 +96,11 @@ public class Loyal extends Canvas implements Runnable
 					int rr = (r*255/5);
 					int gg = (g*255/5);
 					int bb = (b*255/5);
-					
 					colors[index++] = rr<<16 | gg<<8 | bb;
 				}
 			}
 		}
-		
-		
-		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
-		input = new InputHandler(this);
-		level = new Level("/Levels/test_menu.png");
-		player = new pointer(level,"pointer",20,100,input,16,100,148, menu);
-		level.addEntity(player);
 	}
-	
-	
 	
 	public synchronized void start()
 	{
@@ -169,7 +173,7 @@ public class Loyal extends Canvas implements Runnable
 	public void tick()
 	{
 		tickCount++;
-		level.tick();
+		generator.getLevel().tick();
 	}
 	
 	
@@ -182,11 +186,11 @@ public class Loyal extends Canvas implements Runnable
 			return;
 		}
 		
-		int xOffset = player.x - (screen.width/2);
-		int yOffset = player.y - (screen.height/2);
+		int xOffset = generator.getLevel().getEntity(0).x - (screen.width/2);
+		int yOffset = generator.getLevel().getEntity(0).y - (screen.height/2);
 		
-		level.renderTiles(screen, xOffset, yOffset);
-		level.renderEntities(screen);
+		generator.getLevel().renderTiles(screen, xOffset, yOffset);
+		generator.getLevel().renderEntities(screen);
 		
 		
 		for(int y=0; y<screen.height; y++)

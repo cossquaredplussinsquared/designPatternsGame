@@ -96,24 +96,24 @@ public class MapPlayer extends Mob
 		}
 		
 		
-		if(level.getTile(this.x>>3, this.y>>3).getId() == 4)
+		if(level.getTile(this.x>>3, this.y>>3).getId() == 3)
 		{
 			isSwimming = true;
 		}
-		if(isSwimming && level.getTile(this.x>>3, this.y>>3).getId() != 4)
+		if(isSwimming && level.getTile(this.x>>3, this.y>>3).getId() != 3)
 		{
 			isSwimming = false;
 		}
 		
 		
-		if(level.getTile(this.x>>3, this.y>>3).getId() == 5)
+		/*if(level.getTile(this.x>>3, this.y>>3).getId() == 5)
 		{
 			tallGrass = true;
 		}
 		if(tallGrass && level.getTile(this.x>>3, this.y>>3).getId() != 5)
 		{
 			tallGrass = false;
-		}
+		}*/
 		
 		tickCount++;
 	}
@@ -168,8 +168,8 @@ public class MapPlayer extends Mob
 				yOffset -=1;
 				waterColor = Colors.get(-1,225,115,-1);
 			}
-			screen.render(xOffset, yOffset+3, 0+26*32, waterColor, 0x00, 1);
-			screen.render(xOffset+8, yOffset+3, 0+26*32, waterColor, 0x01, 1);
+			screen.render(xOffset, yOffset+3, 0+26*32, waterColor, 0x00, scale);
+			screen.render(xOffset+8, yOffset+3, 0+26*32, waterColor, 0x01, scale);
 		}
 		
 		screen.render(xOffset + (modifier*flipTop), yOffset, xTile+yTile*32, color, flipTop, scale);
