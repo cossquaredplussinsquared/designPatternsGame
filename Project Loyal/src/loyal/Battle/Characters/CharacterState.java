@@ -13,7 +13,7 @@ public class CharacterState implements State {
 	public enum Stat {
 		HEALTH(0), MANA(1), STRENGTH(2), MAGICPOWER(3), ARMOR(4), MAGICRESIST(5), LEVEL(6), SPEED(7);
 
-		int index;
+		public int index;
 
 		private Stat(int index) {
 			this.index = index;
