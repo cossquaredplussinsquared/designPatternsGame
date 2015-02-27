@@ -10,6 +10,6 @@ public interface State {
 	
 	int[] getCurrentStatus();
 
-	State undecorate();
+	State undecorate(String name);
 
 }

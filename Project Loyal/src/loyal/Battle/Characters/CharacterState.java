@@ -35,7 +35,7 @@ public class CharacterState implements State {
 	}
 
 	@Override
-	public State undecorate() {
+	public State undecorate(String name) {
 		return this;
 	}
 

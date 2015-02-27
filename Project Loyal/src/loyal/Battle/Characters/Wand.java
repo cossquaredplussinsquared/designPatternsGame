@@ -1,6 +1,11 @@
 package loyal.Battle.Characters;
 
+import loyal.Battle.Characters.CharacterState.Stat;
+
 public class Wand extends ModifyingItem{
+
+	private int value = 2;
+	private Stat Str = Stat.STRENGTH, MPower = Stat.MAGICPOWER;
 
 	public Wand(State innerState) {
 		super(innerState);
@@ -8,21 +13,18 @@ public class Wand extends ModifyingItem{
 	}
 
 	@Override
-	public State undecorate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void unSetModified() {
-		// TODO Auto-generated method stub
-		
+		int temp = innerState.getStat(Str);
+		if (modifiedStateArray[Str.index] > temp)
+			modifiedStateArray[Str.index] = temp;
+		temp = innerState.getStat(MPower);
+		if (modifiedStateArray[MPower.index] > temp)
+			modifiedStateArray[MPower.index] = temp;
 	}
 
 	@Override
 	public void setModified() {
-		// TODO Auto-generated method stub
-		
+		modifiedStateArray[Str.index] += value;
+		modifiedStateArray[MPower.index] += value;
 	}
-
 }

@@ -4,28 +4,23 @@ import loyal.Battle.Characters.CharacterState.Stat;
 
 public class Sword extends ModifyingItem{
 
+	private int value = 3;
+	private Stat Str = Stat.STRENGTH;
+
 	public Sword(State innerState) {
 		super(innerState);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public State undecorate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void unSetModified() {
-		// TODO Auto-generated method stub
-		
+		int temp = innerState.getStat(Str);
+		if (modifiedStateArray[Str.index] > temp)
+			modifiedStateArray[Str.index] = temp;		
 	}
 
 	@Override
 	public void setModified() {
-		int temp = this.getStat(strength);
-		temp = (temp * 1.1);
-		setStat(strength, temp);
+		modifiedStateArray[Str.index] += value;
 	}
-
 }

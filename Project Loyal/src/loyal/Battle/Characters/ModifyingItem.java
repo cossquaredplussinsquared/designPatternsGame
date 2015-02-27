@@ -6,9 +6,9 @@ public abstract class ModifyingItem implements StateDecorator {
 
 	// When you inherit from this just set valueChange and changedStat, if you
 	// want to change more stats just add them in and call the
-	private State innerState;
-	private int[] modifiedStateArray;
-	private String name;
+	protected State innerState;
+	protected int[] modifiedStateArray;
+	protected String name;
 
 	public ModifyingItem(State innerState) {
 		this.innerState = innerState;
@@ -31,12 +31,13 @@ public abstract class ModifyingItem implements StateDecorator {
 		return modifiedStateArray;
 	}
 
-	public State undecorate(String name) {
+	final public State undecorate(String name) {
 		if (this.name.equals(name)) {
 			unSetModified();
 			return innerState;
 		}
-		return innerState.undecorate();
+		innerState = innerState.undecorate(name);
+		return innerState;
 	}
 
 }
