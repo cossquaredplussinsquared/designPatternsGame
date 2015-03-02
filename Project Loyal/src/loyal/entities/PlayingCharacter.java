@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import loyal.entities.State.Stat;
 
-public abstract class PlayingCharacter implements Interactable {
+public class PlayingCharacter 
+{
 	
 	private String name;
 	private PlayingCharacter[] targets;
@@ -14,22 +15,14 @@ public abstract class PlayingCharacter implements Interactable {
 	private State state;
 	private CharacterType type;
 	
-	// When you are creating your characters you need to create actions for each
-	// of the abilities you want them to have. Those actions are going to be
-	// used in the interaction function and will be set by the battle object
-	// Ex:
-	// BattleObject calls menu and lets you select an action from a list of
-	// actions in the PlayingCharacter
-	// BattleObject sets the action then calls menu and lets you select from a
-	// list of targets from the PlayingCharacter
-	// Then calls Interaction with the source as the current character and
-	// targets as an array (we can change this to some kind of list also)
+	public PlayingCharacter(String name, CharacterType type)
+	{
+		this.name = name;
+		this.type = type;
+	}
 
-	@Override
-	abstract public void Interaction(PlayingCharacter sources,
-			PlayingCharacter[] targets);
-
-	public State getState(){
+	public State getState()
+	{
 		return state;
 	}
 
@@ -79,6 +72,11 @@ public abstract class PlayingCharacter implements Interactable {
 	public CharacterType getCharacterType()
 	{
 		return this.type;
+	}
+	
+	public void setType(CharacterType type)
+	{
+		this.type = type;
 	}
 	
 	public String getName()

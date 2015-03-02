@@ -11,9 +11,10 @@ public class WizzardAbilityFactory implements AbilityFactory
 	
 	public WizzardAbilityFactory()
 	{
-		
+		this.playingCharacter = new PlayingCharacter("", CharacterType.WIZZARD);
 	}
 	
+
 	@Override
 	public Ability createCharacterAction(String name, PlayingCharacter playingCharacter)
 	{
@@ -22,22 +23,22 @@ public class WizzardAbilityFactory implements AbilityFactory
 		
 		switch(name.toLowerCase())
 		{
-			case "darkOrb":
+			case "dark orb":
 				ability = new DarkOrbOffensiveSingleTargetAbility(playingCharacter);
 				ability.setValues(100, 10, 2);
 				break;
 				
-			case "soulArrow":
+			case "soul arrow":
 				ability = new SoulArrowOffensiveSingleTarget(playingCharacter);
 				ability.setValues(75, 9, 3);
 				break;
 			
-			case "soulShower":
+			case "soul shower":
 				ability = new SoulShowerMultiTargetOffensiveAbility(playingCharacter);
 				ability.setValues(80, 8, 3);
 				break;
 				
-			case "magicShield":
+			case "magic shield":
 				ability = new MagicShieldDefensiveSingleTargetAbility(playingCharacter);
 				ability.setValues(100, 10, 2);
 				break;
