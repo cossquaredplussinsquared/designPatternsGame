@@ -101,7 +101,7 @@ public class pointer extends Mob
 			MapPlayer player = new MapPlayer(this.level,0,16,this.input);
 			ArrayList<Entity> entities = new ArrayList();
 			entities.add(player);
-			LevelGenerator generator = new LevelGenerator(this.map, entities);
+			LevelGenerator generator = LevelGenerator.getLevelGenerator(this.map, entities);
 			game.level = generator.getLevel();
 		}
 	}

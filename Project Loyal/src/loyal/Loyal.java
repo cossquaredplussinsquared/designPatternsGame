@@ -82,7 +82,7 @@ public class Loyal extends Canvas implements Runnable
 		player = new pointer(level,"pointer",20,100,input,16,100,148, menu, this);
 		entities.add(player);
 		
-		generator = new LevelGenerator("/Levels/test_menu.png", entities);
+		generator = LevelGenerator.getLevelGenerator("/Levels/test_menu.png", entities);
 		level = generator.getLevel();
 	}
 	

@@ -8,33 +8,44 @@ import loyal.level.Level;
 
 public class LevelGenerator
 {
-	Level level;
+	static LevelGenerator generator;
+	String level;
+	ArrayList<Entity> entities;
 	
-	public LevelGenerator(String level, ArrayList<Entity> entities)
+	
+	public static LevelGenerator getLevelGenerator(String level, ArrayList<Entity> entities){
+		if(generator == null)
+			generator = new LevelGenerator();
+		generator.setEntity(entities);
+		generator.setLevel(level);
+		return generator;
+	}
+	
+	private LevelGenerator()
 	{
-		this.level = new Level(level);
-		for(int i=0; i<entities.size(); i++)
-		{
-			entities.get(i).init(this.level);
-			this.level.addEntity(entities.get(i));
-		}
 	}
 	
 	public Level getLevel()
 	{
-		return this.level;
+		Level current = new Level(level);
+		putEntity(current);
+		return current;
 	}
 	
 	public void setLevel(String level)
 	{
-		this.level = new Level(level);
+		this.level = level;
 	}
 	
-	public void setEntity(ArrayList<Entity> entities)
+	public void setEntity(ArrayList<Entity> entities){
+		this.entities = entities;
+	}
+	
+	public void putEntity(Level current)
 	{
 		for(int i=0; i<entities.size(); i++)
 		{
-			this.level.addEntity(entities.get(i));
+			current.addEntity(entities.get(i));
 		}
 	}
 }
