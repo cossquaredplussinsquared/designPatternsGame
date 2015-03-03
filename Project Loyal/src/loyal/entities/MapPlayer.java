@@ -1,6 +1,9 @@
 package loyal.entities;
 
+import java.util.ArrayList;
+
 import loyal.InputHandler;
+import loyal.LevelGenerator;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
@@ -83,6 +86,9 @@ public class MapPlayer extends Mob
 		if(input.right.isPressed())
 		{
 			xa++;
+		}
+		if(input.escape.isPressed()){
+			
 		}
 		
 		if(xa != 0 || ya != 0)

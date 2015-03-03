@@ -98,11 +98,12 @@ public class pointer extends Mob
 	{
 		if(position == 1)
 		{
-			MapPlayer player = new MapPlayer(this.level,0,16,this.input);
+			
 			ArrayList<Entity> entities = new ArrayList();
-			entities.add(player);
 			LevelGenerator generator = LevelGenerator.getLevelGenerator(this.map, entities);
 			game.level = generator.getLevel();
+			MapPlayer player = new MapPlayer(game.level,0,16,this.input);
+			game.level.addEntity(player);
 		}
 	}
 
@@ -117,7 +118,6 @@ public class pointer extends Mob
 		
 		screen.render(xOffset + modifier, yOffset, xTile+yTile*32, color, 0x00, scale);
 		for(int i=0; i<this.menu.size(); i++)
-
 		{
 			Font.render(this.menu.get(i),screen,x+16,start-8+16*i,Colors.get(-1,-1,-1,555),1);
 		}
