@@ -6,7 +6,7 @@ public abstract class ModifyingItem implements StateDecorator {
 
 	// When you inherit from this just set valueChange and changedStat, if you
 	// want to change more stats just add them in and call the
-	private State innerState;
+	protected State innerState;
 	protected int[] modifiedStateArray;
 	private String name;
 

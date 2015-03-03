@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.level.Level;
 
 public class Battle {
-	
+	private static Battle currentBattle;
 	private int playerWin = 1, playerEscape = 2, computerWin = 3;
 	private boolean playersTurn = false;
 	
@@ -28,9 +29,16 @@ public class Battle {
 	private ArrayList<PlayingCharacterCounter> inactivePlayers, inactiveEnemies;
 	
 	
-	public Battle(ArrayList<PlayingCharacter> activePlayers, ArrayList<PlayingCharacter> activeEnemies){
+	private Battle(ArrayList<PlayingCharacter> activePlayers, ArrayList<PlayingCharacter> activeEnemies){
 		this.activeEnemies = activeEnemies;
 		this.activePlayers = activePlayers;
+	}
+	
+	public static Battle init(Level menu, ArrayList<PlayingCharacter> activePlayers){
+		if(currentBattle == null){
+			
+		}
+		return currentBattle;
 	}
 	
 	public int startBattle(){
