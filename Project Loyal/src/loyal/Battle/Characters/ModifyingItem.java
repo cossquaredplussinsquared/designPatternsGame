@@ -10,6 +10,7 @@ public abstract class ModifyingItem implements StateDecorator {
 	protected int[] modifiedStateArray;
 	private String name;
 
+
 	public ModifyingItem(State innerState) {
 		this.innerState = innerState;
 		setModified();
@@ -31,12 +32,13 @@ public abstract class ModifyingItem implements StateDecorator {
 		return modifiedStateArray;
 	}
 
-	public State undecorate(String name) {
+	final public State undecorate(String name) {
 		if (this.name.equals(name)) {
 			unSetModified();
 			return innerState;
 		}
-		return innerState.undecorate();
+		innerState = innerState.undecorate(name);
+		return innerState;
 	}
 
 }
