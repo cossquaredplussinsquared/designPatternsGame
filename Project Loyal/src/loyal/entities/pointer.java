@@ -14,8 +14,6 @@ import loyal.level.Level;
 public class pointer extends Mob
 {
 	private InputHandler input;
-	private int position = 1;
-	private int direction = 0;
 	private int color = Colors.get(-1, -1, -1, 555);
 	private int scale = 1;
 	private int tickCount = 0;
@@ -87,7 +85,6 @@ public class pointer extends Mob
 			{
 				isMoving = false;
 			}
-			position = position+direction;
 			prevTime = System.currentTimeMillis();
 		}
 		direction=0;

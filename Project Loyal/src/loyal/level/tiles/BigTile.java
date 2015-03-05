@@ -21,7 +21,17 @@ public class BigTile extends Tile
 	{
 		
 	}
+	
+	public int getWidth()
+	{
+		return this.width;
+	}
 
+	public int getHeight()
+	{
+		return this.height;
+	}
+	
 	public void render(Screen screen, Level level, int x, int y)
 	{
 		byte id = this.id;

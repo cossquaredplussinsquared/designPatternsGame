@@ -1,28 +1,23 @@
 package loyal.entities;
 
-import java.util.ArrayList;
+import java.util.Random;
 
-import loyal.InputHandler;
-import loyal.LevelGenerator;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
 
-public class MapPlayer extends Mob
+public class MapMonster extends Mob
 {
-	private InputHandler input;
 	private int color = Colors.get(-1, 111, 145, 543);
 	private int scale = 1;
-	protected boolean isSwimming = false;
 	protected boolean tallGrass = false;
 	private int tickCount;
-
-	public MapPlayer(Level level, int x, int y, InputHandler input)
+	private Random random = new Random();
+	
+	public MapMonster(Level level, int x, int y, int speed)
 	{
-		super(level, "Player", x, y, 1);
-		this.input = input;
+		super(level, "Monster", x, y, speed);
 	}
-
 
 	public boolean hasCollided(int xa, int ya)
 	{
@@ -65,30 +60,29 @@ public class MapPlayer extends Mob
 		return false;
 	}
 
-
+	@Override
 	public void tick()
 	{
 		int xa = 0;
 		int ya = 0;
 		
-		if(input.up.isPressed())
+		int move = random.nextInt(3);
+		
+		if(move == 0)
 		{
 			ya--;
 		}
-		if(input.down.isPressed())
+		if(move == 1)
 		{
 			ya++;
 		}
-		if(input.left.isPressed())
+		if(move == 2)
 		{
 			xa--;
 		}
-		if(input.right.isPressed())
+		if(move == 3)
 		{
 			xa++;
-		}
-		if(input.escape.isPressed()){
-			
 		}
 		
 		if(xa != 0 || ya != 0)
@@ -101,30 +95,10 @@ public class MapPlayer extends Mob
 			isMoving = false;
 		}
 		
-		
-		if(level.getTile(this.x>>3, this.y>>3).getId() == 3)
-		{
-			isSwimming = true;
-		}
-		if(isSwimming && level.getTile(this.x>>3, this.y>>3).getId() != 3)
-		{
-			isSwimming = false;
-		}
-		
-		
-		if(level.getTile(this.x>>3, this.y>>3).getId() == 5)
-		{
-			tallGrass = true;
-		}
-		if(tallGrass && level.getTile(this.x>>3, this.y>>3).getId() != 5)
-		{
-			tallGrass = false;
-		}
-		
 		tickCount++;
 	}
 
-
+	@Override
 	public void render(Screen screen)
 	{
 		int xTile = 0;
@@ -152,39 +126,14 @@ public class MapPlayer extends Mob
 		int xOffset = x - modifier/2;
 		int yOffset = y - modifier/2 - 4;
 		
-		if(isSwimming)
-		{
-			int waterColor = 0;
-			yOffset += 4;
-			if(tickCount % 60 < 15)
-			{
-				waterColor = Colors.get(-1,-1,225,-1);
-			}
-			else if(15<=tickCount%60 && tickCount%60 < 30)
-			{
-				yOffset -=1;
-				waterColor = Colors.get(-1,225,115,-1);
-			}
-			else if(30<=tickCount%60 && tickCount%60 < 45)
-			{
-				waterColor = Colors.get(-1,115,-1,-225);
-			}
-			else
-			{
-				yOffset -=1;
-				waterColor = Colors.get(-1,225,115,-1);
-			}
-			screen.render(xOffset, yOffset+3, 0+26*32, waterColor, 0x00, scale);
-			screen.render(xOffset+8, yOffset+3, 0+26*32, waterColor, 0x01, scale);
-		}
-		
 		screen.render(xOffset + (modifier*flipTop), yOffset, xTile+yTile*32, color, flipTop, scale);
 		screen.render(xOffset+modifier - (modifier*flipTop), yOffset, xTile+1+yTile*32, color, flipTop, scale);
 		
-		if(!isSwimming && !tallGrass)
+		if(!tallGrass)
 		{
 			screen.render(xOffset + (modifier*flipBottom), yOffset+modifier, xTile+(yTile+1)*32, color, flipBottom, scale);
 			screen.render(xOffset+modifier - (modifier*flipBottom), yOffset+modifier, xTile+1+(yTile+1)*32, color, flipBottom, scale);
 		}
 	}
+
 }

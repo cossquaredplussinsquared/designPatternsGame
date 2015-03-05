@@ -11,6 +11,8 @@ public abstract class Mob extends Entity
 	protected boolean isMoving;
 	protected int movingDir = 1;
 	protected int scale = 1;
+	protected int position = 1;
+	protected int direction = 0;
 
 	public Mob(Level level, String name, int x, int y, int speed)
 	{
@@ -55,6 +57,7 @@ public abstract class Mob extends Entity
 			
 			x += xa*speed;
 			y += ya*speed;
+			position = position+direction;
 		}
 	}
 	

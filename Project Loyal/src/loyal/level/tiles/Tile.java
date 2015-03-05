@@ -8,17 +8,30 @@ public abstract class Tile
 {
 
 	public static final Tile[] tiles = new Tile[256];
-	public static final Tile VOID = new BasicSolidTile(0,0,0, Colors.get(000,-1,-1,-1), 0xFF000000);
-	public static final Tile STONE = new BasicSolidTile(1,1,0,Colors.get(-1,333,-1,-1), 0xFF555555);
-	public static final Tile GRASS = new BasicTile(2,2,0,Colors.get(-1,131,141,-1), 0xFF00FF00);
-	public static final Tile WATER = new AnimatedTile(3, new int[][]{{0,4},{1,4},{2,4}}, Colors.get(-1, 004, 115, -1), 0xFF0000FF, 500);
+	public static final Tile VOID = new BasicSolidTile(0, 0, 0, Colors.get(000,-1,-1,-1), 0xFF000000,1,1);
+	public static final Tile STONE = new BasicSolidTile(1, 1, 0, Colors.get(-1,333,-1,-1), 0xFF555555,1,1);
+	public static final Tile GRASS = new BasicTile(2, 2, 0, Colors.get(-1,131,141,-1), 0xFF00FF00,1,1);
+	public static final Tile WATER = new AnimatedTile(3, new int[][]{{0,4},{1,4},{2,4}}, Colors.get(-1, 004, 115, -1), 0xFF0000FF, 500,1,1);
+	public static final Tile ROAD = new BasicTile(4, 5, 0, Colors.get(-1,300,400,-1), 0xFFA52A2A,1,1);
+	public static final Tile WHEAT = new AnimatedTile(5, new int[][]{{3,4},{5,4}}, Colors.get(-1, 131, 550, -1), 0xFFFFFF00, 700,1,1);
+	public static final Tile MOUNTAIN1 = new BasicSolidTile(6, 0, 2, Colors.get(020,110,020,555), 0xFFFF0000,2,2);
+	public static final Tile MOUNTAIN2 = new BasicSolidTile(7, 1, 2, Colors.get(020,110,020,555), 0xFFFF0000,2,2);
+	public static final Tile MOUNTAIN3 = new BasicSolidTile(8, 2, 2, Colors.get(020,110,020,555), 0xFFFF0000,2,2);
+	public static final Tile MOUNTAIN4 = new BasicSolidTile(9, 3, 2, Colors.get(020,110,020,555), 0xFFFF0000,2,2);
+	public static final Tile Tree1 = new BasicSolidTile(10, 4, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
+	public static final Tile Tree2 = new BasicSolidTile(11, 5, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
+	public static final Tile Tree3 = new BasicSolidTile(12, 6, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
+	public static final Tile Tree4 = new BasicSolidTile(13, 7, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
 
 	protected byte id;
 	protected boolean solid;
 	protected boolean emitter;
 	private int levelColor;
+	protected boolean isBig = false;
+	protected int width;
+	protected int height;
 	
-	public Tile(int id, boolean isSolid, boolean isEmitter, int levelColor)
+	public Tile(int id, boolean isSolid, boolean isEmitter, int levelColor, int width, int height)
 	{
 		this.id = (byte)id;
 		if(tiles[id] != null)
@@ -29,6 +42,8 @@ public abstract class Tile
 		this.emitter = isEmitter;
 		this.levelColor = levelColor;
 		tiles[id] = this;
+		this.width = width;
+		this.height = height;
 	}
 	
 	public byte getId()
@@ -49,6 +64,16 @@ public abstract class Tile
 	public int getLevelColor()
 	{
 		return levelColor;
+	}
+	
+	public int getWidth()
+	{
+		return width;
+	}
+	
+	public int getHeight()
+	{
+		return height;
 	}
 	
 	public abstract void tick();

@@ -63,9 +63,20 @@ public class Level
 			{
 				tileCheck : for(Tile t : Tile.tiles)
 				{
-					if(t != null && t.getLevelColor() == tileColors[x+y*width])
+					if(t != null && t.getLevelColor() == tileColors[x+y*width] && this.tiles[x+y*width] == 0)
 					{
-						this.tiles[x+y*width] = t.getId();
+						byte id = t.getId();
+						for(int i=0; i<t.getHeight(); i++)
+						{
+							for(int j=0; j<t.getWidth(); j++)
+							{
+								if((x+j)<this.width && (y+i)<this.height)
+								{
+									this.tiles[(x+j)+(y+i)*width] = id;
+									id++;
+								}
+							}
+						}
 						break tileCheck;
 					}
 				}
