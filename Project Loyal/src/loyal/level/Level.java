@@ -8,9 +8,9 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import loyal.InputHandler;
 import loyal.Graphics.Screen;
 import loyal.entities.Entity;
-import loyal.entities.MapPlayer;
 import loyal.level.tiles.Tile;
 
 public class Level
@@ -135,6 +135,10 @@ public class Level
 			}
 			t.tick();
 		}
+	}
+	
+	public String inputRun(InputHandler input){
+		return "";
 	}
 	
 	

@@ -52,6 +52,9 @@ public class Loyal extends Canvas implements Runnable
 
 	private Entity menu;
 
+//	private ArrayList<String> testMenu;
+	
+//	MenuItem menu2;
 	
 	public Loyal()
 	{
@@ -82,7 +85,15 @@ public class Loyal extends Canvas implements Runnable
 		menuItems.add("Load");
 		menuItems.add("Option");
 		menuItems.add("Quit");
-	
+//	////TESTING
+//		testMenu = new ArrayList<String>();
+//		testMenu.add("TESTING");
+//		testMenu.add("TESTING1");
+//		testMenu.add("TESTING2");
+//		testMenu.add("TESTING3");
+//		menu2 = new MenuItem(level, testMenu, 100);
+//		
+//	////TESTING
 		generator = LevelGenerator.getLevelGenerator("/Levels/test_menu.png", entities);
 		level = generator.getLevel();
 		player = new pointer(level,"pointer",20,100,input,16,100,148, this);
@@ -135,14 +146,34 @@ public class Loyal extends Canvas implements Runnable
 		double delta = 0;
 		
 		init();
-
+//		//////TESTING 
+//		long change = System.nanoTime() + 2000000000;
+//		boolean swap = true;
+//		//////TESTING
 		while(running)
 		{
 			long now = System.nanoTime();
 			delta +=(now - lastTime)/nsPerTick;
 			lastTime = now;
 			boolean shouldRender = true;
-
+//			/////TESTING
+//			if(now > change)
+//			{	
+//
+//				if(swap){
+//				change += 500000000;
+//				level.removeEntity(menu);
+//
+//				level.addEntity(menu2);
+//				swap = false;
+//				}else{
+//					level.removeEntity(menu2);
+//					level.addEntity(menu);
+//					swap = true;
+//					change += 500000000;
+//				}
+//			}
+//			/////TESTING
 			
 			while(delta>=1)
 			{
