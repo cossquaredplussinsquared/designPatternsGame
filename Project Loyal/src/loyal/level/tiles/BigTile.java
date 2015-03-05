@@ -10,9 +10,9 @@ public class BigTile extends Tile
 	
 	public BigTile(int id, int levelColor, int height, int width)
 	{
-		super(id, false, false, levelColor);
-		this.width = width;
-		this.height = height;
+		super(id, false, false, levelColor, width, height);
+//		this.width = width;
+//		this.height = height;
 	}
 
 

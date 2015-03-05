@@ -3,10 +3,10 @@ package loyal.entities;
 import java.util.ArrayList;
 
 import loyal.InputHandler;
-import loyal.LevelGenerator;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
+import loyal.level.LevelGenerator;
 
 public class MapPlayer extends Mob
 {

@@ -12,14 +12,13 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import loyal.Graphics.Colors;
-import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
 import loyal.entities.Entity;
-import loyal.entities.MapPlayer;
+import loyal.entities.MenuItem;
 import loyal.entities.pointer;
 import loyal.level.Level;
+import loyal.level.LevelGenerator;
 
 /**
  * @author Stephen Paul Curtis Jones
@@ -43,11 +42,16 @@ public class Loyal extends Canvas implements Runnable
 	private int[] colors = new int[6*6*6];
 	private Screen screen;
 	
-	public ArrayList<Entity> entities = new ArrayList();
+	public ArrayList<Entity> entities = new ArrayList<Entity>();
 	public InputHandler input;
 	public Level level;
 	public pointer player;
 	public LevelGenerator generator;
+
+	private ArrayList<String> menuItems;
+
+	private Entity menu;
+
 	
 	public Loyal()
 	{
@@ -73,17 +77,18 @@ public class Loyal extends Canvas implements Runnable
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
 		input = new InputHandler(this);
 		
-		ArrayList<String> menu = new ArrayList();
-		menu.add("Start");
-		menu.add("Load");
-		menu.add("Option");
-		menu.add("Quit");
+		menuItems = new ArrayList<String>();
+		menuItems.add("Start");
+		menuItems.add("Load");
+		menuItems.add("Option");
+		menuItems.add("Quit");
 	
-		
 		generator = LevelGenerator.getLevelGenerator("/Levels/test_menu.png", entities);
 		level = generator.getLevel();
-		player = new pointer(level,"pointer",20,100,input,16,100,148, menu, this);
+		player = new pointer(level,"pointer",20,100,input,16,100,148, this);
+		menu = new MenuItem(level, menuItems, 100);
 		level.addEntity(player);
+		level.addEntity(menu);
 	}
 	
 	private void colorBasicFill()
@@ -130,13 +135,14 @@ public class Loyal extends Canvas implements Runnable
 		double delta = 0;
 		
 		init();
-		
+
 		while(running)
 		{
 			long now = System.nanoTime();
 			delta +=(now - lastTime)/nsPerTick;
 			lastTime = now;
 			boolean shouldRender = true;
+
 			
 			while(delta>=1)
 			{

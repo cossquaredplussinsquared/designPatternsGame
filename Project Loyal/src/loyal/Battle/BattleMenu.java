@@ -22,5 +22,7 @@ public class BattleMenu implements BattleController {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 }
