@@ -16,12 +16,12 @@ public class WorrierAbilityFactory implements AbilityFactory
 	
 
 	@Override
-	public Ability createCharacterAction(String name, PlayingCharacter playingCharacter)
+	public Ability createCharacterAction(String abilityName, PlayingCharacter playingCharacter)
 	{
 		 
 		Ability ability;
 		
-		switch(name.toLowerCase())
+		switch(abilityName.toLowerCase())
 		{
 			case "air slash":
 				ability = new AirSlashSingleTargetOffenSiveAbility(playingCharacter);

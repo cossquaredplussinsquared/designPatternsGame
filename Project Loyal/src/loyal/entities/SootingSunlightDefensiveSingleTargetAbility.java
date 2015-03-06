@@ -27,17 +27,17 @@ public class SootingSunlightDefensiveSingleTargetAbility extends MultiTargetDefe
 			upgrade = 3 * upgrade;
 		}
 		
-		PlayingCharacter[] arrayOftargets = playingCharacter.getTargets();
+		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
-		for(int i = 0; i < arrayOftargets.length; i++)
+		for(int i = 0; i < arrayOftargets.size(); i++)
 		{
-			if(arrayOftargets[i].isDead())
+			if(arrayOftargets.get(i).isDead())
 				continue;
 			else
 			{
-				double currentHealth = arrayOftargets[i].getState().getStat(Stat.HEALTH);
+				double currentHealth = arrayOftargets.get(i).getState().getStat(Stat.HEALTH);
 				currentHealth = currentHealth + upgrade;
-				arrayOftargets[i].getState().setStat(Stat.HEALTH, currentHealth);
+				arrayOftargets.get(i).getState().setStat(Stat.HEALTH, currentHealth);
 			}
 		}
 		

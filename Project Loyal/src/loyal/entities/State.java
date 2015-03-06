@@ -1,8 +1,9 @@
 package loyal.entities;
 
-public class State {
+public class State
+{
 	// default state is 1 health nothing else
-	private double[] stateArray = {1,0,0,0,0,0,0,0,0};
+	private double[] stateArray = {100,10,50,30,50,20,1,10,10};
 	
 	//Usage is:
 	// Stat stat = new Stat();
@@ -21,11 +22,13 @@ public class State {
 		}
 	}
 	
-	public void setStat(Stat stat, double currentHealth){
-		stateArray[stat.index] = currentHealth;
+	public void setStat(Stat stat, double someStat)
+	{
+		stateArray[stat.index] = someStat;
 	}
 	
-	public double getStat(Stat defensiveStat){
+	public double getStat(Stat defensiveStat)
+	{
 		return stateArray[defensiveStat.index];
 	}
 

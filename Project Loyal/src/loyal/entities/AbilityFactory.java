@@ -2,6 +2,6 @@ package loyal.entities;
 
 public interface AbilityFactory
 {
-	public CharacterAction createCharacterAction(String name, PlayingCharacter playingCharacter);
+	public CharacterAction createCharacterAction(String abilityName, PlayingCharacter playingCharacter);
 	public String[] displayAbilitiesBasedOnType();
 }

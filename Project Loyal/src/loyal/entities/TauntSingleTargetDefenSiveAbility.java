@@ -19,29 +19,29 @@ public class TauntSingleTargetDefenSiveAbility extends SingleTargetDefensiveAbil
 	@Override
 	protected void applyAbility(ArrayList<PlayingCharacter> targets)
 	{
-		PlayingCharacter[] arrayOftargets = playingCharacter.getTargets();
+		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
-		for(int i = 0; i < arrayOftargets.length; i++)
+		for(int i = 0; i < arrayOftargets.size(); i++)
 		{
-			if(arrayOftargets[i].isDead())
+			if(arrayOftargets.get(i).isDead())
 				continue;
 			else
 			{
-				double currentDefense = arrayOftargets[i].getState().getStat(Stat.DEFENSE);
+				double currentDefense = arrayOftargets.get(i).getState().getStat(Stat.DEFENSE);
 				currentDefense = currentDefense + 5;
-				arrayOftargets[i].getState().setStat(Stat.DEFENSE, currentDefense);
+				arrayOftargets.get(i).getState().setStat(Stat.DEFENSE, currentDefense);
 				
-				double currentStrength = arrayOftargets[i].getState().getStat(Stat.STRENGTH);
+				double currentStrength = arrayOftargets.get(i).getState().getStat(Stat.STRENGTH);
 				currentStrength = currentStrength + 3;
-				arrayOftargets[i].getState().setStat(Stat.STRENGTH, currentStrength);
+				arrayOftargets.get(i).getState().setStat(Stat.STRENGTH, currentStrength);
 				
-				double currentSpeed = arrayOftargets[i].getState().getStat(Stat.SPEED);
+				double currentSpeed = arrayOftargets.get(i).getState().getStat(Stat.SPEED);
 				currentSpeed = currentSpeed + 4;
-				arrayOftargets[i].getState().setStat(Stat.SPEED, currentSpeed);
+				arrayOftargets.get(i).getState().setStat(Stat.SPEED, currentSpeed);
 				
-				double currentDex = arrayOftargets[i].getState().getStat(Stat.DEXTERITY);
+				double currentDex = arrayOftargets.get(i).getState().getStat(Stat.DEXTERITY);
 				currentDex = currentDex + 2;
-				arrayOftargets[i].getState().setStat(Stat.DEXTERITY, currentDex);
+				arrayOftargets.get(i).getState().setStat(Stat.DEXTERITY, currentDex);
 			}
 		}
 		

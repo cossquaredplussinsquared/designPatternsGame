@@ -8,7 +8,7 @@ public class PlayingCharacter
 {
 	
 	private String name;
-	private PlayingCharacter[] targets;
+	private ArrayList<PlayingCharacter> targets;
 	private ArrayList<CharacterAction> actions;
 	private CharacterAction currentAction;
 	private ArrayList<PlayingCharacter> allies;
@@ -19,18 +19,27 @@ public class PlayingCharacter
 	{
 		this.name = name;
 		this.type = type;
+		this.actions = new ArrayList<CharacterAction>();
+		this.allies = new ArrayList<PlayingCharacter>();
+		this.state = new State();
+		
 	}
 
 	public State getState()
 	{
 		return state;
 	}
+	
+	public void setState(State state)
+	{
+		this.state = state;
+	}
 
-	public PlayingCharacter[] getTargets() {
+	public ArrayList<PlayingCharacter> getTargets() {
 		return targets;
 	}
 
-	public void setTargets(PlayingCharacter[] targets) {
+	public void setTargets(ArrayList<PlayingCharacter> targets) {
 		this.targets = targets;
 	}
 
@@ -84,7 +93,7 @@ public class PlayingCharacter
 		return this.name;
 	}
 	
-	public PlayingCharacter[] getTartgets()
+	public ArrayList<PlayingCharacter> getTartgets()
 	{
 		return this.targets;
 	}
