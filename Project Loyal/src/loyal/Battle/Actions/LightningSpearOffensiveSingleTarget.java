@@ -1,4 +1,3 @@
-
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -7,16 +6,16 @@ import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
 
-public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
+public class LightningSpearOffensiveSingleTarget extends SingleTargetOffensiveAbility
 {
 
-	public SoulArrowOffensiveSingleTarget(PlayingCharacter playingCharacter)
+	public LightningSpearOffensiveSingleTarget(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WIZZARD;
+		type = CharacterType.CLERIC;
 		checkCompability();
-		name = "Soul Arrow";
-		description = "An elementary sorcery. Fires a soul arrow straight ahead.";
+		name = "Lightning Spear";
+		description = "A miracle that launches a great light spear..";
 	}
 
 	@Override
@@ -27,7 +26,7 @@ public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
 		
 		if(gen.nextInt(100) <= playingCharacter.getState().getStat(Stat.DEXTERITY))
 		{
-			damage = damage + damage * (.5);
+			damage = damage * 2;
 		}
 		
 		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
@@ -45,4 +44,5 @@ public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
 		}
 		
 	}
+	
 }

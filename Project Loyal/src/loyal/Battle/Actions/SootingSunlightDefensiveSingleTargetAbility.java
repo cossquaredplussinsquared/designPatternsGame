@@ -1,4 +1,3 @@
-
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -7,27 +6,27 @@ import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
 
-public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
+public class SootingSunlightDefensiveSingleTargetAbility extends MultiTargetDefensiveAbility
 {
 
-	public SoulArrowOffensiveSingleTarget(PlayingCharacter playingCharacter)
+	public SootingSunlightDefensiveSingleTargetAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WIZZARD;
+		type = CharacterType.CLERIC;
 		checkCompability();
-		name = "Soul Arrow";
-		description = "An elementary sorcery. Fires a soul arrow straight ahead.";
+		name = "Sooting Sunlight";
+		description = "Heals caster and nearby allies.";
 	}
 
 	@Override
 	protected void applyAbility(ArrayList<PlayingCharacter> targets)
 	{
-		double damage = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
-		damage += baseValue + perLevel + level;
+		double upgrade = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
+		upgrade += baseValue + perLevel + level;
 		
 		if(gen.nextInt(100) <= playingCharacter.getState().getStat(Stat.DEXTERITY))
 		{
-			damage = damage + damage * (.5);
+			upgrade = 3 * upgrade;
 		}
 		
 		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
@@ -39,10 +38,11 @@ public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
 			else
 			{
 				double currentHealth = arrayOftargets.get(i).getState().getStat(Stat.HEALTH);
-				currentHealth = currentHealth - damage;
+				currentHealth = currentHealth + upgrade;
 				arrayOftargets.get(i).getState().setStat(Stat.HEALTH, currentHealth);
 			}
 		}
 		
 	}
+
 }

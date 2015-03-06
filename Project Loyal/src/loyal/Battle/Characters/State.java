@@ -4,11 +4,11 @@ import loyal.Battle.Characters.CharacterState.Stat;
 
 public interface State {
 
-	int getStat(Stat health);
+	double getStat(Stat health);
 
-	void setStat(Stat health, int i);
+	void setStat(Stat health, double currentHealth);
 	
-	int[] getCurrentStatus();
+	double[] getCurrentStatus();
 
 	State undecorate(String name);
 
