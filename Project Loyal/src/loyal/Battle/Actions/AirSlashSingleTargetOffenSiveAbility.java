@@ -1,4 +1,3 @@
-
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -6,8 +5,6 @@ import java.util.ArrayList;
 import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
-
-
 
 public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveAbility
 {
@@ -42,10 +39,13 @@ public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveA
 			{
 				double currentHealth = arrayOftargets.get(i).getState().getStat(Stat.HEALTH);
 				currentHealth = currentHealth - damage;
-				arrayOftargets.get(i).getState().setStat(Stat.HEALTH, currentHealth);
+				
+				if(currentHealth <= 0)
+					arrayOftargets.get(i).getState().setStat(Stat.HEALTH, 0);
+				else
+					arrayOftargets.get(i).getState().setStat(Stat.HEALTH, currentHealth);
 			}
 		}
 		
 	}
 }
-

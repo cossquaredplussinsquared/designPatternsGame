@@ -41,7 +41,10 @@ public class DarkOrbOffensiveSingleTargetAbility extends SingleTargetOffensiveAb
 			{
 				double currentHealth = arrayOftargets.get(i).getState().getStat(Stat.HEALTH);
 				currentHealth = currentHealth - damage;
-				arrayOftargets.get(i).getState().setStat(Stat.HEALTH, currentHealth);
+				if(currentHealth <= 0)
+					arrayOftargets.get(i).getState().setStat(Stat.HEALTH, 0);
+				else
+					arrayOftargets.get(i).getState().setStat(Stat.HEALTH, currentHealth);
 			}
 		}
 		
