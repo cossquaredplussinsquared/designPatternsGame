@@ -12,12 +12,9 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import loyal.Graphics.Colors;
-import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
 import loyal.entities.Entity;
-import loyal.entities.MapPlayer;
 import loyal.entities.pointer;
 import loyal.level.Level;
 
@@ -31,7 +28,7 @@ public class Loyal extends Canvas implements Runnable
 	
 	public static final int WIDTH = 256;
 	public static final int HEIGHT = 192;
-	public static final int SCALE = 3;
+	public static final int SCALE = 4;
 	public static final String NAME = "Loyal";
 	
 	public int tickCount = 0;
@@ -43,7 +40,7 @@ public class Loyal extends Canvas implements Runnable
 	private int[] colors = new int[6*6*6];
 	private Screen screen;
 	
-	public ArrayList<Entity> entities = new ArrayList();
+	public ArrayList<Entity> entities = new ArrayList<Entity>();
 	public InputHandler input;
 	public Level level;
 	public pointer player;
@@ -73,18 +70,20 @@ public class Loyal extends Canvas implements Runnable
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
 		input = new InputHandler(this);
 		
-		ArrayList<String> menu = new ArrayList();
+		ArrayList<String> menu = new ArrayList<String>();
 		menu.add("Start");
 		menu.add("Load");
 		menu.add("Option");
 		menu.add("Quit");
 	
 		
-		generator = LevelGenerator.getLevelGenerator("/Levels/test_menu.png", entities);
+		generator = LevelGenerator.getLevelGenerator(Level.STARTMENU, entities);
 		level = generator.getLevel();
 		player = new pointer(level,"pointer",20,100,input,16,100,148, menu, this);
 		level.addEntity(player);
+		level.music.loop();
 	}
+	
 	
 	private void colorBasicFill()
 	{
@@ -103,6 +102,7 @@ public class Loyal extends Canvas implements Runnable
 			}
 		}
 	}
+	
 	
 	public synchronized void start()
 	{
@@ -221,5 +221,4 @@ public class Loyal extends Canvas implements Runnable
 	{
 		new Loyal().start();
 	}
-
 }

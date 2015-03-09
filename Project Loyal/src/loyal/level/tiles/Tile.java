@@ -22,6 +22,10 @@ public abstract class Tile
 	public static final Tile Tree2 = new BasicSolidTile(11, 5, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
 	public static final Tile Tree3 = new BasicSolidTile(12, 6, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
 	public static final Tile Tree4 = new BasicSolidTile(13, 7, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
+	public static final Tile HOUSE = new BasicSolidTile(14, 6, 0, Colors.get(-1,311,411,-1), 0xFFD2B48C,1,1);
+	public static final Tile ROOF = new BasicSolidTile(15, 1, 0, Colors.get(-1,211,-1,-1), 0xFF310C0C,1,1);
+	public static final Tile DOOR = new BasicSolidTile(16, 1, 0, Colors.get(-1,211,-1,-1), 0xFFC73627,1,1);
+	public static final Tile DOORNOB = new BasicSolidTile(17, 7, 0, Colors.get(211,-1,-1,555), 0xFFFFA500,1,1);
 
 	protected byte id;
 	protected boolean solid;

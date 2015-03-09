@@ -10,9 +10,9 @@ public class MapMonster extends Mob
 {
 	private int color = Colors.get(-1, 111, 145, 543);
 	private int scale = 1;
-	protected boolean tallGrass = false;
 	private int tickCount;
 	private Random random = new Random();
+	private int move = 1;
 	
 	public MapMonster(Level level, int x, int y, int speed)
 	{
@@ -28,7 +28,7 @@ public class MapMonster extends Mob
 		
 		for(int x = xMin; x < xMax; x++)
 		{
-			if(isSolidTile(xa, ya, x, yMin))
+			if(isSolidTile(xa, ya, x, yMin) || isWater(xa, ya, x, yMin))
 			{
 				return true;
 			}
@@ -36,7 +36,7 @@ public class MapMonster extends Mob
 		
 		for(int x = xMin; x < xMax; x++)
 		{
-			if(isSolidTile(xa, ya, x, yMax))
+			if(isSolidTile(xa, ya, x, yMax)|| isWater(xa, ya, x, yMin))
 			{
 				return true;
 			}
@@ -44,7 +44,7 @@ public class MapMonster extends Mob
 		
 		for(int y = yMin; y < yMax; y++)
 		{
-			if(isSolidTile(xa, ya, xMin, y))
+			if(isSolidTile(xa, ya, xMin, y)|| isWater(xa, ya, x, yMin))
 			{
 				return true;
 			}
@@ -52,7 +52,7 @@ public class MapMonster extends Mob
 		
 		for(int y = yMin; y < yMax; y++)
 		{
-			if(isSolidTile(xa, ya, xMax, y))
+			if(isSolidTile(xa, ya, xMax, y)|| isWater(xa, ya, x, yMin))
 			{
 				return true;
 			}
@@ -65,8 +65,16 @@ public class MapMonster extends Mob
 	{
 		int xa = 0;
 		int ya = 0;
+		int change = random.nextInt(100);
 		
-		int move = random.nextInt(3);
+		if(Math.abs(this.x - level.getEntity(0).getX())<80 && Math.abs(this.y - level.getEntity(0).getY())<80)
+		{
+			stalk();
+		}
+		else if(change>95)
+		{
+			move = random.nextInt(4);
+		}
 		
 		if(move == 0)
 		{
@@ -95,13 +103,40 @@ public class MapMonster extends Mob
 			isMoving = false;
 		}
 		
-		tickCount++;
+		if(level.getTile(this.x>>3, this.y>>3).getId() == 3)
+		{
+			isSwimming = true;
+		}
+		
+		tileCheck();
+		
+		this.tickCount++;
+	}
+	
+	public void stalk()
+	{
+		if(this.x - level.getEntity(0).getX()>0 && Math.abs(this.x - level.getEntity(0).getX())>Math.abs(this.y - level.getEntity(0).getY()))
+		{
+			move = 2;
+		}
+		else if(this.x - level.getEntity(0).getX()<0 && Math.abs(this.x - level.getEntity(0).getX())>Math.abs(this.y - level.getEntity(0).getY()))
+		{
+			move =3;
+		}
+		else if(this.y - level.getEntity(0).getY()>0)
+		{
+			move = 0;
+		}
+		else if(this.y - level.getEntity(0).getY()<0)
+		{
+			move =1;
+		}
 	}
 
 	@Override
 	public void render(Screen screen)
 	{
-		int xTile = 0;
+		int xTile = 12;
 		int yTile = 27;
 		int walkingSpeed = 4;
 		int flipTop = (numSteps >> walkingSpeed & 1);
@@ -135,5 +170,4 @@ public class MapMonster extends Mob
 			screen.render(xOffset+modifier - (modifier*flipBottom), yOffset+modifier, xTile+1+(yTile+1)*32, color, flipBottom, scale);
 		}
 	}
-
 }

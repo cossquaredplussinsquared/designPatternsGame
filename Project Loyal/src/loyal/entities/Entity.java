@@ -19,6 +19,15 @@ public abstract class Entity
 		this.level = level;
 	}
 	
+	public int getX()
+	{
+		return this.x;
+	}
+	
+	public int getY()
+	{
+		return this.y;
+	}
 	
 	public abstract void tick();
 	public abstract void render(Screen screen);

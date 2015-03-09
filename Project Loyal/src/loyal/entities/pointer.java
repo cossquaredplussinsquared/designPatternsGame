@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import loyal.InputHandler;
 import loyal.LevelGenerator;
 import loyal.Loyal;
+import loyal.Sound;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
@@ -24,9 +25,7 @@ public class pointer extends Mob
 	private int start;
 	private int end;
 	private Loyal game;
-	private ArrayList<String> menu = new ArrayList();
-	
-	String map = "/Levels/world_overveiw_world2.png";
+	private ArrayList<String> menu = new ArrayList<String>();
 
 	public pointer(Level level, String name, int x, int y, InputHandler input, int jump, int start, int end, ArrayList<String> menu, Loyal game)
 
@@ -95,12 +94,13 @@ public class pointer extends Mob
 	{
 		if(position == 1)
 		{
-			
-			ArrayList<Entity> entities = new ArrayList();
-			LevelGenerator generator = LevelGenerator.getLevelGenerator(this.map, entities);
+			ArrayList<Entity> entities = new ArrayList<Entity>();
+			LevelGenerator generator = LevelGenerator.getLevelGenerator(Level.VILLAGE, entities);
+			game.level.music.stop();
 			game.level = generator.getLevel();
-			MapPlayer player = new MapPlayer(game.level,0,16,this.input);
+			MapPlayer player = new MapPlayer(game.level,150,250,this.input, game);
 			game.level.addEntity(player);
+			game.level.music.loop();
 		}
 	}
 

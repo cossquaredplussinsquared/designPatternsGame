@@ -3,19 +3,21 @@ package loyal;
 import java.util.ArrayList;
 
 import loyal.entities.Entity;
-import loyal.entities.MapPlayer;
 import loyal.level.Level;
 
 public class LevelGenerator
 {
 	static LevelGenerator generator;
-	String level;
+	Level level;
 	ArrayList<Entity> entities;
 	
 	
-	public static LevelGenerator getLevelGenerator(String level, ArrayList<Entity> entities){
+	public static LevelGenerator getLevelGenerator(Level level, ArrayList<Entity> entities)
+	{
 		if(generator == null)
+		{
 			generator = new LevelGenerator();
+		}
 		generator.setEntity(entities);
 		generator.setLevel(level);
 		return generator;
@@ -27,17 +29,18 @@ public class LevelGenerator
 	
 	public Level getLevel()
 	{
-		Level current = new Level(level);
+		Level current = level;
 		putEntity(current);
 		return current;
 	}
 	
-	public void setLevel(String level)
+	public void setLevel(Level level)
 	{
 		this.level = level;
 	}
 	
-	public void setEntity(ArrayList<Entity> entities){
+	public void setEntity(ArrayList<Entity> entities)
+	{
 		this.entities = entities;
 	}
 	

@@ -1,8 +1,5 @@
 package loyal.level.tiles;
 
-import loyal.Graphics.Screen;
-import loyal.level.Level;
-
 public class AnimatedTile extends BasicTile
 {
 	private int[][] animationTileCoards;

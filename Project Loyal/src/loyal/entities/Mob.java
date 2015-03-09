@@ -13,6 +13,8 @@ public abstract class Mob extends Entity
 	protected int scale = 1;
 	protected int position = 1;
 	protected int direction = 0;
+	protected boolean isSwimming = false;
+	protected boolean tallGrass = false;
 
 	public Mob(Level level, String name, int x, int y, int speed)
 	{
@@ -81,8 +83,45 @@ public abstract class Mob extends Entity
 		return false;
 	}
 	
+	protected boolean isWater(int xa, int ya, int x, int y)
+	{
+		if(level == null)
+		{
+			return false;
+		}
+		
+		Tile lastTile = level.getTile((this.x + x) >> 3, (this.y + y) >> 3);
+		Tile newTile = level.getTile((this.x + x + xa) >> 3, (this.y + y + ya) >> 3);
+		
+		if(!lastTile.equals(newTile) && level.getTile(this.x>>3, this.y>>3).getId() == 3)
+		{
+			return true;
+		}
+		return false;
+	}
+	
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void tileCheck()
+	{
+		if(level.getTile(this.x>>3, this.y>>3).getId() == 3)
+		{
+			isSwimming = true;
+		}
+		if(isSwimming && level.getTile(this.x>>3, this.y>>3).getId() != 3)
+		{
+			isSwimming = false;
+		}
+		if(level.getTile(this.x>>3, this.y>>3).getId() == 5)
+		{
+			tallGrass = true;
+		}
+		if(tallGrass && level.getTile(this.x>>3, this.y>>3).getId() != 5)
+		{
+			tallGrass = false;
+		}
 	}
 }
