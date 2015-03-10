@@ -33,14 +33,7 @@ public class Battle {
 		this.activeEnemies = activeEnemies;
 		this.activePlayers = activePlayers;
 	}
-	
-	public static Battle init(Level menu, ArrayList<PlayingCharacter> activePlayers){
-		if(currentBattle == null){
-			
-		}
-		return currentBattle;
-	}
-	
+		
 	public int startBattle(){
 		BattleController currentController = null;
 		int winner = checkWinner();
@@ -54,9 +47,6 @@ public class Battle {
 				currentController = AI;
 				currentController.setActivePlayers(activeEnemies, activePlayers);
 			}
-			
-			
-			
 		}
 		return winner;
 	}
@@ -85,9 +75,5 @@ public class Battle {
 		}
 		return 1;
 		
-	}
-	
-	
-	
-
+	}	
 }
