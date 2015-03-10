@@ -30,7 +30,6 @@ public class CharacterState implements State {
 
 	@Override
 	public int[] getCurrentStatus() {
-		// TODO Auto-generated method stub
 		return stateArray;
 	}
 
