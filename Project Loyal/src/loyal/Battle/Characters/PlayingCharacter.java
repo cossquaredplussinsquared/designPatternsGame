@@ -1,3 +1,4 @@
+
 package loyal.Battle.Characters;
 
 import java.util.ArrayList;
@@ -5,42 +6,42 @@ import java.util.ArrayList;
 import loyal.Battle.Actions.CharacterAction;
 import loyal.Battle.Characters.CharacterState.Stat;
 
-public abstract class PlayingCharacter implements Interactable {
-
+public class PlayingCharacter 
+{
 	
 	private String name;
-	private PlayingCharacter[] targets;
+	private ArrayList<PlayingCharacter> targets;
 	private ArrayList<CharacterAction> actions;
 	private CharacterAction currentAction;
 	private ArrayList<PlayingCharacter> allies;
 	private State state;
-
 	private CharacterType type;
 	
-	// When you are creating your characters you need to create actions for each
-	// of the abilities you want them to have. Those actions are going to be
-	// used in the interaction function and will be set by the battle object
-	// Ex:
-	// BattleObject calls menu and lets you select an action from a list of
-	// actions in the PlayingCharacter
-	// BattleObject sets the action then calls menu and lets you select from a
-	// list of targets from the PlayingCharacter
-	// Then calls Interaction with the source as the current character and
-	// targets as an array (we can change this to some kind of list also)
-
-	@Override
-	abstract public void Interaction(PlayingCharacter sources,
-			PlayingCharacter[] targets);
-
-	public State getState() {
-		return state;
+	public PlayingCharacter(String name, CharacterType type)
+	{
+		this.name = name;
+		this.type = type;
+		this.actions = new ArrayList<CharacterAction>();
+		this.allies = new ArrayList<PlayingCharacter>();
+		this.state = new CharacterState();
+		
 	}
 
-	public PlayingCharacter[] getTargets() {
+	public State getState()
+	{
+		return state;
+	}
+	
+	public void setState(State state)
+	{
+		this.state = state;
+	}
+
+	public ArrayList<PlayingCharacter> getTargets() {
 		return targets;
 	}
 
-	public void setTargets(PlayingCharacter[] targets) {
+	public void setTargets(ArrayList<PlayingCharacter> targets) {
 		this.targets = targets;
 	}
 
@@ -52,33 +53,13 @@ public abstract class PlayingCharacter implements Interactable {
 		actions.add(action);
 	}
 
-	// use this to cause an action to happen on this target
-	// usage:
-	// basicAttack(PlayingCharacter source, PlayingCharacter[] targets){
-	// int damage = source.getState().getStat(Stat.STRENGTH);
-	//
-	// for(PlayingCharacter target : targets){
-	// target.causeAction(Stat.HEALT, Stat.ARMOR, damage);
-	// }
-	// }
-	public void causeAction(Stat targetStat, Stat defensiveStat, int valueChange) {
-		int modifiedValue = valueChange;
-		if (state.getStat(defensiveStat) != 0) {
-			double defense = 1 - state.getStat(defensiveStat) / 1000.0;
-			if (defense > 0)
-				modifiedValue = (int) (valueChange * defense);
-		}
-
-		state.setStat(targetStat, state.getStat(targetStat) + modifiedValue);
-	}
-
 	// this allows us to remove actions on the fly if something happens (e.g.
 	// silenced?)
 	public void removeActions(ArrayList<CharacterAction> removedActions) {
 		actions.removeAll(removedActions);
 	}
-
-	public void setAction(CharacterAction action) {
+	
+	public void setAction(CharacterAction action){
 		currentAction = action;
 	}
 	
@@ -104,8 +85,23 @@ public abstract class PlayingCharacter implements Interactable {
 		return this.type;
 	}
 	
+	public void setType(CharacterType type)
+	{
+		this.type = type;
+	}
+	
 	public String getName()
 	{
 		return this.name;
+	}
+	
+	public ArrayList<PlayingCharacter> getTartgets()
+	{
+		return this.targets;
+	}
+	
+	public boolean isDead()
+	{
+		return (state.getStat(Stat.HEALTH) <= 0);
 	}
 }

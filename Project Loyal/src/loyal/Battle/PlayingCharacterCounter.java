@@ -8,7 +8,7 @@ public class PlayingCharacterCounter implements Comparable{
 	private int turn;
 	public PlayingCharacterCounter(PlayingCharacter cur) {
 		this.cur = cur;
-		this.turn = cur.getState().getStat(Stat.SPEED);
+		this.turn = (int)cur.getState().getStat(Stat.SPEED);
 	}
 	
 	public PlayingCharacter getCharacter(){

@@ -15,7 +15,7 @@ public class Helmet extends ModifyingItem{
 
 	@Override
 	public void unSetModified() {
-		int temp = innerState.getStat(Heal);
+		double temp = innerState.getStat(Heal);
 		if (modifiedStateArray[Heal.index] > temp)
 			modifiedStateArray[Heal.index] = temp;
 		else if (modifiedStateArray[Heal.index] - value < 0)
@@ -48,6 +48,12 @@ public class Helmet extends ModifyingItem{
 		modifiedStateArray[MPower.index] += value;
 		modifiedStateArray[Arm.index] += value;
 		modifiedStateArray[MResist.index] += value;
+	}
+
+	@Override
+	public void setStat(Stat health, double currentHealth) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

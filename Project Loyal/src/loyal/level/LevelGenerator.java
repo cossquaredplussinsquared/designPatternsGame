@@ -1,9 +1,9 @@
-package loyal;
+
+package loyal.level;
 
 import java.util.ArrayList;
 
 import loyal.entities.Entity;
-import loyal.level.Level;
 
 public class LevelGenerator
 {
@@ -52,3 +52,4 @@ public class LevelGenerator
 		}
 	}
 }
+

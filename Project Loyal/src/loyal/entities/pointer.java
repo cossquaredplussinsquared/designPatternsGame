@@ -4,13 +4,13 @@ package loyal.entities;
 import java.util.ArrayList;
 
 import loyal.InputHandler;
-import loyal.LevelGenerator;
 import loyal.Loyal;
 import loyal.Sound;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
+import loyal.level.LevelGenerator;
 
 public class pointer extends Mob
 {
@@ -27,7 +27,10 @@ public class pointer extends Mob
 	private Loyal game;
 	private ArrayList<String> menu = new ArrayList<String>();
 
-	public pointer(Level level, String name, int x, int y, InputHandler input, int jump, int start, int end, ArrayList<String> menu, Loyal game)
+	
+
+
+	public pointer(Level level, String name, int x, int y, InputHandler input, int jump, int start, int end, Loyal game)
 
 	{
 		super(level, name, x, y, 1);
@@ -36,10 +39,6 @@ public class pointer extends Mob
 		this.start = start;
 		this.end = end;
 		this.game = game;
-		for(int i=0;i<menu.size(); i++)
-		{
-			this.menu.add(menu.get(i));
-		}
 	}
 
 	public boolean hasCollided(int xa, int ya)
@@ -130,10 +129,7 @@ public class pointer extends Mob
 		int yOffset = y - modifier/2 - 4;
 		
 		screen.render(xOffset + modifier, yOffset, xTile+yTile*32, color, 0x00, scale);
-		for(int i=0; i<this.menu.size(); i++)
-		{
-			Font.render(this.menu.get(i),screen,x+16,start-8+16*i,Colors.get(-1,-1,-1,555),1);
-		}
+		
 	}
 
 }

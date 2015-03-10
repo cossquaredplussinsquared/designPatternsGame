@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import loyal.InputHandler;
-import loyal.LevelGenerator;
 import loyal.Loyal;
-import loyal.Sound;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
+import loyal.level.LevelGenerator;
 import loyal.level.tiles.Tile;
+
 
 public class MapPlayer extends Mob
 {

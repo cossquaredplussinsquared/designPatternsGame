@@ -14,7 +14,7 @@ public class Bow extends ModifyingItem{
 
 	@Override
 	public void unSetModified() {
-		int temp = innerState.getStat(Str);
+		double temp = innerState.getStat(Str);
 		if (modifiedStateArray[Str.index] > temp)
 			modifiedStateArray[Str.index] = temp;		
 	}
@@ -22,5 +22,11 @@ public class Bow extends ModifyingItem{
 	@Override
 	public void setModified() {
 		modifiedStateArray[Str.index] += value;
+	}
+
+	@Override
+	public void setStat(Stat health, double currentHealth) {
+		// TODO Auto-generated method stub
+		
 	}
 }

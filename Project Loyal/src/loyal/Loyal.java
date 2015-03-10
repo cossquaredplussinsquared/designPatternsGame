@@ -15,8 +15,10 @@ import javax.swing.JFrame;
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
 import loyal.entities.Entity;
+import loyal.entities.MenuItem;
 import loyal.entities.pointer;
 import loyal.level.Level;
+import loyal.level.LevelGenerator;
 
 /**
  * @author Stephen Paul Curtis Jones
@@ -45,6 +47,14 @@ public class Loyal extends Canvas implements Runnable
 	public Level level;
 	public pointer player;
 	public LevelGenerator generator;
+
+	private ArrayList<String> menuItems;
+
+	private Entity menu;
+
+//	private ArrayList<String> testMenu;
+	
+//	MenuItem menu2;
 	
 	public Loyal()
 	{
@@ -70,18 +80,34 @@ public class Loyal extends Canvas implements Runnable
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
 		input = new InputHandler(this);
 		
-		ArrayList<String> menu = new ArrayList<String>();
-		menu.add("Start");
-		menu.add("Load");
-		menu.add("Option");
-		menu.add("Quit");
 	
 		
 		generator = LevelGenerator.getLevelGenerator(Level.STARTMENU, entities);
+
+		menuItems = new ArrayList<String>();
+		menuItems.add("Start");
+		menuItems.add("Load");
+		menuItems.add("Option");
+		menuItems.add("Quit");
+//	////TESTING
+//		testMenu = new ArrayList<String>();
+//		testMenu.add("TESTING");
+//		testMenu.add("TESTING1");
+//		testMenu.add("TESTING2");
+//		testMenu.add("TESTING3");
+//		menu2 = new MenuItem(level, testMenu, 100);
+//		
+//	////TESTING
+		generator = LevelGenerator.getLevelGenerator(Level.STARTMENU , entities);
+
 		level = generator.getLevel();
-		player = new pointer(level,"pointer",20,100,input,16,100,148, menu, this);
+		player = new pointer(level,"pointer",20,100,input,16,100,148, this);
+		menu = new MenuItem(level, menuItems, 100);
 		level.addEntity(player);
+
 		level.music.loop();
+
+		level.addEntity(menu);
 	}
 	
 	
@@ -130,13 +156,34 @@ public class Loyal extends Canvas implements Runnable
 		double delta = 0;
 		
 		init();
-		
+//		//////TESTING 
+//		long change = System.nanoTime() + 2000000000;
+//		boolean swap = true;
+//		//////TESTING
 		while(running)
 		{
 			long now = System.nanoTime();
 			delta +=(now - lastTime)/nsPerTick;
 			lastTime = now;
 			boolean shouldRender = true;
+//			/////TESTING
+//			if(now > change)
+//			{	
+//
+//				if(swap){
+//				change += 500000000;
+//				level.removeEntity(menu);
+//
+//				level.addEntity(menu2);
+//				swap = false;
+//				}else{
+//					level.removeEntity(menu2);
+//					level.addEntity(menu);
+//					swap = true;
+//					change += 500000000;
+//				}
+//			}
+//			/////TESTING
 			
 			while(delta>=1)
 			{
@@ -170,15 +217,27 @@ public class Loyal extends Canvas implements Runnable
 			}
 		}
 	}
+	
+	private String inputRun(){
+		return level.inputRun(input);
+	}
 
 
 	public void tick()
 	{
 		tickCount++;
 		level.tick();
+		stateChange(inputRun());
 	}
 	
 	
+	private void stateChange(String state) {
+		//switch state:
+			
+		
+	}
+
+
 	public void render()
 	{
 		BufferStrategy bs = getBufferStrategy();

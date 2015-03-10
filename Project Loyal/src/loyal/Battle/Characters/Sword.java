@@ -14,7 +14,7 @@ public class Sword extends ModifyingItem{
 
 	@Override
 	public void unSetModified() {
-		int temp = innerState.getStat(Str);
+		double temp = innerState.getStat(Str);
 		if (modifiedStateArray[Str.index] > temp)
 			modifiedStateArray[Str.index] = temp;		
 	}
