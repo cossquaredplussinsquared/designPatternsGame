@@ -207,15 +207,27 @@ public class Loyal extends Canvas implements Runnable
 			}
 		}
 	}
+	
+	private String inputRun(){
+		return level.inputRun(input);
+	}
 
 
 	public void tick()
 	{
 		tickCount++;
 		level.tick();
+		stateChange(inputRun());
 	}
 	
 	
+	private void stateChange(String state) {
+		//switch state:
+			
+		
+	}
+
+
 	public void render()
 	{
 		BufferStrategy bs = getBufferStrategy();
