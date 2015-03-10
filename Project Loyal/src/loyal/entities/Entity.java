@@ -5,7 +5,7 @@ import loyal.level.Level;
 
 public abstract class Entity
 {
-	public int x,y;
+	protected int x,y;
 	protected Level level;
 	
 	public Entity(Level level)

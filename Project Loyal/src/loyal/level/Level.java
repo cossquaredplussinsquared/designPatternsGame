@@ -212,6 +212,11 @@ public class Level
 		this.entities.add(entity);
 	}
 	
+	public void addEntity(int pos, Entity entity)
+	{
+		this.entities.add(pos, entity);
+	}
+	
 	public void removeEntity(Entity entity)
 	{
 		this.entities.remove(entity);

@@ -1,6 +1,7 @@
 package loyal.entities;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import loyal.InputHandler;
 import loyal.LevelGenerator;
@@ -9,11 +10,13 @@ import loyal.Sound;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
+import loyal.level.tiles.Tile;
 
 public class MapPlayer extends Mob
 {
 	private InputHandler input;
-	private int color = Colors.get(-1, 111, 145, 543);
+	private int color = Colors.get(-1, 200, 020, 321);
+	private int color2 = Colors.get(-1, 200, 020, 543);
 	private int scale = 1;
 	private int tickCount;
 	private Loyal game;
@@ -129,7 +132,7 @@ public class MapPlayer extends Mob
 		}
 		if(xa>0)
 		{
-			newX=0;
+			newX=8;
 			newY=this.y;
 		}
 		else if(xa<0)
@@ -139,16 +142,16 @@ public class MapPlayer extends Mob
 		}
 		else if(ya>0)
 		{
-			newY=0;
+			newY=8;
 			newX = this.x;
 		}
-		else
+		else if(ya<0)
 		{
 			newY = game.level.height*8-16;
 			newX = this.x;
 		}
 		MapPlayer player = new MapPlayer(this.game.level,newX,newY,this.input, this.game);
-		game.level.addEntity(player);
+		game.level.addEntity(0,player);
 		if(game.level.getEntitySize() == 1 && game.level.getId() == 2)
 		{
 			addMonsters();
@@ -209,8 +212,8 @@ public class MapPlayer extends Mob
 			screen.render(xOffset+8, yOffset+3, 0+26*32, waterColor, 0x01, scale);
 		}
 		
-		screen.render(xOffset + (modifier*flipTop), yOffset, xTile+yTile*32, color, flipTop, scale);
-		screen.render(xOffset+modifier - (modifier*flipTop), yOffset, xTile+1+yTile*32, color, flipTop, scale);
+		screen.render(xOffset + (modifier*flipTop), yOffset, xTile+yTile*32, color2, flipTop, scale);
+		screen.render(xOffset+modifier - (modifier*flipTop), yOffset, xTile+1+yTile*32, color2, flipTop, scale);
 		
 		if(!isSwimming && !tallGrass)
 		{
@@ -221,20 +224,23 @@ public class MapPlayer extends Mob
 	
 	public void addMonsters()
 	{
-		for(int i = 0; i<10; i++)
+		Random random = new Random();
+		
+		int MonsterX = random.nextInt(399);
+		int MonsterY = random.nextInt(399);
+		for(int i = 0; i<100; i++)
 		{
-			for(int j = 0; j<10; j++)
+			Tile tile = game.level.getTile(MonsterX,MonsterY);
+			while(tile.isSolid()==true || game.level.tiles[MonsterX+MonsterY*game.level.width] == 3)
 			{
-				x=i;
-				y=j;
-				while(isSolidTile(x,y,x+1,y+1) || level.tiles[x+y*level.width] == 3)
-				{
-					x++;
-					y++;
-				}
-				MapMonster monster = new MapMonster(this.game.level, x*400, y*400, 1);
-				game.level.addEntity(monster);
+				MonsterX = random.nextInt(399);
+				MonsterY = random.nextInt(399);
+				tile = game.level.getTile(MonsterX,MonsterY);
 			}
+			MapMoblin monster = new MapMoblin(this.game.level, MonsterX*8, MonsterY*8, 1, 64);
+			game.level.addEntity(monster);
+			MonsterX = random.nextInt(399);
+			MonsterY = random.nextInt(399);
 		}
 	}
 }

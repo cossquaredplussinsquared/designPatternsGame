@@ -26,9 +26,9 @@ public class Loyal extends Canvas implements Runnable
 {
 	private static final long serialVersionUID = 1L;
 	
-	public static final int WIDTH = 256;
-	public static final int HEIGHT = 192;
-	public static final int SCALE = 4;
+	public static final int WIDTH = 500;
+	public static final int HEIGHT = 300;
+	public static final int SCALE = 2;
 	public static final String NAME = "Loyal";
 	
 	public int tickCount = 0;
@@ -188,8 +188,8 @@ public class Loyal extends Canvas implements Runnable
 			return;
 		}
 		
-		int xOffset = level.getEntity(0).x - (screen.width/2);
-		int yOffset = level.getEntity(0).y - (screen.height/2);
+		int xOffset = level.getEntity(0).getX() - (screen.width/2);
+		int yOffset = level.getEntity(0).getY() - (screen.height/2);
 		
 		level.renderTiles(screen, xOffset, yOffset);
 		level.renderEntities(screen);

@@ -99,7 +99,23 @@ public class pointer extends Mob
 			game.level.music.stop();
 			game.level = generator.getLevel();
 			MapPlayer player = new MapPlayer(game.level,150,250,this.input, game);
+			NPCMen NPC1 = new NPCMen(game.level, 250,250, 1);
+			NPCMen NPC2 = new NPCMen(game.level, 20,20, 1);
+			NPCMen NPC3 = new NPCMen(game.level, 100,500, 1);
+			NPCMen NPC4 = new NPCMen(game.level, 700,100, 1);
+			NPCMen NPC5 = new NPCMen(game.level, 200,700, 1);
+			NPCMen NPC6 = new NPCMen(game.level, 700,300, 1);
+			NPCMen NPC7 = new NPCMen(game.level, 300,400, 1);
+			NPCMen NPC8 = new NPCMen(game.level, 500,600, 1);
 			game.level.addEntity(player);
+			game.level.addEntity(NPC1);
+			game.level.addEntity(NPC2);
+			game.level.addEntity(NPC3);
+			game.level.addEntity(NPC4);
+			game.level.addEntity(NPC5);
+			game.level.addEntity(NPC6);
+			game.level.addEntity(NPC7);
+			game.level.addEntity(NPC8);
 			game.level.music.loop();
 		}
 	}
