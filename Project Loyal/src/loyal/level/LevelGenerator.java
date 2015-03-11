@@ -46,6 +46,7 @@ public class LevelGenerator
 	
 	public void putEntity(Level current)
 	{
+		
 		for(int i=0; i<entities.size(); i++)
 		{
 			current.addEntity(entities.get(i));
