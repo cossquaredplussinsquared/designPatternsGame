@@ -199,7 +199,7 @@ public class MapMoblin extends Mob
 	{
 		int xTile = 12;
 		int yTile = 27;
-		int walkingSpeed = 4;
+		walkingSpeed = 4;
 		int flipTop = (numSteps >> walkingSpeed & 1);
 		int flipBottom = (numSteps >> walkingSpeed &1);
 		

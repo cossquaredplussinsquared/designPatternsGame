@@ -13,6 +13,8 @@ import loyal.level.edgeCollisionDecision;
 import loyal.level.tiles.Tile;
 
 public class MapPlayer extends Mob {
+	
+	private final int StaminaSize = 200;
 	private InputHandler input;
 	private int color = Colors.get(-1, 200, 020, 321);
 	private int color2 = Colors.get(-1, 200, 020, 543);
@@ -20,8 +22,8 @@ public class MapPlayer extends Mob {
 	private int tickCount;
 	private Loyal game;
 	private int walkingSpeed = 4;
-	private int stamina = 100;
-	private boolean staminaCheck = false;
+	private int stamina = StaminaSize;
+	private boolean runCheck = false;
 	private boolean canRun = true;
 
 	public MapPlayer(Level level, int x, int y, InputHandler input, Loyal game) {
@@ -116,7 +118,6 @@ public class MapPlayer extends Mob {
 		int xTile = 0;
 		int yTile = 27;
 
-		int walkingSpeed = 4;
 		int flipTop = (numSteps >> walkingSpeed & 1);
 		int flipBottom = (numSteps >> walkingSpeed & 1);
 
@@ -176,6 +177,7 @@ public class MapPlayer extends Mob {
 	public String inputRun(InputHandler input) {
 		int xa = 0;
 		int ya = 0;
+		this.walkingSpeed = 4;
 
 		if (input.up.isPressed()) {
 			ya--;
@@ -192,6 +194,25 @@ public class MapPlayer extends Mob {
 		if (input.escape.isPressed()) {
 
 		}
+		if(input.shift.isPressed() && canRun == true)
+		{
+			this.speed = 2;
+			this.walkingSpeed = 3;
+			runCheck = true;
+			stamina--;
+		}
+		if(runCheck == false && stamina < StaminaSize)
+		{
+			stamina++;
+		}
+		if(stamina == 0)
+		{
+			canRun = false;
+		}
+		if(stamina == StaminaSize/2)
+		{
+			canRun = true;
+		}
 
 		if (xa != 0 || ya != 0) {
 			move(xa, ya);
@@ -202,9 +223,15 @@ public class MapPlayer extends Mob {
 			///TESTING REMOVE
 			level.checkNewLevel(this.x, this.y);
 
-		} else {
+		} 
+		else 
+		{
 			isMoving = false;
 		}
+		
+		this.speed = 1;
+		runCheck = false;
+		
 		return "";
 	}
 }

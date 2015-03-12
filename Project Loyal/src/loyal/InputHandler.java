@@ -42,6 +42,7 @@ public class InputHandler implements KeyListener
 	public Key right = new Key();
 	public Key enter = new Key();
 	public Key escape = new Key();
+	public Key shift = new Key();
 	
 	public void keyPressed(KeyEvent e)
 	{
@@ -82,6 +83,9 @@ public class InputHandler implements KeyListener
 		}
 		if(keyCode == KeyEvent.VK_ESCAPE){
 			escape.toggle(isPressed);
+		}
+		if(keyCode == KeyEvent.VK_SHIFT){
+			shift.toggle(isPressed);
 		}
 	}
 }
