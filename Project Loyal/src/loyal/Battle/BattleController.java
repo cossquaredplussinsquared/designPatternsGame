@@ -11,5 +11,17 @@ public interface BattleController {
 			ArrayList<PlayingCharacter> activePlayers);
 	
 	public void setInterface(Level menu);
+	
+	public void tick();
+			
+	public void updateBattleState(ArrayList<PlayingCharacter> activeEnemies,
+			ArrayList<PlayingCharacter> activePlayers);
+	
+	public void setCharacterValues();
 
+	void setMenu(ArrayList<PlayingCharacter> activeEnemies,
+			ArrayList<PlayingCharacter> activePlayers);
+	
+// needs to be more
+	
 }
