@@ -228,7 +228,6 @@ public class Level {
 	}
 
 
-
 	public int getId() {
 		return this.id;
 	}

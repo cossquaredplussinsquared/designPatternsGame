@@ -7,6 +7,7 @@ import loyal.InputHandler;
 import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
+import loyal.Utilitys.AStarTile;
 import loyal.level.Level;
 import loyal.level.tiles.Tile;
 
@@ -22,7 +23,7 @@ public class MapMoblin extends Mob
 	public MapMoblin(Level level, int x, int y, int speed, int stalkDistance)
 	{
 		super(level, "Monster", x, y, speed);
-		this.stalkDistance = stalkDistance;
+		this.stalkDistance = 80;
 	}
 
 	public boolean hasCollided(int xa, int ya)
@@ -77,7 +78,7 @@ public class MapMoblin extends Mob
 		{
 			stalk(stalkDistance);
 		}
-		else if(change>95)
+		else if(change>95 || move==8)
 		{
 			move = random.nextInt(4);
 		}
@@ -141,7 +142,7 @@ public class MapMoblin extends Mob
 	
 	public void stalk(int stalkDistance)
 	{
-		int width = (stalkDistance/4)+1;
+		int width = (stalkDistance/4)+3;
 		Tile[][] tiles = new Tile[width][width];
 		for(int i = 0; i<width; i++)
 		{
@@ -151,9 +152,9 @@ public class MapMoblin extends Mob
 			}
 		}
 		
-		//move = shortestPath(tiles,width);
+		move = Pathfinder(tiles,width);
 		
-		if(this.x - level.getEntity(0).getX()>0 && this.y - level.getEntity(0).getY()>0)
+		/*if(this.x - level.getEntity(0).getX()>0 && this.y - level.getEntity(0).getY()>0)
 		{
 			move = 4;
 		}
@@ -184,15 +185,171 @@ public class MapMoblin extends Mob
 		else if(this.y - level.getEntity(0).getY()<0)
 		{
 			move =1;
-		}
+		}*/
 	}
 	
-	public int shortestPath(Tile[][] tiles, int width)
+	public int Pathfinder(Tile[][] tiles, int width)
 	{
-		int start = ((width-1)/2)+1;
-		//int[] goal = new int[level.getEntity(0).getX()]
+		AStarTile[] AStarTiles = new AStarTile[width*width];
+		int start = (width*width-1)/2;
+		int end = (start+(level.getEntity(0).getX()-this.x)/8+((level.getEntity(0).getY()-this.y)/8)*width);
+		int curr = start;
 		
-		return 0;
+		for(int i = 0; i<width; i++)
+		{
+			for(int j = 0; j<width; j++)
+			{
+				AStarTiles[j+i*width] = new AStarTile(j+i*width, tiles[j][i].isSolid());
+			}
+		}
+		
+		AStarTiles[start].setOpen(true);
+		AStarTiles[start].setParent(start);
+		
+		while(curr != end && curr != -1)
+		{
+			if(curr-width-1 >=0 && curr-width-1 < width*width && (curr-width-1)%width!=(width-1))
+			{
+				AStarTiles = pathScoring(curr, curr-width-1, AStarTiles,14,width,end);
+			}
+			if(curr-width >=0 && curr-width < width*width)
+			{
+				AStarTiles = pathScoring(curr, curr-width, AStarTiles,10,width,end);
+			}
+			if(curr-width+1 >=0 && curr-width+1 < width*width && (curr-width+1)%width!=0)
+			{
+				AStarTiles = pathScoring(curr, curr-width+1, AStarTiles,14,width,end);
+			}
+			if(curr-1 >=0 && curr-1 < width*width && (curr-1)%width!=(width-1))
+			{
+				AStarTiles = pathScoring(curr, curr-1, AStarTiles,10,width,end);
+			}
+			if(curr+1 >=0 && curr+1 < width*width && (curr+1)%width!=0)
+			{
+				AStarTiles = pathScoring(curr, curr+1, AStarTiles,10,width,end);
+			}
+			if(curr+width-1 >=0 && curr+width-1 < width*width && (curr+width-1)%width!=(width-1))
+			{
+				AStarTiles = pathScoring(curr, curr+width-1, AStarTiles,14,width,end);
+			}
+			if(curr+width >=0 && curr+width < width*width)
+			{
+				AStarTiles = pathScoring(curr, curr+width, AStarTiles,10,width,end);
+			}
+			if(curr+width+1 >=0 && curr+width+1 < width*width && (curr+width+1)%width!=0)
+			{
+				AStarTiles = pathScoring(curr, curr+width+1, AStarTiles,14,width,end);
+			}
+				
+			AStarTiles[curr].setOpen(false);
+			AStarTiles[curr].setClosed(true);
+			curr = lowestScore(AStarTiles, curr, width, end);
+		}
+		if(curr != -1)
+		{
+			while(AStarTiles[AStarTiles[curr].getParent()].getId() != start)
+			{
+				curr = AStarTiles[AStarTiles[curr].getParent()].getId();
+			}
+		}
+		else
+		{
+			System.out.println("it me");
+		}
+		
+		if(curr == start-width-1)
+		{
+			return 4;
+		}
+		if(curr == start-width)
+		{
+			return 0;
+		}
+		if(curr == start-width+1)
+		{
+			return 6;
+		}
+		if(curr == start-1)
+		{
+			return 2;
+		}
+		if(curr == start+1)
+		{
+			return 3;
+		}
+		if(curr == start+width-1)
+		{
+			return 5;
+		}
+		if(curr == start+width)
+		{
+			return 1;
+		}
+		if(curr == start+width+1)
+		{
+			return 7;
+		}
+		
+		return 8;
+	}
+	
+	public AStarTile[] pathScoring(int curr, int tile, AStarTile[] AStarTiles,int distance,int width,int end)
+	{
+		if(AStarTiles[tile].isSolid() == false && AStarTiles[tile].isClosed() == false)
+		{
+			if(AStarTiles[tile].isOpen() == true && AStarTiles[tile].getDistance() < AStarTiles[curr].getDistance()+distance)
+			{
+				
+			}
+			else
+			{
+				AStarTiles[tile].setOpen(true);
+				AStarTiles[tile].setParent(curr);
+				AStarTiles[tile].setDistance(distance);
+				AStarTiles[tile].setHuristic((Math.abs(end%width-tile%width)+Math.abs(end/width-tile/width))*10);
+				AStarTiles[tile].setScore(distance+AStarTiles[tile].getHuristic());
+			}
+		}
+		return AStarTiles;
+	}
+	
+	public int lowestScore(AStarTile[] AStarTiles, int curr, int width, int end)
+	{
+		AStarTile next = new AStarTile(-1,false);
+		next.setScore(width*width*width*width);
+		if((curr-width-1 >=0 && curr-width-1 < width*width) && AStarTiles[curr-width-1].isSolid() == false && AStarTiles[curr-width-1].isClosed() == false && (curr-width-1)%width!=(width-1))
+		{
+			next = AStarTiles[curr-width-1];
+		}
+		if(curr-width >=0 && curr-width < width*width && AStarTiles[curr-width].isSolid() == false && AStarTiles[curr-width].isClosed() == false && AStarTiles[curr-width].getScore() < next.getScore())
+		{
+			next = AStarTiles[curr-width];
+		}
+		if(curr-width+1 >=0 && curr-width+1 < width*width && AStarTiles[curr-width+1].isSolid() == false && AStarTiles[curr-width+1].isClosed() == false && (curr-width+1)%width!=0 && AStarTiles[curr-width+1].getScore() < next.getScore())
+		{
+			next = AStarTiles[curr-width+1];
+		}
+		if(curr-1 >=0 && curr-1 < width*width && AStarTiles[curr-1].isSolid() == false && AStarTiles[curr-1].isClosed() == false && (curr-1)%width!=(width-1) && AStarTiles[curr-1].getScore() < next.getScore())
+		{
+			next = AStarTiles[curr-1];
+		}
+		if(curr+1 >=0 && curr+1 < width*width && AStarTiles[curr+1].isSolid() == false && AStarTiles[curr+1].isClosed() == false && (curr+1)%width!=0 && AStarTiles[curr+1].getScore() < next.getScore())
+		{
+			next = AStarTiles[curr+1];
+		}
+		if(curr+width-1 >=0 && curr+width-1 < width*width && AStarTiles[curr+width-1].isSolid() == false && AStarTiles[curr+width-1].isClosed() == false && (curr+width-1)%width!=(width-1) && AStarTiles[curr+width-1].getScore() < next.getScore())
+		{
+			next = AStarTiles[curr+width-1];
+		}
+		if(curr+width >=0 && curr+width < width*width && AStarTiles[curr+width].isSolid() == false && AStarTiles[curr+width].isClosed() == false && AStarTiles[curr+width].getScore() < next.getScore())
+		{
+			next = AStarTiles[curr+width];
+		}
+		if(curr+width+1 >=0 && curr+width+1 < width*width && AStarTiles[curr+width+1].isSolid() == false && AStarTiles[curr+width+1].isClosed() == false  && (curr+width+1)%width!=0 && AStarTiles[curr+width+1].getScore() < next.getScore())
+		{
+			next = AStarTiles[curr+width+1];
+		}
+		return next.getId();
 	}
 
 	public void render(Screen screen)

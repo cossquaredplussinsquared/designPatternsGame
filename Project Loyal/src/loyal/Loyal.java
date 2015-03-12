@@ -221,7 +221,7 @@ public class Loyal extends Canvas implements Runnable
 			if(System.currentTimeMillis()-lastTimer>=1000)
 			{
 				lastTimer += 1000;
-				System.out.println(ticks+"ticks, " + frames + "frames");
+				//System.out.println(ticks+"ticks, " + frames + "frames");
 				frames = 0;
 				ticks = 0;
 			}

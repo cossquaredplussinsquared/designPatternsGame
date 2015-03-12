@@ -14,7 +14,7 @@ import loyal.level.tiles.Tile;
 
 public class MapPlayer extends Mob {
 	
-	private final int StaminaSize = 200;
+	private final int StaminaSize = 2000;
 	private InputHandler input;
 	private int color = Colors.get(-1, 200, 020, 321);
 	private int color2 = Colors.get(-1, 200, 020, 543);
