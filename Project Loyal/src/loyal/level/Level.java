@@ -37,17 +37,12 @@ public class Level {
 	public boolean hasBeenPlayed = false;
 	private int defaultY;
 	private int defaultX;
+	private int[][] exitValuesArray;
 
-	public Level(int id, String imagePath, int[] newLevels, int[] xMin,
-			int[] xMax, int[] yMin, int[] yMax, Sound music) {
+	public Level(int id, String imagePath,  Sound music) {
 		if (imagePath != null) {
 			this.imagePath = imagePath;
 			this.loadLevelFromFile();
-			this.xMax = xMax;
-			this.xMin = xMin;
-			this.yMax = yMax;
-			this.yMin = yMin;
-			this.newLevels = newLevels;
 			this.id = id;
 			Loyal.levels[id] = this;
 			this.music = music;
@@ -70,7 +65,17 @@ public class Level {
 			e.printStackTrace();
 		}
 	}
+	
+	private enum ExitValueEnum{
+		NEW_LEVEL_ID(0), X_MIN(1), X_MAX(2), Y_MIN(3), Y_MAX(4);
 
+		public int index;
+
+		private ExitValueEnum(int index) {
+			this.index = index;
+		}
+	}
+	
 	private void loadTiles() {
 		int[] tileColors = this.image.getRGB(0, 0, width, height, null, 0,
 				width);
@@ -218,10 +223,10 @@ public class Level {
 
 	public int newLevelIdentifier(int x, int y) {
 		int levelID = 0;
-		for (int i = 0; i < newLevels.length; i++) {
-			if ((x >= xMin[i] * 8 && x <= xMax[i] * 8)
-					&& (y >= yMin[i] * 8 && y <= yMax[i] * 8)) {
-				levelID = newLevels[i];
+		for (int i = 0; i < exitValuesArray.length; i++) {
+			if ((x >= exitValuesArray[i][ExitValueEnum.X_MIN.index] * 8 && x <= exitValuesArray[i][ExitValueEnum.X_MAX.index] * 8)
+					&& (y >= exitValuesArray[i][ExitValueEnum.Y_MIN.index] * 8 && y <= exitValuesArray[i][ExitValueEnum.Y_MAX.index] * 8)) {
+				levelID = exitValuesArray[i][ExitValueEnum.NEW_LEVEL_ID.index];
 			}
 		}
 		return levelID;
@@ -233,11 +238,17 @@ public class Level {
 		return this.id;
 	}
 	
-	public void setDefaultX(int X){
+	public void setPlayerDefaultX(int X){
 		defaultX = X;
 	}
 	
-	public void setDefaultY(int Y){
+	public void setPlayerDefaultY(int Y){
 		defaultY = Y;
 	}
+	
+	public void setExitValues(int[][] exitValuesArray){
+		this.exitValuesArray = exitValuesArray;
+	}
+
+
 }
