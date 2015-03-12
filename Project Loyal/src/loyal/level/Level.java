@@ -27,12 +27,7 @@ public class Level {
 	public Sound music;
 	private String imagePath;
 	private BufferedImage image;
-	private int[] xMax;
-	private int[] xMin;
-	private int[] yMax;
-	private int[] yMin;
 	private int id;
-	private int[] newLevels;
 	private Map<String, Decision> decisionMap = new HashMap<String, Decision>();
 	public Decision currentDecision;
 	public boolean hasBeenPlayed = false;
