@@ -2,6 +2,7 @@ package loyal.Battle.Actions;
 
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.entities.Warrior;
 
 public class WorrierAbilityFactory implements AbilityFactory
 {
@@ -14,7 +15,11 @@ public class WorrierAbilityFactory implements AbilityFactory
 	
 	public WorrierAbilityFactory()
 	{
-		this.playingCharacter = new PlayingCharacter("", CharacterType.WARRIOR);
+		this.playingCharacter = new Warrior("", CharacterType.WARRIOR);
+		airSlash = new AirSlashSingleTargetOffenSiveAbility(playingCharacter);
+		backSlash = new BackSlashSingleTargetOffenSiveAbility(playingCharacter);
+		taunt = new TauntSingleTargetDefenSiveAbility(playingCharacter);
+		desperateMove = new DesperateMoveMultiTargetOffensiveAbility(playingCharacter);
 	}
 	
 
@@ -59,6 +64,15 @@ public class WorrierAbilityFactory implements AbilityFactory
 	{
 		String listOfAbilities [] = {airSlash.getName(), backSlash.getName(), taunt.getName(), desperateMove.getName()};
 		return listOfAbilities;
+	}
+	
+	public void printListOfAbilities()
+	{
+		String [] listOfAbilities = displayAbilitiesBasedOnType();
+		for(int i = 0; i < listOfAbilities.length; i++)
+		{
+			System.out.println(listOfAbilities[i]);
+		}
 	}
 	
 }

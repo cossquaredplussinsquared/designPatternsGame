@@ -2,6 +2,7 @@ package loyal.Battle.Actions;
 
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.entities.Hunter;
 
 public class HunterAbilityFactory implements AbilityFactory
 {
@@ -14,7 +15,11 @@ public class HunterAbilityFactory implements AbilityFactory
 	
 	public HunterAbilityFactory()
 	{
-		this.playingCharacter = new PlayingCharacter("", CharacterType.HUNTER);
+		this.playingCharacter = new Hunter("", CharacterType.HUNTER);
+		arrowRain = new ArrowRainMultiTargetOffensiveAbility(playingCharacter);
+		sharpShot = new SharpShotOffensiveSingleTargetAbility(playingCharacter);
+		sharpEye = new SharpEyeDefensiveSingleTargetAbility(playingCharacter);
+		poisonousStab = new PoisonousStabMultiTargetOffensiveAbility(playingCharacter);
 	}
 	
 
@@ -59,6 +64,15 @@ public class HunterAbilityFactory implements AbilityFactory
 	{
 		String listOfAbilities [] = {sharpShot.getName(), arrowRain.getName(), sharpEye.getName(), poisonousStab.getName()};
 		return listOfAbilities;
+	}
+	
+	public void printListOfAbilities()
+	{
+		String [] listOfAbilities = displayAbilitiesBasedOnType();
+		for(int i = 0; i < listOfAbilities.length; i++)
+		{
+			System.out.println(listOfAbilities[i]);
+		}
 	}
 	
 }

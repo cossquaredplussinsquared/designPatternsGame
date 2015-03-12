@@ -40,6 +40,7 @@ public class PoisonousStabMultiTargetOffensiveAbility extends SingleTargetOffens
 			{
 				double currentHealth = arrayOftargets.get(i).getState().getStat(Stat.HEALTH);
 				currentHealth = currentHealth - damage;
+				
 				if(currentHealth <= 0)
 					arrayOftargets.get(i).getState().setStat(Stat.HEALTH, 0);
 				else
