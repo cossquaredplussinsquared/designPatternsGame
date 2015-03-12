@@ -16,8 +16,8 @@ public abstract class Tile
 	public static final Tile WHEAT = new AnimatedTile(5, new int[][]{{3,4},{5,4}}, Colors.get(-1, 131, 550, -1), 0xFFFFFF00, 700,1,1);
 	public static final Tile MOUNTAIN1 = new BasicSolidTile(6, 0, 2, Colors.get(020,110,020,555), 0xFFFF0000,2,2);
 	public static final Tile MOUNTAIN2 = new BasicSolidTile(7, 1, 2, Colors.get(020,110,020,555), 0xFFFF0000,2,2);
-	public static final Tile MOUNTAIN3 = new BasicSolidTile(8, 2, 2, Colors.get(020,110,020,555), 0xFFFF0000,2,2);
-	public static final Tile MOUNTAIN4 = new BasicSolidTile(9, 3, 2, Colors.get(020,110,020,555), 0xFFFF0000,2,2);
+	public static final Tile MOUNTAIN3 = new BasicSolidTile(8, 2, 2, Colors.get(-1,110,020,555), 0xFFFF0000,2,2);
+	public static final Tile MOUNTAIN4 = new BasicSolidTile(9, 3, 2, Colors.get(-1,110,020,555), 0xFFFF0000,2,2);
 	public static final Tile Tree1 = new BasicSolidTile(10, 4, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
 	public static final Tile Tree2 = new BasicSolidTile(11, 5, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);
 	public static final Tile Tree3 = new BasicSolidTile(12, 6, 2, Colors.get(131,121,110,500), 0xFF009600,2,2);

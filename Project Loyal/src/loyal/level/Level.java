@@ -18,8 +18,9 @@ public class Level
 {
 	public static final Level[] levels = new Level[100];
 	public static final Level VILLAGE = new Level(1,"/Levels/HomeVillage.png", new int[]{2}, new int[]{99}, new int[]{100}, new int[]{0}, new int[]{100}, Sound.VillageMusic);
-	public static final Level OVERWORLD = new Level(2,"/Levels/OverWorldMap.png", new int[]{1}, new int[]{0}, new int[]{0}, new int[]{0}, new int[]{100}, Sound.OverWorldMusic);
+	public static final Level OVERWORLD = new Level(2,"/Levels/OverWorldMap.png", new int[]{1,4}, new int[]{0,0}, new int[]{0,100}, new int[]{0,495}, new int[]{100,500}, Sound.OverWorldMusic);
 	public static final Level STARTMENU = new Level(3,"/Levels/test_menu.png", null, null, null, null, null, Sound.MenuMusic);
+	public static final Level FEILD = new Level(4,"/Levels/GrassLand.png", new int[]{2}, new int[]{0}, new int[]{100}, new int[]{0}, new int[]{5}, Sound.MenuMusic);
 	
 	public byte[] tiles;
 	public int width;
@@ -246,7 +247,7 @@ public class Level
 	{
 		for(int i = 0; i < newLevels.length; i++)
 		{
-			if((x == xMin[i]*8 || x == xMax[i]*8) && (y >= yMin[i]*8 || y <= yMax[i]*8))
+			if((x >= xMin[i]*8 && x <= xMax[i]*8) && (y >= yMin[i]*8 && y <= yMax[i]*8))
 			{
 				return newLevels[i];
 			}

@@ -20,6 +20,10 @@ public class MapPlayer extends Mob
 	private int scale = 1;
 	private int tickCount;
 	private Loyal game;
+	private int walkingSpeed = 4;
+	private int stamina = 100;
+	private boolean staminaCheck = false;
+	private boolean canRun = true;
 
 	public MapPlayer(Level level, int x, int y, InputHandler input, Loyal game)
 	{
@@ -75,6 +79,7 @@ public class MapPlayer extends Mob
 	{
 		int xa = 0;
 		int ya = 0;
+		this.walkingSpeed = 4;//test
 		
 		if(input.up.isPressed())
 		{
@@ -92,8 +97,27 @@ public class MapPlayer extends Mob
 		{
 			xa++;
 		}
-		if(input.escape.isPressed()){
-			
+		if(input.escape.isPressed() && canRun)
+		{
+			this.speed = 2;
+			this.walkingSpeed = 3;
+			staminaCheck = true;
+		}
+		if(staminaCheck)
+		{
+			stamina--;
+		}
+		if(!staminaCheck)
+		{
+			stamina++;
+		}
+		if(stamina==0)
+		{
+			canRun = false;
+		}
+		if(stamina==100)
+		{
+			canRun = true;
 		}
 		
 		if(xa != 0 || ya != 0)
@@ -113,6 +137,8 @@ public class MapPlayer extends Mob
 		
 		tileCheck();
 		
+		this.speed = 1; //test
+		staminaCheck = false;
 		tickCount++;
 	}
 	
@@ -163,9 +189,9 @@ public class MapPlayer extends Mob
 	{
 		int xTile = 0;
 		int yTile = 27;
-		int walkingSpeed = 4;
-		int flipTop = (numSteps >> walkingSpeed & 1);
-		int flipBottom = (numSteps >> walkingSpeed &1);
+		
+		int flipTop = (numSteps >> this.walkingSpeed & 1);
+		int flipBottom = (numSteps >> this.walkingSpeed &1);
 		
 		if(movingDir == 0)
 		{
@@ -177,7 +203,7 @@ public class MapPlayer extends Mob
 		}
 		else if(movingDir >1)
 		{
-			xTile += 4 + ((numSteps >> walkingSpeed)&1)*2;
+			xTile += 4 + ((numSteps >> this.walkingSpeed)&1)*2;
 			flipTop = (movingDir -1)%2;
 			flipBottom = (movingDir-1)%2;
 		}

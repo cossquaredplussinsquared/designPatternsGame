@@ -97,6 +97,26 @@ public class MapMoblin extends Mob
 		{
 			xa++;
 		}
+		if(move == 4)
+		{
+			xa--;
+			ya--;
+		}
+		if(move == 5)
+		{
+			xa--;
+			ya++;
+		}
+		if(move == 6)
+		{
+			xa++;
+			y--;
+		}
+		if(move == 7)
+		{
+			xa++;
+			y++;
+		}
 		
 		if(xa != 0 || ya != 0)
 		{
@@ -132,12 +152,27 @@ public class MapMoblin extends Mob
 		
 		//move = shortestPath(tiles,width);
 		
-		
-		if(this.x - level.getEntity(0).getX()>0 && Math.abs(this.x - level.getEntity(0).getX())>Math.abs(this.y - level.getEntity(0).getY()))
+		if(this.x - level.getEntity(0).getX()>0 && this.y - level.getEntity(0).getY()>0)
+		{
+			move = 4;
+		}
+		else if(this.x - level.getEntity(0).getX()>0 && this.y - level.getEntity(0).getY()<0)
+		{
+			move = 5;
+		}
+		else if(this.x - level.getEntity(0).getX()<0 && this.y - level.getEntity(0).getY()>0)
+		{
+			move = 6;
+		}
+		else if(this.x - level.getEntity(0).getX()<0 && this.y - level.getEntity(0).getY()<0)
+		{
+			move = 7;
+		}
+		else if(this.x - level.getEntity(0).getX()>0)
 		{
 			move = 2;
 		}
-		else if(this.x - level.getEntity(0).getX()<0 && Math.abs(this.x - level.getEntity(0).getX())>Math.abs(this.y - level.getEntity(0).getY()))
+		else if(this.x - level.getEntity(0).getX()<0)
 		{
 			move =3;
 		}
@@ -153,55 +188,10 @@ public class MapMoblin extends Mob
 	
 	public int shortestPath(Tile[][] tiles, int width)
 	{
-		int xPlayer = level.getEntity(0).getX()/8;
-		int yPlayer = level.getEntity(0).getY()/8;
+		int start = ((width-1)/2)+1;
+		//int[] goal = new int[level.getEntity(0).getX()]
 		
-		int xMonster = this.x;
-		int yMonster = this.x;
-		
-		int xDistance = xMonster-xPlayer;
-		int yDistance = yMonster-yPlayer;
-		
-		int mid = ((width-1)/2)+1;
-		
-		int[][] check = new int[width][width];
-		check[mid][mid] = 2;
-		check[mid+xDistance][mid+yDistance] = 3;
-		
-		ArrayList<Integer> path = new ArrayList<Integer>();
-		
-		int distance = 0;
-		int shortest = 100;
-		int bestDirection = 0;
-		int direction = 0;
-		int i = mid;
-		int j = mid;
-		
-		do
-		{
-			if(direction == 0)
-			{
-				j--;
-			}
-			if(direction == 1)
-			{
-				j++;
-			}
-			if(direction == 2)
-			{
-				i--;
-			}
-			if(direction == 3)
-			{
-				i++;
-			}
-			
-			path.add(direction);
-			
-			
-		}while(path.size() != 0);
-		
-		return bestDirection;
+		return 0;
 	}
 
 	public void render(Screen screen)
