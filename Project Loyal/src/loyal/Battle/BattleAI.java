@@ -1,3 +1,4 @@
+
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -54,3 +55,4 @@ public class BattleAI implements BattleController {
 	}
 
 }
+

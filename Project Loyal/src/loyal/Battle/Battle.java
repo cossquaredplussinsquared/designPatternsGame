@@ -1,3 +1,4 @@
+
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -25,8 +26,8 @@ public class Battle {
 	// rest of the characters they have for that turn and decide if they will
 	// fight or not.
 	
-	protected ArrayList<PlayingCharacter> activePlayers, activeEnemies;
-	protected ArrayList<PlayingCharacterCounter> inactivePlayers, inactiveEnemies; //dead players
+	private ArrayList<PlayingCharacter> activePlayers, activeEnemies;
+	private ArrayList<PlayingCharacterCounter> inactivePlayers, inactiveEnemies;
 	
 	
 	private Battle(ArrayList<PlayingCharacter> activePlayers, ArrayList<PlayingCharacter> activeEnemies){
@@ -73,6 +74,8 @@ public class Battle {
 			if(!(p.getState().getStat(Stat.HEALTH)<=0))
 				return 0;
 		}
-		return 1;	
+		return 1;
+		
 	}	
 }
+

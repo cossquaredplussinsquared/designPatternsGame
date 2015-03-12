@@ -1,3 +1,4 @@
+
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -25,3 +26,4 @@ public interface BattleController {
 // needs to be more
 	
 }
+

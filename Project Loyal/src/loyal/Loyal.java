@@ -56,6 +56,8 @@ public class Loyal extends Canvas implements Runnable {
 			"/Levels/OverWorldMap.png", Sound.OverWorldMusic);
 	public static final Level STARTMENU = new Level(3, "/Levels/test_menu.png",
 			Sound.MenuMusic);
+	
+	public static final Level BATTLE = new Level(4, "/Levels/BattleMap.png", Sound.BattleMusic);
 
 	public Loyal() {
 		setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
