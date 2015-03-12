@@ -25,26 +25,30 @@ public class BattleAI implements BattleController {
 		
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void setMenu() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateBattleState() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void setCharacterValues() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateBattleState(ArrayList<PlayingCharacter> activeEnemies,
+			ArrayList<PlayingCharacter> activePlayers) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setMenu(ArrayList<PlayingCharacter> activeEnemies,
+			ArrayList<PlayingCharacter> activePlayers) {
 		// TODO Auto-generated method stub
 		
 	}
