@@ -30,6 +30,7 @@ public class edgeCollisionDecision implements Decision {
 			game.level.addEntity(0, player);
 		}
 		
+		
 		if(game.level.getEntitySize() == 1 && game.level.getId() == 2)
 		{
 			addMonsters();

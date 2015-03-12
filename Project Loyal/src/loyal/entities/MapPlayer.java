@@ -177,8 +177,10 @@ public class MapPlayer extends Mob {
 			level.currentDecision = new edgeCollisionDecision();
 			level.currentDecision.setGame(game);
 			///TESTING REMOVE
-			level.checkNewLevel(this.x, this.y);
-
+			if(level.newLevelIdentifier(this.x, this.y)>0)
+			{
+				level.newLevel();
+			}
 		} 
 		else 
 		{

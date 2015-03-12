@@ -209,12 +209,9 @@ public class Level {
 		return entities.size();
 	}
 
-	public void checkNewLevel(int x, int y) {
+	public void newLevel() {
 
-		if (newLevelIdentifier(x, y) > 0) {
-			currentDecision.sync();
 			currentDecision.update();
-		}
 
 	}
 
