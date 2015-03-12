@@ -12,7 +12,7 @@ import loyal.Graphics.Screen;
 import loyal.level.Level;
 import loyal.level.LevelGenerator;
 
-public class pointer extends Mob
+public class Pointer extends Mob
 {
 	private InputHandler input;
 	private int color = Colors.get(-1, -1, -1, 555);
@@ -30,7 +30,7 @@ public class pointer extends Mob
 	
 
 
-	public pointer(Level level, String name, int x, int y, InputHandler input, int jump, int start, int end, Loyal game)
+	public Pointer(Level level, String name, int x, int y, InputHandler input, int jump, int start, int end, Loyal game)
 
 	{
 		super(level, name, x, y, 1);

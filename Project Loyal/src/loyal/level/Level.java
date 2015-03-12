@@ -1,3 +1,4 @@
+
 package loyal.level;
 
 import java.awt.image.BufferedImage;
@@ -19,6 +20,7 @@ import loyal.level.tiles.Tile;
 
 public class Level {
 
+	private static final int PIXEL_SCALER = 8;
 	public byte[] tiles;
 	public int width;
 	public int height;
@@ -26,28 +28,18 @@ public class Level {
 	public Sound music;
 	private String imagePath;
 	private BufferedImage image;
-	private int[] xMax;
-	private int[] xMin;
-	private int[] yMax;
-	private int[] yMin;
 	private int id;
-	private int[] newLevels;
 	private Map<String, Decision> decisionMap = new HashMap<String, Decision>();
 	public Decision currentDecision;
 	public boolean hasBeenPlayed = false;
 	private int defaultY;
 	private int defaultX;
+	private ArrayList<int[]> exitValuesArray;
 
-	public Level(int id, String imagePath, int[] newLevels, int[] xMin,
-			int[] xMax, int[] yMin, int[] yMax, Sound music) {
+	public Level(int id, String imagePath, Sound music) {
 		if (imagePath != null) {
 			this.imagePath = imagePath;
 			this.loadLevelFromFile();
-			this.xMax = xMax;
-			this.xMin = xMin;
-			this.yMax = yMax;
-			this.yMin = yMin;
-			this.newLevels = newLevels;
 			this.id = id;
 			Loyal.levels[id] = this;
 			this.music = music;
@@ -68,6 +60,16 @@ public class Level {
 			this.loadTiles();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	private enum ExitValueEnum {
+		NEW_LEVEL_ID(0), X_MIN(1), X_MAX(2), Y_MIN(3), Y_MAX(4);
+
+		public int index;
+
+		private ExitValueEnum(int index) {
+			this.index = index;
 		}
 	}
 
@@ -209,7 +211,7 @@ public class Level {
 
 	public void checkNewLevel(int x, int y) {
 
-		if (newLevelIdentifier(x, y) > 0){
+		if (newLevelIdentifier(x, y) > 0) {
 			currentDecision.sync();
 			currentDecision.update();
 		}
@@ -218,25 +220,38 @@ public class Level {
 
 	public int newLevelIdentifier(int x, int y) {
 		int levelID = 0;
-		for (int i = 0; i < newLevels.length; i++) {
-			if ((x >= xMin[i] * 8 && x <= xMax[i] * 8)
-					&& (y >= yMin[i] * 8 && y <= yMax[i] * 8)) {
-				levelID = newLevels[i];
+		for (int i = 0; i < exitValuesArray.size(); i++) {
+			int[] exitCheckingArray = exitValuesArray.get(i);
+			if ((x >= exitCheckingArray[ExitValueEnum.X_MIN.index]
+					* PIXEL_SCALER && x <= exitCheckingArray[ExitValueEnum.X_MAX.index]
+					* PIXEL_SCALER)
+					&& (y >= exitCheckingArray[ExitValueEnum.Y_MIN.index]
+							* PIXEL_SCALER && y <= exitCheckingArray[ExitValueEnum.Y_MAX.index]
+							* PIXEL_SCALER)) {
+				levelID = exitCheckingArray[ExitValueEnum.NEW_LEVEL_ID.index];
 			}
 		}
 		return levelID;
 	}
 
-
 	public int getId() {
 		return this.id;
 	}
-	
-	public void setDefaultX(int X){
+
+	public void setPlayerDefaultX(int X) {
 		defaultX = X;
 	}
-	
-	public void setDefaultY(int Y){
+
+	public void setPlayerDefaultY(int Y) {
 		defaultY = Y;
 	}
+
+	public void setExitValues(ArrayList<int[]> exitValuesArray) {
+		this.exitValuesArray = exitValuesArray;
+	}
+
+	public void addExitValueArray(int[] exitValueArray) {
+		this.exitValuesArray.add(exitValueArray);
+	}
+
 }
