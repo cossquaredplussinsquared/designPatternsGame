@@ -12,9 +12,6 @@ public class BattleMenu implements BattleController {
 	public void setActivePlayers(ArrayList<PlayingCharacter> activeEnemies,
 			ArrayList<PlayingCharacter> activePlayers) {
 		
-		
-		
-		
 	}
 
 	@Override
