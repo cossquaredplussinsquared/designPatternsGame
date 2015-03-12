@@ -51,6 +51,17 @@ public class Loyal extends Canvas implements Runnable
 	private ArrayList<String> menuItems;
 
 	private Entity menu;
+	
+	public static final Level[] levels = new Level[100];
+	public static final Level VILLAGE = new Level(1, "/Levels/HomeVillage.png",
+			new int[] { 2 }, new int[] { 99 }, new int[] { 100 },
+			new int[] { 0 }, new int[] { 100 }, Sound.VillageMusic);
+	public static final Level OVERWORLD = new Level(2,
+			"/Levels/OverWorldMap.png", new int[] { 1 }, new int[] { 0 },
+			new int[] { 0 }, new int[] { 0 }, new int[] { 100 },
+			Sound.OverWorldMusic);
+	public static final Level STARTMENU = new Level(3, "/Levels/test_menu.png",
+			null, null, null, null, null, Sound.MenuMusic);
 
 //	private ArrayList<String> testMenu;
 	
@@ -80,9 +91,8 @@ public class Loyal extends Canvas implements Runnable
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
 		input = new InputHandler(this);
 		
-	
-		
-		generator = LevelGenerator.getLevelGenerator(Level.STARTMENU, entities);
+		OVERWORLD.setDefaultX(8);
+		OVERWORLD.setDefaultY(320);
 
 		menuItems = new ArrayList<String>();
 		menuItems.add("Start");
@@ -98,7 +108,7 @@ public class Loyal extends Canvas implements Runnable
 //		menu2 = new MenuItem(level, testMenu, 100);
 //		
 //	////TESTING
-		generator = LevelGenerator.getLevelGenerator(Level.STARTMENU , entities);
+		generator = LevelGenerator.getLevelGenerator(STARTMENU , entities);
 
 		level = generator.getLevel();
 		player = new pointer(level,"pointer",20,100,input,16,100,148, this);

@@ -31,4 +31,10 @@ public class MenuItem extends Entity {
 		}
 	}
 
+	@Override
+	public String inputRun(InputHandler input) {
+		// TODO Auto-generated method stub
+		return "";
+	}
+
 }

@@ -3,6 +3,7 @@ package loyal.entities;
 import java.util.ArrayList;
 import java.util.Random;
 
+import loyal.InputHandler;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
@@ -151,5 +152,11 @@ public class NPCMen extends Mob
 			screen.render(xOffset + (modifier*flipBottom), yOffset+modifier, xTile+(yTile+1)*32, color2, flipBottom, scale);
 			screen.render(xOffset+modifier - (modifier*flipBottom), yOffset+modifier, xTile+1+(yTile+1)*32, color2, flipBottom, scale);
 		}
+	}
+
+	@Override
+	public String inputRun(InputHandler input) {
+		// TODO Auto-generated method stub
+		return "";
 	}
 }

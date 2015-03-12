@@ -94,7 +94,7 @@ public class pointer extends Mob
 		if(position == 1)
 		{
 			ArrayList<Entity> entities = new ArrayList<Entity>();
-			LevelGenerator generator = LevelGenerator.getLevelGenerator(Level.VILLAGE, entities);
+			LevelGenerator generator = LevelGenerator.getLevelGenerator(game.VILLAGE, entities);
 			game.level.music.stop();
 			game.level = generator.getLevel();
 			MapPlayer player = new MapPlayer(game.level,150,250,this.input, game);
@@ -130,6 +130,12 @@ public class pointer extends Mob
 		
 		screen.render(xOffset + modifier, yOffset, xTile+yTile*32, color, 0x00, scale);
 		
+	}
+
+	@Override
+	public String inputRun(InputHandler input) {
+		// TODO Auto-generated method stub
+		return "";
 	}
 
 }
