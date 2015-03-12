@@ -42,14 +42,11 @@ public class Loyal extends Canvas implements Runnable {
 	private int[] colors = new int[6 * 6 * 6];
 	private Screen screen;
 
-
 	public InputHandler input;
 	public Level level;
 	public Pointer player;
 
-
 	private ArrayList<String> menuItems;
-
 	private Entity menu;
 
 	public static final Level[] levels = new Level[100];
@@ -104,8 +101,11 @@ public class Loyal extends Canvas implements Runnable {
 
 		// this allows us to decide the exit points in one array rather than
 		// multiple arrays values are    id, xMin, xMax, yMin, yMax
-		int[][] villageExitValues = new int[][] { { 2, 99, 100, 0, 100 } };
-		int[][] overworldExitValues = new int[][] { { 1, 0, 0, 0, 100 } };
+		ArrayList<int[]> villageExitValues = new ArrayList<int []>();
+		villageExitValues.add(new int[] { 2, 99, 100, 0, 100 });
+				
+		ArrayList<int[]> overworldExitValues = new ArrayList<int []>();
+		overworldExitValues.add(new int[] { 1, 0, 0, 0, 100 } );
 
 		// Sets the values for change map conditions.
 		VILLAGE.setExitValues(villageExitValues);
@@ -175,6 +175,7 @@ public class Loyal extends Canvas implements Runnable {
 				frames++;
 				render();
 			}
+			
 
 			if (System.currentTimeMillis() - lastTimer >= 1000) {
 				lastTimer += 1000;
@@ -196,7 +197,6 @@ public class Loyal extends Canvas implements Runnable {
 	}
 
 	private void stateChange(String state) {
-		// switch state:
 
 	}
 

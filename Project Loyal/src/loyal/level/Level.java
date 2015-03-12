@@ -19,6 +19,7 @@ import loyal.level.tiles.Tile;
 
 public class Level {
 
+	private static final int PIXEL_SCALER = 8;
 	public byte[] tiles;
 	public int width;
 	public int height;
@@ -37,9 +38,9 @@ public class Level {
 	public boolean hasBeenPlayed = false;
 	private int defaultY;
 	private int defaultX;
-	private int[][] exitValuesArray;
+	private ArrayList<int[]> exitValuesArray;
 
-	public Level(int id, String imagePath,  Sound music) {
+	public Level(int id, String imagePath, Sound music) {
 		if (imagePath != null) {
 			this.imagePath = imagePath;
 			this.loadLevelFromFile();
@@ -65,8 +66,8 @@ public class Level {
 			e.printStackTrace();
 		}
 	}
-	
-	private enum ExitValueEnum{
+
+	private enum ExitValueEnum {
 		NEW_LEVEL_ID(0), X_MIN(1), X_MAX(2), Y_MIN(3), Y_MAX(4);
 
 		public int index;
@@ -75,7 +76,7 @@ public class Level {
 			this.index = index;
 		}
 	}
-	
+
 	private void loadTiles() {
 		int[] tileColors = this.image.getRGB(0, 0, width, height, null, 0,
 				width);
@@ -214,7 +215,7 @@ public class Level {
 
 	public void checkNewLevel(int x, int y) {
 
-		if (newLevelIdentifier(x, y) > 0){
+		if (newLevelIdentifier(x, y) > 0) {
 			currentDecision.sync();
 			currentDecision.update();
 		}
@@ -223,32 +224,38 @@ public class Level {
 
 	public int newLevelIdentifier(int x, int y) {
 		int levelID = 0;
-		for (int i = 0; i < exitValuesArray.length; i++) {
-			if ((x >= exitValuesArray[i][ExitValueEnum.X_MIN.index] * 8 && x <= exitValuesArray[i][ExitValueEnum.X_MAX.index] * 8)
-					&& (y >= exitValuesArray[i][ExitValueEnum.Y_MIN.index] * 8 && y <= exitValuesArray[i][ExitValueEnum.Y_MAX.index] * 8)) {
-				levelID = exitValuesArray[i][ExitValueEnum.NEW_LEVEL_ID.index];
+		for (int i = 0; i < exitValuesArray.size(); i++) {
+			int[] exitCheckingArray = exitValuesArray.get(i);
+			if ((x >= exitCheckingArray[ExitValueEnum.X_MIN.index]
+					* PIXEL_SCALER && x <= exitCheckingArray[ExitValueEnum.X_MAX.index]
+					* PIXEL_SCALER)
+					&& (y >= exitCheckingArray[ExitValueEnum.Y_MIN.index]
+							* PIXEL_SCALER && y <= exitCheckingArray[ExitValueEnum.Y_MAX.index]
+							* PIXEL_SCALER)) {
+				levelID = exitCheckingArray[ExitValueEnum.NEW_LEVEL_ID.index];
 			}
 		}
 		return levelID;
 	}
 
-
-
 	public int getId() {
 		return this.id;
 	}
-	
-	public void setPlayerDefaultX(int X){
+
+	public void setPlayerDefaultX(int X) {
 		defaultX = X;
 	}
-	
-	public void setPlayerDefaultY(int Y){
+
+	public void setPlayerDefaultY(int Y) {
 		defaultY = Y;
 	}
-	
-	public void setExitValues(int[][] exitValuesArray){
+
+	public void setExitValues(ArrayList<int[]> exitValuesArray) {
 		this.exitValuesArray = exitValuesArray;
 	}
 
+	public void addExitValueArray(int[] exitValueArray) {
+		this.exitValuesArray.add(exitValueArray);
+	}
 
 }

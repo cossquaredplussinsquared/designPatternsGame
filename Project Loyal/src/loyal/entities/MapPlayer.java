@@ -64,51 +64,7 @@ public class MapPlayer extends Mob {
 
 		tickCount++;
 	}
-
-	// public void newGeneration(int id, int xa, int ya)
-	// {
-	// int newX=0;
-	// int newY=0;
-	// Level newLevel = level.getLevel(id);
-	// ArrayList<Entity> entities = new ArrayList<Entity>();
-	// LevelGenerator generator = LevelGenerator.getLevelGenerator(newLevel,
-	// entities);
-	// game.level.music.stop();
-	// game.level = generator.getLevel();
-	// if(game.level.getEntitySize() != 0)
-	// {
-	// game.level.removeEntity(0);
-	// }
-	// if(xa>0)
-	// {
-	// newX=8;
-	// newY=this.y;
-	// }
-	// else if(xa<0)
-	// {
-	// newX = game.level.width*8-16;
-	// newY = this.y;
-	// }
-	// else if(ya>0)
-	// {
-	// newY=8;
-	// newX = this.x;
-	// }
-	// else if(ya<0)
-	// {
-	// newY = game.level.height*8-16;
-	// newX = this.x;
-	// }
-	// MapPlayer player = new MapPlayer(this.game.level,newX,newY,this.input,
-	// this.game);
-	// game.level.addEntity(0,player);
-	// if(game.level.getEntitySize() == 1 && game.level.getId() == 2)
-	// {
-	// addMonsters();
-	// }
-	// game.level.music.loop();
-	// }
-
+	
 	public void render(Screen screen) {
 		int xTile = 0;
 		int yTile = 27;
