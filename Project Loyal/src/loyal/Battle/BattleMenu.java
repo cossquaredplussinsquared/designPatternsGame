@@ -1,3 +1,4 @@
+
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -70,3 +71,4 @@ public class BattleMenu implements BattleController {
 		
 	}
 }
+

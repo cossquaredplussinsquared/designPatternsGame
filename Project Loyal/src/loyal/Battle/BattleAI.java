@@ -1,3 +1,4 @@
+
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -26,6 +27,10 @@ public class BattleAI implements BattleController {
 	}
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 	@Override
 	public void setCharacterValues() {
 		// TODO Auto-generated method stub
@@ -53,3 +58,4 @@ public class BattleAI implements BattleController {
 	}
 
 }
+
