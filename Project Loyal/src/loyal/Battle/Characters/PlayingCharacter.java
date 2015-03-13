@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import loyal.Battle.Actions.CharacterAction;
 import loyal.Battle.Characters.CharacterState.Stat;
 
-public class PlayingCharacter 
+public abstract class PlayingCharacter 
 {
 	
 	private String name;
@@ -14,7 +14,7 @@ public class PlayingCharacter
 	private ArrayList<CharacterAction> actions;
 	private CharacterAction currentAction;
 	private ArrayList<PlayingCharacter> allies;
-	private State state;
+	protected State state;
 	private CharacterType type;
 	
 	public PlayingCharacter(String name, CharacterType type)

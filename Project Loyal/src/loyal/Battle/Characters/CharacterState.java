@@ -31,6 +31,7 @@ public class CharacterState implements State {
 	@Override
 	public double[] getCurrentStatus() {
 		// TODO Auto-generated method stub
+
 		return stateArray;
 	}
 
@@ -40,9 +41,11 @@ public class CharacterState implements State {
 	}
 
 	@Override
-	public void setStat(Stat health, double currentHealth) {
-		// TODO Auto-generated method stub
+	public void setStat(Stat someStat, double value)
+	{
+		stateArray[someStat.index] = value;
 		
 	}
 
 }
+

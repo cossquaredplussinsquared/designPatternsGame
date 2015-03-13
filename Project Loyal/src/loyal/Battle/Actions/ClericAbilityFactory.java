@@ -2,6 +2,7 @@ package loyal.Battle.Actions;
 
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.entities.Cleric;
 
 public class ClericAbilityFactory implements AbilityFactory
 {
@@ -14,7 +15,11 @@ public class ClericAbilityFactory implements AbilityFactory
 	
 	public ClericAbilityFactory()
 	{
-		this.playingCharacter = new PlayingCharacter("", CharacterType.CLERIC);
+		this.playingCharacter = new Cleric("", CharacterType.CLERIC);
+		lightningSpear = new LightningSpearOffensiveSingleTarget(playingCharacter);
+		magicBarrier = new MagicBarrierDefensiveSingleTargetAbility(playingCharacter);
+		sacredOath = new SacredOathMultiTargetDefensiveAbility(playingCharacter);
+		sootingSunlight = new SootingSunlightDefensiveSingleTargetAbility(playingCharacter);
 	}
 	
 
@@ -59,6 +64,15 @@ public class ClericAbilityFactory implements AbilityFactory
 	{
 		String listOfAbilities [] = {lightningSpear.getName(), magicBarrier.getName(), sootingSunlight.getName(), sacredOath.getName()};
 		return listOfAbilities;
+	}
+	
+	public void printListOfAbilities()
+	{
+		String [] listOfAbilities = displayAbilitiesBasedOnType();
+		for(int i = 0; i < listOfAbilities.length; i++)
+		{
+			System.out.println(listOfAbilities[i]);
+		}
 	}
 	
 }
