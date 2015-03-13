@@ -3,6 +3,7 @@ package loyal.Battle.Actions;
 
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.entities.Wizzard;
 
 public class WizzardAbilityFactory implements AbilityFactory
 {
@@ -15,7 +16,11 @@ public class WizzardAbilityFactory implements AbilityFactory
 	
 	public WizzardAbilityFactory()
 	{
-		this.playingCharacter = new PlayingCharacter("", CharacterType.WIZZARD);
+		this.playingCharacter = new Wizzard("", CharacterType.WIZZARD);
+		darkOrb = new DarkOrbOffensiveSingleTargetAbility(playingCharacter);
+		soulArrow = new SoulArrowOffensiveSingleTarget(playingCharacter);
+		soulShower = new SoulShowerMultiTargetOffensiveAbility(playingCharacter);
+		magicShield = new MagicShieldDefensiveSingleTargetAbility(playingCharacter);
 	}
 	
 
@@ -58,8 +63,19 @@ public class WizzardAbilityFactory implements AbilityFactory
 	@Override
 	public String[] displayAbilitiesBasedOnType()
 	{
-		String listOfAbilities [] = {darkOrb.getName(), soulArrow.getName(), soulShower.getName(), magicShield.getName()};
+		String listOfAbilities [] = {this.darkOrb.getName(), this.soulArrow.getName(),
+				this.soulShower.getName(), this.magicShield.getName()};
+		
 		return listOfAbilities;
+	}
+	
+	public void printListOfAbilities()
+	{
+		String [] listOfAbilities = displayAbilitiesBasedOnType();
+		for(int i = 0; i < listOfAbilities.length; i++)
+		{
+			System.out.println(listOfAbilities[i]);
+		}
 	}
 	
 }
