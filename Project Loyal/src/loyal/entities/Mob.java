@@ -15,6 +15,7 @@ public abstract class Mob extends Entity
 	protected int direction = 0;
 	protected boolean isSwimming = false;
 	protected boolean tallGrass = false;
+	int walkingSpeed = 4;
 
 	public Mob(Level level, String name, int x, int y, int speed)
 	{
@@ -93,7 +94,7 @@ public abstract class Mob extends Entity
 		Tile lastTile = level.getTile((this.x + x) >> 3, (this.y + y) >> 3);
 		Tile newTile = level.getTile((this.x + x + xa) >> 3, (this.y + y + ya) >> 3);
 		
-		if(!lastTile.equals(newTile) && level.getTile(this.x>>3, this.y>>3).getId() == 3)
+		if(!lastTile.equals(newTile) && newTile.getId() == 3)
 		{
 			return true;
 		}

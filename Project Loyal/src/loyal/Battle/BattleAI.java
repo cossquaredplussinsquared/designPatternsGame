@@ -1,3 +1,4 @@
+
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -25,28 +26,50 @@ public class BattleAI implements BattleController {
 		
 	}
 
+<<<<<<< HEAD
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
+=======
 
-	@Override
-	public void setMenu() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateBattleState() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void setCharacterValues() {
+>>>>>>> origin/master
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+<<<<<<< HEAD
+	public void setMenu() {
+=======
+	public void tick() {
+>>>>>>> origin/master
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+<<<<<<< HEAD
+	public void updateBattleState() {
+=======
+	public void updateBattleState(ArrayList<PlayingCharacter> activeEnemies,
+			ArrayList<PlayingCharacter> activePlayers) {
+>>>>>>> origin/master
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+<<<<<<< HEAD
+	public void setCharacterValues() {
+=======
+	public void setMenu(ArrayList<PlayingCharacter> activeEnemies,
+			ArrayList<PlayingCharacter> activePlayers) {
+>>>>>>> origin/master
 		// TODO Auto-generated method stub
 		
 	}
 
 }
+
