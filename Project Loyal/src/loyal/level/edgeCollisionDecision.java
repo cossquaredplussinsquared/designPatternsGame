@@ -1,3 +1,4 @@
+
 package loyal.level;
 
 import java.util.ArrayList;
@@ -77,3 +78,4 @@ public class edgeCollisionDecision implements Decision {
 	
 
 }
+

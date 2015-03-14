@@ -20,7 +20,8 @@ import loyal.level.Level;
 import loyal.level.LevelGenerator;
 
 /**
- * @author Stephen Paul Curtis Jones
+ * @author Stephen Paul Curtis Jones, Alex Dupree  
+ *
  *
  */
 public class Loyal extends Canvas implements Runnable {
@@ -76,7 +77,9 @@ public class Loyal extends Canvas implements Runnable {
 	}
 
 	public void init() {
-		initMapValues();
+		LevelInitializer levelFlyweight = new LevelInitializer(this);
+		levelFlyweight.initLeveValues();
+//		initMapValues();
 
 		colorBasicFill();
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
@@ -196,12 +199,10 @@ public class Loyal extends Canvas implements Runnable {
 	public void tick() {
 		tickCount++;
 		level.tick();
-		stateChange(inputRun());
+		inputRun();
 	}
 
-	private void stateChange(String state) {
 
-	}
 
 	public void render() {
 		BufferStrategy bs = getBufferStrategy();

@@ -26,7 +26,7 @@ public abstract class Tile
 	public static final Tile ROOF = new BasicSolidTile(15, 1, 0, Colors.get(-1,211,-1,-1), 0xFF310C0C,1,1);
 	public static final Tile DOOR = new BasicSolidTile(16, 1, 0, Colors.get(-1,211,-1,-1), 0xFFC73627,1,1);
 	public static final Tile DOORNOB = new BasicSolidTile(17, 7, 0, Colors.get(211,-1,-1,555), 0xFFFFA500,1,1);
-	public static final Tile Boarder = new BasicSolidTile(1, 1, 0, Colors.get(-1,444,-1,-1), 0xFFc8c8c8,1,1);
+	public static final Tile Boarder = new BasicSolidTile(18, 1, 0, Colors.get(-1,444,-1,-1), 0xFFc8c8c8,1,1);
 
 	protected byte id;
 	protected boolean solid;
