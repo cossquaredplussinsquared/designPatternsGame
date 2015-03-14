@@ -77,9 +77,9 @@ public class Loyal extends Canvas implements Runnable {
 	}
 
 	public void init() {
-//		LevelInitializer levelFlyweight = new LevelInitializer(this);
-//		levelFlyweight.initLeveValues();
-		initMapValues();
+		LevelInitializer levelFlyweight = new LevelInitializer(this);
+		levelFlyweight.initLeveValues();
+//		initMapValues();
 
 		colorBasicFill();
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
