@@ -18,8 +18,6 @@ public interface BattleController {
 	public void updateBattleState(ArrayList<PlayingCharacter> activeEnemies,
 			ArrayList<PlayingCharacter> activePlayers);
 	
-	public void setCharacterValues();
-
 	void setMenu(ArrayList<PlayingCharacter> activeEnemies,
 			ArrayList<PlayingCharacter> activePlayers);
 	

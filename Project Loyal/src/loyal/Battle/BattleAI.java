@@ -1,4 +1,3 @@
-
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -26,13 +25,6 @@ public class BattleAI implements BattleController {
 		
 	}
 
-
-	@Override
-	public void setCharacterValues() {
-
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 

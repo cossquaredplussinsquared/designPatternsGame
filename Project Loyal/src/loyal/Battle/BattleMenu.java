@@ -35,31 +35,41 @@ public class BattleMenu implements BattleController {
 		
 		if (index != -1)
 		{
-			// do battle shit
-		}
-		
+			
+		}		
 		
 	}
 
 	@Override
 	public void updateBattleState(ArrayList<PlayingCharacter> activeEnemies,
 			ArrayList<PlayingCharacter> activePlayers) {
-		// TODO Auto-generated method stub
-		
+
+		for (PlayingCharacter c: activePlayers)
+		{
+			//print out players
+		}
+		for (PlayingCharacter e: activeEnemies)
+		{
+			//print out enemies
+		}
+			
 	}
 
-	@Override
-	public void setCharacterValues() {
-			
-		
-	}
-	 
-	
 	public int getIndex()
 	{
 		int i = -1;
 		
-		// MenuItem(	
+		/*	if (inputHandler is pressed for 1)
+				i = 1;
+			else if (inputHandler is pressed for 2)
+				i = 2;
+			else if (inputHandler is pressed for 3)
+				i = 3;
+			else if (inputHandler is pressed for 4)
+				i = 4;
+				
+			this can also be arrow based, as long as it knows position of certain output text objects
+		*/
 		
 		return i;
 	}
