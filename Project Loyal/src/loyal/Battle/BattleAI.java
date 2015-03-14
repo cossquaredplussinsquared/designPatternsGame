@@ -27,8 +27,6 @@ public class BattleAI implements BattleController {
 	}
 
 
-
-
 	@Override
 	public void setCharacterValues() {
 

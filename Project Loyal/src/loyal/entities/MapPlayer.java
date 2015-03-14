@@ -13,7 +13,7 @@ import loyal.level.edgeCollisionDecision;
 import loyal.level.tiles.Tile;
 
 public class MapPlayer extends Mob {
-	
+
 	private final int StaminaSize = 2000;
 	private InputHandler input;
 	private int color = Colors.get(-1, 200, 020, 321);
@@ -64,12 +64,12 @@ public class MapPlayer extends Mob {
 		return false;
 	}
 
-	public void tick()
-	{
+	public void tick() {
 		tileCheck();
+
 		tickCount++;
 	}
-	
+
 	public void render(Screen screen) {
 		int xTile = 0;
 		int yTile = 27;
@@ -87,7 +87,6 @@ public class MapPlayer extends Mob {
 			flipTop = (movingDir - 1) % 2;
 			flipBottom = (movingDir - 1) % 2;
 		}
-
 
 		int modifier = 8 * scale;
 		int xOffset = x - modifier / 2;
@@ -150,44 +149,40 @@ public class MapPlayer extends Mob {
 		if (input.escape.isPressed()) {
 
 		}
-		if(input.shift.isPressed() && canRun == true)
-		{
+		if (input.shift.isPressed() && canRun == true) {
 			this.speed = 2;
 			this.walkingSpeed = 3;
 			runCheck = true;
 			stamina--;
 		}
-		if(runCheck == false && stamina < StaminaSize)
-		{
+		if (runCheck == false && stamina < StaminaSize) {
 			stamina++;
 		}
-		if(stamina == 0)
-		{
+		if (stamina == 0) {
 			canRun = false;
 		}
-		if(stamina == StaminaSize/2)
-		{
+		if (stamina == StaminaSize / 2) {
 			canRun = true;
 		}
 
 		if (xa != 0 || ya != 0) {
 			move(xa, ya);
 			isMoving = true;
-			///TESTING REMOVE
+			// /TESTING REMOVE
 			level.currentDecision = new edgeCollisionDecision();
 			level.currentDecision.setGame(game);
-			///TESTING REMOVE
-			level.checkNewLevel(this.x, this.y);
+			// /TESTING REMOVE
+			if (0 != level.newLevelIdentifier(this.x, this.y))
+				level.spawnNewLevel();
 
-		} 
-		else 
-		{
+		} else {
 			isMoving = false;
 		}
-		
+
 		this.speed = 1;
 		runCheck = false;
-		
+
 		return "";
 	}
+
 }
