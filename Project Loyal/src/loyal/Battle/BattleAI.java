@@ -27,10 +27,6 @@ public class BattleAI implements BattleController {
 	}
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 	@Override
 	public void setCharacterValues() {
 		// TODO Auto-generated method stub

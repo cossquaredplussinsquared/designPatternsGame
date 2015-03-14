@@ -214,7 +214,9 @@ public class Level {
 			currentDecision.update();
 
 	}
-
+	public void spawnNewLevel(){
+		currentDecision.update();
+	}
 	public int newLevelIdentifier(int x, int y) {
 		int levelID = 0;
 		for (int i = 0; i < exitValuesArray.size(); i++) {
