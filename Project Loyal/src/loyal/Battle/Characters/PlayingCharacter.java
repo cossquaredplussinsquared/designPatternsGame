@@ -23,7 +23,6 @@ public abstract class PlayingCharacter
 		this.actions = new ArrayList<CharacterAction>();
 		this.allies = new ArrayList<PlayingCharacter>();
 		this.state = new CharacterState();
-		
 	}
 
 	public State getState()

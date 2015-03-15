@@ -29,26 +29,28 @@ public class BattleAI implements BattleController {
 
 	@Override
 
-	public void tick() {
+	public void tick(ArrayList<Object> activePlayers, ArrayList<Object> activeEnemies) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	//checks to remove any dead sprites	
 	@Override
-	public void updateBattleState(ArrayList<PlayingCharacter> activePlayers,
+	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers,
 			ArrayList<PlayingCharacter> activeEnemies) {
 
 		for (PlayingCharacter c: activePlayers)
-			if(c.isDead())
+		{
+			if (c.isDead())
 			{
-				//remove sprite from screen
+				
+			//remove sprite from screen
 			}
-		for (PlayingCharacter e: activeEnemies)
-			if(e.isDead())
+			else
 			{
-				//remove sprite from screen
+				// output names/health of those alive
 			}
+		}
 	}
 }
 

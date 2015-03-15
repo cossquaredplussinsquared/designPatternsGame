@@ -15,16 +15,18 @@ public class Battle {
 	private BattleController playerMenu = new BattleMenu();
 	private BattleController AI = new BattleAI();
 
-	// battle will have two arrays of playing characters.
-	// battle will be called and be passed those two arrays of characters. It
-	// will flip a coin (random) and decide who goes first. After it decides it
-	// will pass the characters to the controlling object (AI, Menu). The
-	// controlling object will select a character and tell the Battle who was
-	// selected that character will be sent into a queue where it will be
-	// removed after a set number of turns. Turns will be decided by the speed
-	// stat of the character. The controlling object will iterate through the
-	// rest of the characters they have for that turn and decide if they will
-	// fight or not.
+	/*
+	 * battle will have two arrays of playing characters.
+	 * battle will be called and be passed those two arrays of characters. It
+	 * will flip a coin (random) and decide who goes first. After it decides it
+	 * will pass the characters to the controlling object (AI, Menu). The
+	 * controlling object will select a character and tell the Battle who was
+	 * selected that character will be sent into a queue where it will be
+	 * removed after a set number of turns. Turns will be decided by the speed
+	 * stat of the character. The controlling object will iterate through the
+	 * rest of the characters they have for that turn and decide if they will
+	 * fight or not.
+	 */
 	
 	private ArrayList<PlayingCharacter> activePlayers, activeEnemies;
 	private ArrayList<PlayingCharacterCounter> inactivePlayers, inactiveEnemies;
@@ -78,8 +80,7 @@ public class Battle {
 			if(!(p.getState().getStat(Stat.HEALTH)<=0))
 				return 0;
 		}
-		return 1;
-		
+		return 1;		
 	}
 	
 	//can you create/print out a list of the names/health for both
@@ -92,9 +93,22 @@ public class Battle {
 		
 		for (PlayingCharacter c: activePlayers)
 			players.add(c.getName());
+			//health
 		for (PlayingCharacter e: activeEnemies)
 			enemies.add(e.getName());
+			//health
 		
 		//create a menu entity to print them out
+	}
+	
+	private void checkAliveParty()
+	{
+		for (PlayingCharacter p: activePlayers)
+			if (p.isDead())
+				activePlayers.remove(p);
+		
+		for (PlayingCharacter e: activeEnemies)
+			if (e.isDead())
+				activeEnemies.remove(e);
 	}
 }

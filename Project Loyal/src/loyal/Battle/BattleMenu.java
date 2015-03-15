@@ -9,6 +9,8 @@ import loyal.level.Level;
 public class BattleMenu implements BattleController { 
 	
 	private Level temp;
+	private PlayingCharacter player = null, enemy = null;
+	
 	
 	@Override
 	public void setActivePlayers(ArrayList<PlayingCharacter> activePlayers,
@@ -21,6 +23,11 @@ public class BattleMenu implements BattleController {
 			if (e.isDead())
 				activeEnemies.remove(e);
 	}
+	
+	/*
+	 * 
+	 * 
+	 */
 
 	@Override
 	public void setInterface(Level menu) {
@@ -28,52 +35,60 @@ public class BattleMenu implements BattleController {
 	}
 
 	@Override
-	public void tick() {
+	public void tick(ArrayList<Object> activePlayers, ArrayList<Object> activeEnemies) {
 		
-		int index = getIndex();
+		int index = getIndex(activeEnemies);
 		
-		if (index != -1)
+		if (player == null)
 		{
-			
-		}		
+			while (index == -1)
+				index = getIndex(activePlayers);
+			index = -1;
+		}
+
+		if (enemy == null)
+		{
+			while (index == -1)
+				index = getIndex(activeEnemies);
+			index = -1;
+		}
 		
+		//updateBattleView(activePlayers, activeEnemies);
 	}
 
 	//checks to remove any dead sprites	
 	@Override
-	public void updateBattleState(ArrayList<PlayingCharacter> activePlayers,
+	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers,
 			ArrayList<PlayingCharacter> activeEnemies) {
 
-		for (PlayingCharacter c: activePlayers)
-			if(c.isDead())
-			{
-				//remove sprite from screen
-			}
 		for (PlayingCharacter e: activeEnemies)
-			if(e.isDead())
+		{
+			if (e.isDead())
 			{
 				//remove sprite from screen
 			}
+			else
+			{
+				// output names/health of those alive
+			}
+		}
 	}
 
-	public int getIndex()
+	public int getIndex(ArrayList<Object> display)
 	{
 		int i = -1;
 		
-		/*	if (inputHandler is pressed for 1)
-				i = 1;
-			else if (inputHandler is pressed for 2)
-				i = 2;
-			else if (inputHandler is pressed for 3)
-				i = 3;
-			else if (inputHandler is pressed for 4)
-				i = 4;
-				
-			this can also be arrow based, as long as it knows position of certain output text objects
-		*/
+		if (display.size() <= 3)
+		{
+			//print a single list with three objects
+		}
+		else
+		{
+			//print three elements per list with a fourth object for a new page of new objects
+		}
+		 		
+		//	this can be number or arrow based, as long as it knows position of certain output text objects
 		
 		return i;
 	}
-
 }
-
