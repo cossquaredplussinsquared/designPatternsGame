@@ -254,4 +254,10 @@ public class Level {
 		this.exitValuesArray.add(exitValueArray);
 	}
 
+	public void spawnNewLevel()
+	{
+		currentDecision.update();
+		
+	}
+
 }

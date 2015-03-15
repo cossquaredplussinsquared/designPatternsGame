@@ -16,6 +16,7 @@ import loyal.Graphics.SpriteSheet;
 import loyal.entities.Entity;
 import loyal.entities.MenuItems;
 import loyal.entities.Pointer;
+import loyal.level.DecisionFactory;
 import loyal.level.Level;
 import loyal.level.LevelGenerator;
 
@@ -95,7 +96,8 @@ public class Loyal extends Canvas implements Runnable {
 		level.addEntity(player);
 		level.addEntity(menu);
 		
-		
+		DecisionFactory decisonFactory = new DecisionFactory(this);
+		decisonFactory.init();
 		level.music.loop();
 	}
 

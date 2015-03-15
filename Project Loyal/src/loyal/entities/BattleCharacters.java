@@ -40,22 +40,25 @@ public class BattleCharacters extends Entity
 		int yOffset = y - modifier / 2 - 4;
 
 
-		screen.render(xOffset + modifier, yOffset, xTile + yTile* 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier - modifier, yOffset, xTile + 1 + yTile * 32, colors[0],0x00,scale);
-		screen.render(xOffset + modifier, yOffset + modifier, xTile + (yTile + 1) * 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier - modifier, yOffset + modifier, xTile + 1 + (yTile + 1) * 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier, yOffset, xTile + yTile* 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier - modifier, yOffset, xTile + 1 + yTile * 32, colors[0],0x00,scale);
-		screen.render(xOffset + modifier, yOffset + modifier, xTile + (yTile + 1) * 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier - modifier, yOffset + modifier, xTile + 1 + (yTile + 1) * 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier, yOffset, xTile + yTile* 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier - modifier, yOffset, xTile + 1 + yTile * 32, colors[0],0x00,scale);
-		screen.render(xOffset + modifier, yOffset + modifier, xTile + (yTile + 1) * 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier - modifier, yOffset + modifier, xTile + 1 + (yTile + 1) * 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier, yOffset, xTile + yTile* 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier - modifier, yOffset, xTile + 1 + yTile * 32, colors[0],0x00,scale);
-		screen.render(xOffset + modifier, yOffset + modifier, xTile + (yTile + 1) * 32, colors[0],0x00, scale);
-		screen.render(xOffset + modifier - modifier, yOffset + modifier, xTile + 1 + (yTile + 1) * 32, colors[0],0x00, scale);
+		screen.render(xOffset + modifier, yOffset, xTile + yTile* 32, colors[0],0x00, scale);	
+		screen.render(xOffset + 2*modifier, yOffset, xTile + 1 + yTile * 32, colors[0],0x00,scale);
+		screen.render(xOffset + 3*modifier, yOffset + modifier, xTile + 2 + yTile * 32, colors[0],0x00, scale);
+		screen.render(xOffset + 4*modifier, yOffset + modifier, xTile + 3 + yTile * 32, colors[0],0x00, scale);
+		
+		screen.render(xOffset + modifier, yOffset+modifier, xTile + (yTile + 1)* 32, colors[0],0x00, scale);
+		screen.render(xOffset + 2*modifier, yOffset+modifier, xTile + 1 + (yTile + 1)* 32, colors[0],0x00,scale);
+		screen.render(xOffset + 3*modifier, yOffset + modifier, xTile + 2 + (yTile + 1) * 32, colors[0],0x00, scale);
+		screen.render(xOffset + 4*modifier, yOffset + modifier, xTile + 3 + (yTile + 1) * 32, colors[0],0x00, scale);
+		
+		screen.render(xOffset + modifier, yOffset + 2*modifier, xTile + (yTile + 2)* 32, colors[0],0x00, scale);
+		screen.render(xOffset + 2*modifier, yOffset + 2*modifier, xTile + 1 + (yTile + 2) * 32, colors[0],0x00,scale);
+		screen.render(xOffset + 3*modifier, yOffset + 2*modifier, xTile + 2 + (yTile + 2) * 32, colors[0],0x00, scale);
+		screen.render(xOffset + 4*modifier, yOffset + 2*modifier, xTile + 3 + (yTile + 2) * 32, colors[0],0x00, scale);
+		
+		screen.render(xOffset + modifier, yOffset + 3*modifier, xTile + (yTile + 3)* 32, colors[0],0x00, scale);
+		screen.render(xOffset + 2*modifier, yOffset + 3*modifier, xTile + 1 + (yTile + 3) * 32, colors[0],0x00,scale);
+		screen.render(xOffset + 3*modifier, yOffset + 3*modifier, xTile + 2 + (yTile + 3) * 32, colors[0],0x00, scale);
+		screen.render(xOffset + 4*modifier, yOffset + 3*modifier, xTile + 3 + (yTile + 3) * 32, colors[0],0x00, scale);
 	}
 
 	@Override
