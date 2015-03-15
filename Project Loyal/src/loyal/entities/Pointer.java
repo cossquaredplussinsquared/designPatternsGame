@@ -1,3 +1,4 @@
+
 package loyal.entities;
 
 import java.util.ArrayList;
@@ -100,3 +101,4 @@ public class Pointer extends Mob {
 	}
 
 }
+
