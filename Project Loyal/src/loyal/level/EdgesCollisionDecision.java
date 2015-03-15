@@ -5,7 +5,7 @@ import loyal.LevelInitializer;
 import loyal.Loyal;
 import loyal.entities.MapPlayer;
 
-public class EdgeCollisionDecision implements Decision {
+public class EdgesCollisionDecision implements Decision {
 
 	private Loyal game;
 	private int entityWatchedX;
