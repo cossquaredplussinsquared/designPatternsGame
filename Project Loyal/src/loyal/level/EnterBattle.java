@@ -13,7 +13,7 @@ public class EnterBattle implements Decision
 	private InputHandler input;
 	Pointer pointer;
 	BattleCharacters battleCharacter;
-	int color = Colors.get(111,222,333,444);
+	int color = Colors.get(-1,222,333,444);
 
 	@Override
 	public void update()
@@ -39,10 +39,10 @@ public class EnterBattle implements Decision
 	
 	public void addBattleParticipants()
 	{
-		pointer = new Pointer(game.level, "pointer", 64, 16, game.input, 16, 64, 16, game);
-		game.level.addEntity(pointer);
-		
-		battleCharacter = new BattleCharacters(game.level, 150, 16, new int[] {color});
+		battleCharacter = new BattleCharacters(game.level, 16, 150, new int[] {color});
 		game.level.addEntity(battleCharacter);
+		
+		pointer = new Pointer(game.level, "pointer", 16, 240, game.input, 16, 240, 296, game);
+		game.level.addEntity(pointer);
 	}
 }

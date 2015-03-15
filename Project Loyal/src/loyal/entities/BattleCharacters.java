@@ -12,7 +12,7 @@ public class BattleCharacters extends Entity
 {
 	
 	private int tickCount = 0;
-	private int scale = 1;
+	private int scale = 2;
 	int[] colors;
 	
 	public BattleCharacters(Level level, int x, int y, int[] colors)
@@ -33,7 +33,7 @@ public class BattleCharacters extends Entity
 	public void render(Screen screen)
 	{
 		int xTile = 0;
-		int yTile = 27;
+		int yTile = 20;
 
 		int modifier = 8 * scale;
 		int xOffset = x - modifier / 2;
@@ -42,8 +42,8 @@ public class BattleCharacters extends Entity
 
 		screen.render(xOffset + modifier, yOffset, xTile + yTile* 32, colors[0],0x00, scale);	
 		screen.render(xOffset + 2*modifier, yOffset, xTile + 1 + yTile * 32, colors[0],0x00,scale);
-		screen.render(xOffset + 3*modifier, yOffset + modifier, xTile + 2 + yTile * 32, colors[0],0x00, scale);
-		screen.render(xOffset + 4*modifier, yOffset + modifier, xTile + 3 + yTile * 32, colors[0],0x00, scale);
+		screen.render(xOffset + 3*modifier, yOffset, xTile + 2 + yTile * 32, colors[0],0x00, scale);
+		screen.render(xOffset + 4*modifier, yOffset, xTile + 3 + yTile * 32, colors[0],0x00, scale);
 		
 		screen.render(xOffset + modifier, yOffset+modifier, xTile + (yTile + 1)* 32, colors[0],0x00, scale);
 		screen.render(xOffset + 2*modifier, yOffset+modifier, xTile + 1 + (yTile + 1)* 32, colors[0],0x00,scale);

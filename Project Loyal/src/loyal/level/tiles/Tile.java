@@ -26,7 +26,14 @@ public abstract class Tile
 	public static final Tile ROOF = new BasicSolidTile(15, 1, 0, Colors.get(-1,211,-1,-1), 0xFF310C0C,1,1);
 	public static final Tile DOOR = new BasicSolidTile(16, 1, 0, Colors.get(-1,211,-1,-1), 0xFFC73627,1,1);
 	public static final Tile DOORNOB = new BasicSolidTile(17, 7, 0, Colors.get(211,-1,-1,555), 0xFFFFA500,1,1);
-	public static final Tile Boarder = new BasicSolidTile(18, 1, 0, Colors.get(-1,444,-1,-1), 0xFFc8c8c8,1,1);
+	public static final Tile BoarderTop = new BasicSolidTile(18, 8, 0, Colors.get(002,005,-1,-1), 0xFF000020,1,1);
+	public static final Tile BoarderBottom = new BasicSolidTile(19, 9, 0, Colors.get(002,005,-1,-1), 0xFF000040,1,1);
+	public static final Tile BoarderRight = new BasicSolidTile(20, 11, 0, Colors.get(002,005,-1,-1), 0xFF000060,1,1);
+	public static final Tile BoarderLeft = new BasicSolidTile(21, 10, 0, Colors.get(002,005,-1,-1), 0xFF000080,1,1);
+	public static final Tile BoarderCorner1 = new BasicSolidTile(22, 12, 0, Colors.get(002,005,-1,-1), 0xFF0000A0,1,1);
+	public static final Tile BoarderCorner2 = new BasicSolidTile(23, 13, 0, Colors.get(002,005,-1,-1), 0xFF0000E0,1,1);
+	public static final Tile BoarderCorner3 = new BasicSolidTile(24, 14, 0, Colors.get(002,005,-1,-1), 0xFF0000F0,1,1);
+	public static final Tile BoarderCorner4 = new BasicSolidTile(25, 15, 0, Colors.get(002,005,-1,-1), 0xFF0000C0,1,1);
 
 	protected byte id;
 	protected boolean solid;
