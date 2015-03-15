@@ -24,7 +24,7 @@ public class Tester {
 		
 		PlayingCharacter testCharacter = store.orderCharacter("TestCharacterSorcer", CharacterType.WIZZARD);
 		
-		PlayingCharacter targetCharacter = store.orderCharacter("TestCharacterWarrior", CharacterType.WARRIOR);;
+		PlayingCharacter targetCharacter = store.orderCharacter("TestCharacterWarrior", CharacterType.WARRIOR);
 		
 		WizzardAbilityFactory wizzardAbilityFactory = new WizzardAbilityFactory();
 		

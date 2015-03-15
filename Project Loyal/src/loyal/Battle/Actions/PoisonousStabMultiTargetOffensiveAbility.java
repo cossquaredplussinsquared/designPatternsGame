@@ -13,8 +13,8 @@ public class PoisonousStabMultiTargetOffensiveAbility extends SingleTargetOffens
 		super(playingCharacter);
 		type = CharacterType.HUNTER;
 		checkCompability();
-		name = "Sharp shot";
-		description = "Shar shot that almost never misses its target";
+		name = "Poisonous stab";
+		description = "Poisonous stab that drains the enemeies life";
 	}
 
 	@Override
