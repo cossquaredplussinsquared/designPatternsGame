@@ -23,8 +23,8 @@ import loyal.level.Level;
 public class Loyal extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 
-	public static final int WIDTH = 500;
-	public static final int HEIGHT = 300;
+	public static final int WIDTH = 504;
+	public static final int HEIGHT = 304;
 	public static final int SCALE = 2;
 	public static final String NAME = "Loyal";
 
@@ -100,9 +100,6 @@ public class Loyal extends Canvas implements Runnable {
 		long lastTime = System.nanoTime();
 		double nsPerTick = 1000000000D / 60D;
 
-
-
-
 		long lastTimer = System.currentTimeMillis();
 		double delta = 0;
 
@@ -135,10 +132,6 @@ public class Loyal extends Canvas implements Runnable {
 
 			if (System.currentTimeMillis() - lastTimer >= 1000) {
 				lastTimer += 1000;
-				
-
-
-
 			}
 		}
 	}
@@ -152,8 +145,6 @@ public class Loyal extends Canvas implements Runnable {
 		level.tick();
 		inputRun();
 	}
-
-
 
 	public void render() {
 		BufferStrategy bs = getBufferStrategy();

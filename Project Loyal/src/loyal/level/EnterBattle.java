@@ -1,7 +1,7 @@
+
 package loyal.level;
 
 import loyal.InputHandler;
-import loyal.LevelInitializer;
 import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.entities.BattleCharacters;
@@ -10,15 +10,17 @@ import loyal.entities.Pointer;
 public class EnterBattle implements Decision
 {
 	private Loyal game;
-	private Pointer pointer;
-	private BattleCharacters battleCharacter;
-	int color = Colors.get(111,222,333,444);
+	private Level levelWatched;
+	private InputHandler input;
+	Pointer pointer;
+	BattleCharacters battleCharacter;
+	int color = Colors.get(-1,222,333,444);
 
 	@Override
 	public void update()
 	{
 		game.level.music.stop();		
-		game.level = LevelInitializer.BATTLE;
+		game.level = Loyal.BATTLE;
 		addBattleParticipants();
 		
 		game.level.music.loop();
@@ -33,14 +35,15 @@ public class EnterBattle implements Decision
 	@Override
 	public void sync()
 	{
+		this.input = game.input;
 	}
 	
-	private void addBattleParticipants()
+	public void addBattleParticipants()
 	{
-		pointer = new Pointer(game.level, "pointer", 64, 16, 16, 64, 16, game);
-		game.level.addEntity(pointer);
-		
-		battleCharacter = new BattleCharacters(game.level, 150, 16, new int[] {color});
+		battleCharacter = new BattleCharacters(game.level, 16, 150, new int[] {color});
 		game.level.addEntity(battleCharacter);
+		
+		pointer = new Pointer(game.level, "pointer", 16, 240, game.input, 16, 240, 296, game);
+		game.level.addEntity(pointer);
 	}
 }
