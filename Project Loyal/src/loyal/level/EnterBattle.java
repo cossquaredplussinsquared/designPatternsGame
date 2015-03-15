@@ -1,6 +1,7 @@
 package loyal.level;
 
 import loyal.InputHandler;
+import loyal.LevelInitializer;
 import loyal.Loyal;
 import loyal.entities.MapPlayer;
 
@@ -14,7 +15,7 @@ public class EnterBattle implements Decision
 	public void update()
 	{
 		game.level.music.stop();		
-		game.level = Loyal.BATTLE;
+		game.level = LevelInitializer.BATTLE;
 		
 		game.level.music.loop();
 	}

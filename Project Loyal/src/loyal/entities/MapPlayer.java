@@ -15,7 +15,6 @@ import loyal.level.tiles.Tile;
 public class MapPlayer extends Mob {
 
 	private final int StaminaSize = 2000;
-	private InputHandler input;
 	private int color = Colors.get(-1, 200, 020, 321);
 	private int color2 = Colors.get(-1, 200, 020, 543);
 	private int scale = 1;
@@ -28,7 +27,6 @@ public class MapPlayer extends Mob {
 
 	public MapPlayer(Level level, int x, int y, InputHandler input, Loyal game) {
 		super(level, "Player", x, y, 1);
-		this.input = input;
 		this.game = game;
 	}
 
