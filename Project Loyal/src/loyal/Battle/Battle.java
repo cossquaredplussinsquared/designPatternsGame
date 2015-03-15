@@ -3,6 +3,7 @@ package loyal.Battle;
 import java.util.ArrayList;
 
 import loyal.Loyal;
+import loyal.Battle.Actions.CharacterAction;
 import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.PlayingCharacter;
 import loyal.level.Level;
@@ -45,12 +46,16 @@ public class Battle {
 		while(winner == 0){
 			if(playersTurn){
 				currentController = playerMenu;
-				currentController.setActivePlayers(activePlayers, activeEnemies);
+				checkAliveParty();
+//				currentController.setActivePlayers(activePlayers, activeEnemies);
+				playerMenu.tick(activePlayers, activeEnemies);
 				playersTurn = false;
 			}
 			else {
 				currentController = AI;
-				currentController.setActivePlayers(activeEnemies, activePlayers);
+				checkAliveParty();
+//				currentController.setActivePlayers(activeEnemies, activePlayers);
+				AI.tick(activeEnemies, activePlayers);
 				playersTurn = true;
 			}
 			winner = checkWinner();
@@ -110,5 +115,10 @@ public class Battle {
 		for (PlayingCharacter e: activeEnemies)
 			if (e.isDead())
 				activeEnemies.remove(e);
+	}
+	
+	protected static ArrayList<CharacterAction> getAttack(PlayingCharacter attacker)
+	{
+		return attacker.getActions();
 	}
 }
