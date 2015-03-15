@@ -2,6 +2,7 @@ package loyal.Battle;
 
 import java.util.ArrayList;
 
+import loyal.Loyal;
 import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.PlayingCharacter;
 import loyal.level.Level;
@@ -38,15 +39,19 @@ public class Battle {
 		BattleController currentController = null;
 		int winner = checkWinner();
 		playersTurn = startingTurnDecision();
+		setMenu(activePlayers, activeEnemies);
 		while(winner == 0){
 			if(playersTurn){
 				currentController = playerMenu;
 				currentController.setActivePlayers(activePlayers, activeEnemies);
+				playersTurn = false;
 			}
 			else {
 				currentController = AI;
 				currentController.setActivePlayers(activeEnemies, activePlayers);
+				playersTurn = true;
 			}
+			winner = checkWinner();
 		}
 		return winner;
 	}
@@ -55,7 +60,7 @@ public class Battle {
 		return Math.random() > .005 ;
 	}
 
-	private int checkWinner() {
+	protected int checkWinner() {
 		int winner = 0;
 		winner = isAlive(activePlayers);
 		if(winner == 1){
@@ -75,7 +80,21 @@ public class Battle {
 		}
 		return 1;
 		
-	}	
+	}
+	
+	//can you create/print out a list of the names/health for both
+
+	public void setMenu(ArrayList<PlayingCharacter> activePlayers,
+			ArrayList<PlayingCharacter> activeEnemies) {
+		
+		ArrayList<String> players = new ArrayList<String>();
+		ArrayList<String> enemies = new ArrayList<String>();
+		
+		for (PlayingCharacter c: activePlayers)
+			players.add(c.getName());
+		for (PlayingCharacter e: activeEnemies)
+			enemies.add(e.getName());
+		
+		//create a menu entity to print them out
+	}
 }
-
-

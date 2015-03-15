@@ -1,4 +1,3 @@
-
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -7,10 +6,12 @@ import loyal.Battle.Characters.PlayingCharacter;
 import loyal.level.Level;
 
 public class BattleAI implements BattleController {
+	
+	private Level temp;
 
 	@Override
-	public void setActivePlayers(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers) {
+	public void setActivePlayers(ArrayList<PlayingCharacter> activePlayers,
+			ArrayList<PlayingCharacter> activeEnemies) {
 		for (PlayingCharacter p: activePlayers)
 			if (p.isDead())
 				activePlayers.remove(p);
@@ -22,17 +23,9 @@ public class BattleAI implements BattleController {
 
 	@Override
 	public void setInterface(Level menu) {
-		// TODO Auto-generated method stub
-		
+		this.temp = menu;		
 	}
 
-
-	@Override
-	public void setCharacterValues() {
-
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 
@@ -41,22 +34,21 @@ public class BattleAI implements BattleController {
 		
 	}
 
+	//checks to remove any dead sprites	
 	@Override
+	public void updateBattleState(ArrayList<PlayingCharacter> activePlayers,
+			ArrayList<PlayingCharacter> activeEnemies) {
 
-	public void updateBattleState(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers) {
-
-		// TODO Auto-generated method stub
-		
+		for (PlayingCharacter c: activePlayers)
+			if(c.isDead())
+			{
+				//remove sprite from screen
+			}
+		for (PlayingCharacter e: activeEnemies)
+			if(e.isDead())
+			{
+				//remove sprite from screen
+			}
 	}
-
-
-	public void setMenu(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers) {
-
-		// TODO Auto-generated method stub
-		
-	}
-
 }
 

@@ -1,3 +1,4 @@
+
 package loyal.Battle;
 
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ public class Party {
 	
 	ArrayList<String> inventory;
 	ArrayList<PlayingCharacter> players, activePlayers;
-	
 	
 	public Party(ArrayList<PlayingCharacter> activePlayers)
 	{
@@ -24,5 +24,15 @@ public class Party {
 	{
 		inventory.remove(item);
 	}
+	
+	public int countParty()
+	{
+		int count = 0;
+		for (PlayingCharacter p: players)
+			count++;
+		
+		return count;
+	}
 
 }
+
