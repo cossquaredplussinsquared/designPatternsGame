@@ -2,8 +2,8 @@
 package loyal.Battle;
 
 import java.util.ArrayList;
-import loyal.level.*;
 
+import loyal.level.*;
 import loyal.Battle.Characters.PlayingCharacter;
 
 public interface BattleController {
@@ -13,9 +13,9 @@ public interface BattleController {
 	
 	public void setInterface(Level menu);
 	
-	public void tick();
+	public void tick(ArrayList<Object> activePlayers, ArrayList<Object> activeEnemies);
 			
-	public void updateBattleState(ArrayList<PlayingCharacter> activePlayers,
+	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers,
 			ArrayList<PlayingCharacter> activeEnemies);
 	
 // needs to be more
