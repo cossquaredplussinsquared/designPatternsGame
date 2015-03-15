@@ -33,6 +33,8 @@ public class EdgeCollisionDecision implements Decision {
 	public void setGame(Loyal game) {
 		this.game = game;
 		sync();
+		
+		
 	}
 
 	@Override
