@@ -3,13 +3,18 @@ package loyal.level;
 import loyal.InputHandler;
 import loyal.LevelInitializer;
 import loyal.Loyal;
-import loyal.entities.MapPlayer;
+import loyal.Graphics.Colors;
+import loyal.entities.BattleCharacters;
+import loyal.entities.Pointer;
 
 public class EnterBattle implements Decision
 {
 	private Loyal game;
 	private Level levelWatched;
 	private InputHandler input;
+	private Pointer pointer;
+	private BattleCharacters battleCharacter;
+	int color = Colors.get(111,222,333,444);
 
 	@Override
 	public void update()
@@ -34,6 +39,10 @@ public class EnterBattle implements Decision
 	
 	public void addBattleParticipants()
 	{
+		pointer = new Pointer(game.level, "pointer", 64, 16, 16, 64, 16, game);
+		game.level.addEntity(pointer);
 		
+		battleCharacter = new BattleCharacters(game.level, 150, 16, new int[] {color});
+		game.level.addEntity(battleCharacter);
 	}
 }

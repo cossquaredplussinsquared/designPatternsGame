@@ -1,5 +1,3 @@
-
-
 package loyal.Battle;
 
 import java.util.ArrayList;

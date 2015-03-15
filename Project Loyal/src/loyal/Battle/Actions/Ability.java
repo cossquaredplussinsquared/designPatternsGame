@@ -1,4 +1,3 @@
-
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -125,4 +124,3 @@ public abstract class Ability implements CharacterAction
 	
 	
 }
-

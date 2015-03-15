@@ -8,6 +8,9 @@ import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.Utilitys.AStarTile;
+import loyal.level.Decision;
+import loyal.level.DecisionFactory;
+import loyal.level.EnterBattle;
 import loyal.level.Level;
 import loyal.level.tiles.Tile;
 
@@ -19,6 +22,7 @@ public class MapMoblin extends Mob
 	private Random random = new Random();
 	protected int move = 1;
 	protected int stalkDistance;
+	protected Decision decision;
 	
 	public MapMoblin(Level level, int x, int y, int speed, int stalkDistance)
 	{
@@ -64,6 +68,26 @@ public class MapMoblin extends Mob
 				return true;
 			}
 		}
+		return false;
+	}
+	
+	private void intBattle()
+	{
+		level.currentDecision = DecisionFactory.ENTERBATTLE;
+		level.spawnNewLevel();
+	}
+	
+	private boolean playerCheck()
+	{
+		int collisionDistance = 16;
+		
+		if(this.x - level.getEntity(0).getX() < collisionDistance  && this.y-level.getEntity(0).getY() < collisionDistance)
+		{
+			System.out.println("HI");
+			return true;
+			
+		}
+		
 		return false;
 	}
 
@@ -136,6 +160,10 @@ public class MapMoblin extends Mob
 		}
 		
 		tileCheck();
+		if(playerCheck())
+		{
+			intBattle();
+		}
 		
 		this.tickCount++;
 	}
@@ -148,7 +176,7 @@ public class MapMoblin extends Mob
 		{
 			for(int j = 0; j<width; j++)
 			{
-				tiles[i][j] = this.level.getTile((this.x-stalkDistance+(i*8))/8,(this.y-stalkDistance+(i*8))/8);
+				tiles[i][j] = this.level.getTile((this.x-4-stalkDistance+(i*8))/8,(this.y-4-stalkDistance+(i*8))/8);
 			}
 		}
 		

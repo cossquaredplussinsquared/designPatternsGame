@@ -1,3 +1,4 @@
+
 package loyal.Battle.Actions;
 
 import loyal.Battle.Characters.CharacterType;

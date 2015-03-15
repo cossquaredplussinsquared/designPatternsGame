@@ -1,4 +1,3 @@
-
 package loyal.level;
 
 import java.awt.image.BufferedImage;
@@ -210,11 +209,6 @@ public class Level {
 		return entities.size();
 	}
 
-	public void newLevel() {
-
-			currentDecision.update();
-
-	}
 	public void spawnNewLevel(){
 		currentDecision.update();
 	}

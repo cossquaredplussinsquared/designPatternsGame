@@ -9,7 +9,7 @@ import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
 import loyal.level.LevelGenerator;
-import loyal.level.edgeCollisionDecision;
+import loyal.level.EdgeCollisionDecision;
 import loyal.level.tiles.Tile;
 
 public class MapPlayer extends Mob {
@@ -64,7 +64,6 @@ public class MapPlayer extends Mob {
 
 	public void tick() {
 		tileCheck();
-
 		tickCount++;
 	}
 
@@ -167,7 +166,7 @@ public class MapPlayer extends Mob {
 			move(xa, ya);
 			isMoving = true;
 			// /TESTING REMOVE
-			level.currentDecision = new edgeCollisionDecision();
+			level.currentDecision = new EdgeCollisionDecision();
 			level.currentDecision.setGame(game);
 			// /TESTING REMOVE
 			if (0 != level.newLevelIdentifier(this.x, this.y))
@@ -182,5 +181,4 @@ public class MapPlayer extends Mob {
 
 		return "";
 	}
-
 }

@@ -1,4 +1,3 @@
-
 package loyal.Battle.Characters;
 
 import java.util.ArrayList;

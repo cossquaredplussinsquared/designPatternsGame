@@ -1,4 +1,3 @@
-
 package loyal.level;
 
 import java.util.Random;
@@ -10,7 +9,7 @@ import loyal.entities.MapMoblin;
 import loyal.entities.MapPlayer;
 import loyal.level.tiles.Tile;
 
-public class edgeCollisionDecision implements Decision {
+public class EdgeCollisionDecision implements Decision {
 
 	private Loyal game;
 	private int entityWatchedX;
@@ -48,9 +47,5 @@ public class edgeCollisionDecision implements Decision {
 		this.input = game.input;
 		
 	}
-	
-
-	
-
 }
 

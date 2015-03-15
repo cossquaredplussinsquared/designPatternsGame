@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
-import loyal.entities.Pointer;
+import loyal.level.DecisionFactory;
 import loyal.level.Level;
 
 /**
@@ -42,7 +42,7 @@ public class Loyal extends Canvas implements Runnable {
 	public InputHandler input;
 	public Level level;
 
-
+//keep ^ 
 
 	public Loyal() {
 		setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -66,6 +66,8 @@ public class Loyal extends Canvas implements Runnable {
 		LevelInitializer levelFlyweight = new LevelInitializer(this);
 		levelFlyweight.initLeveValues();
 
+		DecisionFactory decisonFactory = new DecisionFactory(this);
+		decisonFactory.init();
 		colorBasicFill();
 	}
 
@@ -98,8 +100,8 @@ public class Loyal extends Canvas implements Runnable {
 		long lastTime = System.nanoTime();
 		double nsPerTick = 1000000000D / 60D;
 
-//		int ticks = 0;
-//		int frames = 0;
+
+
 
 		long lastTimer = System.currentTimeMillis();
 		double delta = 0;
@@ -113,7 +115,7 @@ public class Loyal extends Canvas implements Runnable {
 			boolean shouldRender = true;
 
 			while (delta >= 1) {
-//				ticks++;
+
 				tick();
 				delta -= 1;
 				shouldRender = true;
@@ -126,17 +128,17 @@ public class Loyal extends Canvas implements Runnable {
 			}
 
 			if (shouldRender) {
-//				frames++;
+
 				render();
 			}
 			
 
 			if (System.currentTimeMillis() - lastTimer >= 1000) {
 				lastTimer += 1000;
-				//System.out.println(ticks+"ticks, " + frames + "frames");
+				
 
-//				frames = 0;
-//				ticks = 0;
+
+
 			}
 		}
 	}

@@ -25,7 +25,6 @@ public class Pointer extends Mob {
 	public Pointer(Level level, String name, int x, int y, int jump, int start,
 			int end, Loyal game) {
 		super(level, name, x, y, 1);
-
 		this.jump = jump;
 		this.start = start;
 		this.end = end;

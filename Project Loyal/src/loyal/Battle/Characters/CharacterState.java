@@ -1,3 +1,4 @@
+
 package loyal.Battle.Characters;
 
 public class CharacterState implements State {
