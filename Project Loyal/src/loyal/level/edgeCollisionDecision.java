@@ -1,13 +1,9 @@
 package loyal.level;
 
-import java.util.Random;
-
 import loyal.InputHandler;
 import loyal.LevelInitializer;
 import loyal.Loyal;
-import loyal.entities.MapMoblin;
 import loyal.entities.MapPlayer;
-import loyal.level.tiles.Tile;
 
 public class EdgeCollisionDecision implements Decision {
 
