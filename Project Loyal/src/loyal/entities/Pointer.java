@@ -1,6 +1,7 @@
 
 package loyal.entities;
 
+
 import java.util.ArrayList;
 
 import loyal.InputHandler;
@@ -9,6 +10,7 @@ import loyal.Sound;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Font;
 import loyal.Graphics.Screen;
+import loyal.MenuItems.MenuItem;
 import loyal.level.Level;
 import loyal.level.LevelGenerator;
 
@@ -26,8 +28,6 @@ public class Pointer extends Mob
 	private int end;
 	private Loyal game;
 	private ArrayList<String> menu = new ArrayList<String>();
-
-	
 
 
 	public Pointer(Level level, String name, int x, int y, InputHandler input, int jump, int start, int end, Loyal game)
