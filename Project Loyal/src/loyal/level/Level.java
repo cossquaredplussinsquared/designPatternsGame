@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import loyal.InputHandler;
+import loyal.LevelInitializer;
 import loyal.Loyal;
 import loyal.Sound;
 import loyal.Graphics.Screen;
@@ -41,7 +42,7 @@ public class Level {
 			this.imagePath = imagePath;
 			this.loadLevelFromFile();
 			this.id = id;
-			Loyal.levels[id] = this;
+			LevelInitializer.levels[id] = this;
 			this.music = music;
 		} else {
 			this.width = 64;

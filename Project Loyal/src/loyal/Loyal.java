@@ -7,17 +7,13 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
-import loyal.entities.Entity;
-import loyal.entities.MenuItems;
 import loyal.entities.Pointer;
 import loyal.level.Level;
-import loyal.level.LevelGenerator;
 
 /**
  * @author Stephen Paul Curtis Jones, Alex Dupree  
@@ -45,20 +41,8 @@ public class Loyal extends Canvas implements Runnable {
 
 	public InputHandler input;
 	public Level level;
-	public Pointer player;
 
-	private ArrayList<String> menuItems;
-	private Entity menu;
 
-	public static final Level[] levels = new Level[100];
-	public static final Level VILLAGE = new Level(1, "/Levels/HomeVillage.png",
-			Sound.VillageMusic);
-	public static final Level OVERWORLD = new Level(2,
-			"/Levels/OverWorldMap.png", Sound.OverWorldMusic);
-	public static final Level STARTMENU = new Level(3, "/Levels/test_menu.png",
-			Sound.MenuMusic);
-	
-	public static final Level BATTLE = new Level(4, "/Levels/BattleMap.png", Sound.BattleMusic);
 
 	public Loyal() {
 		setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -77,49 +61,14 @@ public class Loyal extends Canvas implements Runnable {
 	}
 
 	public void init() {
-		LevelInitializer levelFlyweight = new LevelInitializer(this);
-		levelFlyweight.initLeveValues();
-//		initMapValues();
-
-		colorBasicFill();
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png"));
 		input = new InputHandler(this);
+		LevelInitializer levelFlyweight = new LevelInitializer(this);
+		levelFlyweight.initLeveValues();
 
-		menuItems = new ArrayList<String>();
-		menuItems.add("Start");
-		menuItems.add("Load");
-		menuItems.add("Option");
-		menuItems.add("Quit");
-
-		level = STARTMENU;
-		player = new Pointer(level, "pointer", 20, 100, input, 16, 100, 148,
-				this);
-		menu = new MenuItems(level, menuItems, 100);
-		level.addEntity(player);
-		level.addEntity(menu);
-		
-		
-		level.music.loop();
+		colorBasicFill();
 	}
 
-	private void initMapValues() {
-
-		// this allows us to decide the exit points in one array rather than
-		// multiple arrays values are    id, xMin, xMax, yMin, yMax
-		ArrayList<int[]> villageExitValues = new ArrayList<int []>();
-		villageExitValues.add(new int[] { 2, 99, 100, 0, 100 });
-				
-		ArrayList<int[]> overworldExitValues = new ArrayList<int []>();
-		overworldExitValues.add(new int[] { 1, 0, 0, 0, 100 } );
-
-		// Sets the values for change map conditions.
-		VILLAGE.setExitValues(villageExitValues);
-		OVERWORLD.setExitValues(overworldExitValues);
-
-		// sets default player X and Y
-		OVERWORLD.setPlayerDefaultX(8);
-		OVERWORLD.setPlayerDefaultY(320);
-	}
 
 	private void colorBasicFill() {
 		int index = 0;
@@ -149,8 +98,8 @@ public class Loyal extends Canvas implements Runnable {
 		long lastTime = System.nanoTime();
 		double nsPerTick = 1000000000D / 60D;
 
-		int ticks = 0;
-		int frames = 0;
+//		int ticks = 0;
+//		int frames = 0;
 
 		long lastTimer = System.currentTimeMillis();
 		double delta = 0;
@@ -164,7 +113,7 @@ public class Loyal extends Canvas implements Runnable {
 			boolean shouldRender = true;
 
 			while (delta >= 1) {
-				ticks++;
+//				ticks++;
 				tick();
 				delta -= 1;
 				shouldRender = true;
@@ -177,7 +126,7 @@ public class Loyal extends Canvas implements Runnable {
 			}
 
 			if (shouldRender) {
-				frames++;
+//				frames++;
 				render();
 			}
 			
@@ -186,8 +135,8 @@ public class Loyal extends Canvas implements Runnable {
 				lastTimer += 1000;
 				//System.out.println(ticks+"ticks, " + frames + "frames");
 
-				frames = 0;
-				ticks = 0;
+//				frames = 0;
+//				ticks = 0;
 			}
 		}
 	}
