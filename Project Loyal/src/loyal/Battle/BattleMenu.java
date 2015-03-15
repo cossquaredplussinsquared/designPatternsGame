@@ -8,11 +8,11 @@ import loyal.level.Level;
 
 public class BattleMenu implements BattleController { 
 	
-	public boolean running = false;
+	private Level temp;
 	
 	@Override
-	public void setActivePlayers(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers) {
+	public void setActivePlayers(ArrayList<PlayingCharacter> activePlayers,
+			ArrayList<PlayingCharacter> activeEnemies) {
 		for (PlayingCharacter p: activePlayers)
 			if (p.isDead())
 				activePlayers.remove(p);
@@ -24,8 +24,7 @@ public class BattleMenu implements BattleController {
 
 	@Override
 	public void setInterface(Level menu) {
-		// TODO Auto-generated method stub
-		
+		this.temp = menu;		
 	}
 
 	@Override
@@ -40,19 +39,21 @@ public class BattleMenu implements BattleController {
 		
 	}
 
+	//checks to remove any dead sprites	
 	@Override
-	public void updateBattleState(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers) {
+	public void updateBattleState(ArrayList<PlayingCharacter> activePlayers,
+			ArrayList<PlayingCharacter> activeEnemies) {
 
 		for (PlayingCharacter c: activePlayers)
-		{
-			//print out players
-		}
+			if(c.isDead())
+			{
+				//remove sprite from screen
+			}
 		for (PlayingCharacter e: activeEnemies)
-		{
-			//print out enemies
-		}
-			
+			if(e.isDead())
+			{
+				//remove sprite from screen
+			}
 	}
 
 	public int getIndex()
@@ -74,11 +75,5 @@ public class BattleMenu implements BattleController {
 		return i;
 	}
 
-	@Override
-	public void setMenu(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers) {
-		// TODO Auto-generated method stub
-		
-	}
 }
 

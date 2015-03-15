@@ -8,18 +8,15 @@ import loyal.Battle.Characters.PlayingCharacter;
 
 public interface BattleController {
 
-	public void setActivePlayers(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers);
+	public void setActivePlayers(ArrayList<PlayingCharacter> activePlayers,
+			ArrayList<PlayingCharacter> activeEnemies);
 	
 	public void setInterface(Level menu);
 	
 	public void tick();
 			
-	public void updateBattleState(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers);
-	
-	void setMenu(ArrayList<PlayingCharacter> activeEnemies,
-			ArrayList<PlayingCharacter> activePlayers);
+	public void updateBattleState(ArrayList<PlayingCharacter> activePlayers,
+			ArrayList<PlayingCharacter> activeEnemies);
 	
 // needs to be more
 	
