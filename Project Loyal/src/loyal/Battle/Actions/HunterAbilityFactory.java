@@ -42,7 +42,7 @@ public class HunterAbilityFactory implements AbilityFactory
 				ability.setValues(120, 9, 5);
 				break;
 			
-			case "taunt":
+			case "sharp eye":
 				ability = new SharpEyeDefensiveSingleTargetAbility(playingCharacter);
 				ability.setValues(80, 8, 2);
 				break;

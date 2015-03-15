@@ -1,7 +1,6 @@
 
 package loyal.Battle.Actions;
 
-
 import java.util.ArrayList;
 
 import loyal.Battle.Characters.CharacterState.Stat;
@@ -21,7 +20,7 @@ public class DarkOrbOffensiveSingleTargetAbility extends SingleTargetOffensiveAb
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
 		damage += baseValue + perLevel + level;
@@ -31,7 +30,6 @@ public class DarkOrbOffensiveSingleTargetAbility extends SingleTargetOffensiveAb
 			damage = damage * 2;
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{
@@ -51,3 +49,4 @@ public class DarkOrbOffensiveSingleTargetAbility extends SingleTargetOffensiveAb
 	}
 	
 }
+

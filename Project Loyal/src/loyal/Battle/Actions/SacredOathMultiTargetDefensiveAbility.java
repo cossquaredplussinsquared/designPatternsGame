@@ -1,3 +1,4 @@
+
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -5,6 +6,7 @@ import java.util.ArrayList;
 import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
+
 
 public class SacredOathMultiTargetDefensiveAbility extends MultiTargetDefensiveAbility
 {
@@ -19,7 +21,7 @@ public class SacredOathMultiTargetDefensiveAbility extends MultiTargetDefensiveA
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
 		damage += baseValue + perLevel + level;
@@ -29,7 +31,6 @@ public class SacredOathMultiTargetDefensiveAbility extends MultiTargetDefensiveA
 			damage = 2* damage;
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{
@@ -58,3 +59,4 @@ public class SacredOathMultiTargetDefensiveAbility extends MultiTargetDefensiveA
 	}
 	
 }
+

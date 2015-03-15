@@ -1,3 +1,4 @@
+
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class LightningSpearOffensiveSingleTarget extends SingleTargetOffensiveAb
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
 		damage += baseValue + perLevel + level;
@@ -29,7 +30,6 @@ public class LightningSpearOffensiveSingleTarget extends SingleTargetOffensiveAb
 			damage = damage * 2;
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{

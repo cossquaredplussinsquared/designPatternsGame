@@ -1,3 +1,4 @@
+
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class MagicBarrierDefensiveSingleTargetAbility extends SingleTargetDefens
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double upgrade = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
 		upgrade += baseValue + perLevel + level;
@@ -28,8 +29,6 @@ public class MagicBarrierDefensiveSingleTargetAbility extends SingleTargetDefens
 		{
 			upgrade = 5 * upgrade;
 		}
-		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{
