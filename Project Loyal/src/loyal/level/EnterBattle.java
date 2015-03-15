@@ -2,6 +2,7 @@
 package loyal.level;
 
 import loyal.InputHandler;
+import loyal.LevelInitializer;
 import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.entities.BattleCharacters;
@@ -20,7 +21,7 @@ public class EnterBattle implements Decision
 	public void update()
 	{
 		game.level.music.stop();		
-		game.level = Loyal.BATTLE;
+		game.level = LevelInitializer.BATTLE;
 		addBattleParticipants();
 		
 		game.level.music.loop();
@@ -43,7 +44,7 @@ public class EnterBattle implements Decision
 		battleCharacter = new BattleCharacters(game.level, 16, 150, new int[] {color});
 		game.level.addEntity(battleCharacter);
 		
-		pointer = new Pointer(game.level, "pointer", 16, 240, game.input, 16, 240, 296, game);
+		pointer = new Pointer(game.level, "pointer", 16, 240, 16, 240, 296, game);
 		game.level.addEntity(pointer);
 	}
 }
