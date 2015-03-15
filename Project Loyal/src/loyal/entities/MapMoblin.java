@@ -1,16 +1,13 @@
 package loyal.entities;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import loyal.InputHandler;
-import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.Utilitys.AStarTile;
 import loyal.level.Decision;
 import loyal.level.DecisionFactory;
-import loyal.level.EnterBattle;
 import loyal.level.Level;
 import loyal.level.tiles.Tile;
 
@@ -18,7 +15,6 @@ public class MapMoblin extends Mob
 {
 	private int color = Colors.get(-1, 000, 500, 555);
 	private int scale = 1;
-	private int tickCount;
 	private Random random = new Random();
 	protected int move = 1;
 	protected int stalkDistance;
@@ -74,7 +70,7 @@ public class MapMoblin extends Mob
 	private void intBattle()
 	{
 		level.currentDecision = DecisionFactory.ENTERBATTLE;
-		level.spawnNewLevel();
+		level.spawnNewBattleLevel(this);
 	}
 	
 	private boolean playerCheck()
@@ -83,7 +79,7 @@ public class MapMoblin extends Mob
 		
 		if(this.x - level.getEntity(0).getX() < collisionDistance  && this.y-level.getEntity(0).getY() < collisionDistance)
 		{
-			System.out.println("HI");
+			//System.out.println("HI");
 			return true;
 			
 		}
@@ -165,7 +161,6 @@ public class MapMoblin extends Mob
 			intBattle();
 		}
 		
-		this.tickCount++;
 	}
 	
 	public void stalk(int stalkDistance)

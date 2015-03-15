@@ -8,7 +8,6 @@ import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
 import loyal.level.Level;
-import loyal.level.LevelGenerator;
 
 public class Pointer extends Mob {
 	private int color = Colors.get(-1, -1, -1, 555);
@@ -20,7 +19,6 @@ public class Pointer extends Mob {
 	private int start;
 	private int end;
 	private Loyal game;
-	private ArrayList<String> menu = new ArrayList<String>();
 
 	public Pointer(Level level, String name, int x, int y, int jump, int start,
 			int end, Loyal game) {
@@ -51,6 +49,10 @@ public class Pointer extends Mob {
 				game.level = LevelInitializer.VILLAGE;
 				game.level.music.loop();
 			}
+		}else if(level == LevelInitializer.BATTLE){
+			game.level.music.stop();
+			game.level = LevelInitializer.OVERWORLD;
+			game.level.music.loop();
 		}
 	}
 

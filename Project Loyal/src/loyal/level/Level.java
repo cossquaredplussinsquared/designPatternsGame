@@ -35,6 +35,7 @@ public class Level {
 	private int defaultY;
 	private int defaultX;
 	private ArrayList<int[]> exitValuesArray;
+	private boolean LevelChanged;
 
 	public Level(int id, String imagePath, Sound music) {
 		if (imagePath != null) {
@@ -126,15 +127,24 @@ public class Level {
 	}
 
 	public void tick() {
+		LevelChanged = false;
 		hasBeenPlayed = true;
 		for (Entity e : entities) {
 			e.tick();
+			if(LevelChanged){
+				//if the level is changed we break out of this tick. We don't need it to finish
+				break;
+			}
 		}
 		for (Tile t : Tile.tiles) {
+
 			if (t == null) {
 				break;
 			}
 			t.tick();
+			if(LevelChanged){
+				break;
+			}
 		}
 	}
 
@@ -210,6 +220,7 @@ public class Level {
 	}
 
 	public void spawnNewLevel(){
+		LevelChanged = true;
 		currentDecision.update();
 	}
 	public int newLevelIdentifier(int x, int y) {
@@ -246,6 +257,12 @@ public class Level {
 
 	public void addExitValueArray(int[] exitValueArray) {
 		this.exitValuesArray.add(exitValueArray);
+	}
+
+	public void spawnNewBattleLevel(Entity e) {
+		removeEntity(e);
+		spawnNewLevel();
+		
 	}
 
 }
