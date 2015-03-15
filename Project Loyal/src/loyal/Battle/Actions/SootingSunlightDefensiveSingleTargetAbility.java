@@ -19,7 +19,7 @@ public class SootingSunlightDefensiveSingleTargetAbility extends MultiTargetDefe
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double upgrade = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
 		upgrade += baseValue + perLevel + level;
@@ -29,7 +29,6 @@ public class SootingSunlightDefensiveSingleTargetAbility extends MultiTargetDefe
 			upgrade = 3 * upgrade;
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{

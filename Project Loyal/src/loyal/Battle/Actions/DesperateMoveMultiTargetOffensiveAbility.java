@@ -22,7 +22,7 @@ public class DesperateMoveMultiTargetOffensiveAbility extends MultiTargetOffensi
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		
 		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
@@ -33,7 +33,6 @@ public class DesperateMoveMultiTargetOffensiveAbility extends MultiTargetOffensi
 			damage = 5 * damage; 
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{

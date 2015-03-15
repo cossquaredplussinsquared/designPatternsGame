@@ -18,7 +18,7 @@ public class SharpShotOffensiveSingleTargetAbility extends SingleTargetOffensive
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.DEXTERITY) * scaling 
 				      + playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
@@ -30,7 +30,6 @@ public class SharpShotOffensiveSingleTargetAbility extends SingleTargetOffensive
 			damage = 2 * damage;
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{

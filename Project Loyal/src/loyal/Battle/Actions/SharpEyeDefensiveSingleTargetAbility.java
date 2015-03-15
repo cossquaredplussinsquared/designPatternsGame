@@ -19,19 +19,18 @@ public class SharpEyeDefensiveSingleTargetAbility extends SingleTargetDefensiveA
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOfTargets)
 	{	
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
-		for(int i = 0; i < arrayOftargets.size(); i++)
+		for(int i = 0; i < arrayOfTargets.size(); i++)
 		{
-			if(arrayOftargets.get(i).isDead())
+			if(arrayOfTargets.get(i).isDead())
 				continue;
 			else
 			{
-				double currentDex = arrayOftargets.get(i).getState().getStat(Stat.DEXTERITY);
+				double currentDex = arrayOfTargets.get(i).getState().getStat(Stat.DEXTERITY);
 				currentDex = 4 * currentDex;
-				arrayOftargets.get(i).getState().setStat(Stat.DEFENSE, currentDex);
+				arrayOfTargets.get(i).getState().setStat(Stat.DEFENSE, currentDex);
 			}
 		}
 		

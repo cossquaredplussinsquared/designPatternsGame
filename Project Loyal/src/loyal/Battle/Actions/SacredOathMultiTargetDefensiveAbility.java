@@ -19,7 +19,7 @@ public class SacredOathMultiTargetDefensiveAbility extends MultiTargetDefensiveA
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
 		damage += baseValue + perLevel + level;
@@ -29,7 +29,6 @@ public class SacredOathMultiTargetDefensiveAbility extends MultiTargetDefensiveA
 			damage = 2* damage;
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{

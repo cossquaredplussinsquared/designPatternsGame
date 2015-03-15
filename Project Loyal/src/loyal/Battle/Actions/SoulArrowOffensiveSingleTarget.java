@@ -20,7 +20,7 @@ public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
 		damage += baseValue + perLevel + level;
@@ -30,7 +30,6 @@ public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
 			damage = damage + damage * (.5);
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{

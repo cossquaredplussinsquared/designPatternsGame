@@ -20,7 +20,7 @@ public class SoulShowerMultiTargetOffensiveAbility extends MultiTargetOffensiveA
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
 		damage += baseValue + perLevel + level;
@@ -29,8 +29,6 @@ public class SoulShowerMultiTargetOffensiveAbility extends MultiTargetOffensiveA
 		{
 			damage = damage + damage * (.5);
 		}
-		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{
