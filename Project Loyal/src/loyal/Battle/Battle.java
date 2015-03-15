@@ -116,12 +116,10 @@ public class Battle {
 			if (e.isDead())
 				activeEnemies.remove(e);
 	}
-<<<<<<< HEAD
-=======
+
 	
 	protected static ArrayList<CharacterAction> getAttack(PlayingCharacter attacker)
 	{
 		return attacker.getActions();
 	}
->>>>>>> origin/jeffworkspace
 }

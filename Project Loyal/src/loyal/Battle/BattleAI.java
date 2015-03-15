@@ -22,57 +22,90 @@ public class BattleAI implements BattleController {
 
 	@Override
 	public void tick(ArrayList<PlayingCharacter> activePlayers, ArrayList<PlayingCharacter> activeEnemies) {
-		int index;
+		int index = -1;
 		
 		if (player == null)
 		{
-			index = (int) Math.random() * 10;
+			do
+			{
+				index = (int) Math.random() * 10;
+			} while (index > activePlayers.size());
 			player = activePlayers.get(index);
+			index = -1;
 		}
 		
 		attacks = Battle.getAttack(player);
 		
 		if (attack == null)
-			attack = attacks.get((int) Math.random() * 10);
+		{
+			do
+			{
+				index = (int) Math.random() * 10;
+			} while (index > attacks.size());
+			attack = attacks.get(index);
+		}
 
 		if (target == null)
 		{
-			index = (int) Math.random() * 10;
-
-<<<<<<< HEAD
-	@Override
-
-	public void tick(ArrayList<Object> activePlayers, ArrayList<Object> activeEnemies) {
-		// TODO Auto-generated method stub
-=======
 			if (attack.getAbilityType() == AbilityType.OFFENSIVE)
-				target.add(activeEnemies.get(index));
-	
+			{
+				do
+				{
+					index = (int) Math.random() * 10;
+				} while (index > activeEnemies.size() + 1);
+				//for group attacks
+				if (index == activeEnemies.size() + 1)
+					for(PlayingCharacter e: activeEnemies)
+						target.add(e);
+				//for single attacks
+				else
+					target.add(activePlayers.get(index));
+				index = -1;
+			}
+			
 			else
-				target.add(activePlayers.get(index));				
+			{
+				do
+				{
+					index = (int) Math.random() * 10;
+				} while (index > activePlayers.size());
+				//for group defense
+				if (index == activeEnemies.size() + 1)
+					for(PlayingCharacter e: activeEnemies)
+						target.add(e);
+				//for single defense
+				else
+					target.add(activePlayers.get(index));
+				index = -1;
+			}
+				
+			index = -1;
 		}
->>>>>>> origin/jeffworkspace
 		
 		player.setTargets(target);
-		updateBattleView(activePlayers);
+		updateBattleView(activePlayers, activeEnemies);
 	}
 
 	//checks to remove any dead sprites	
 	@Override
-<<<<<<< HEAD
-	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers,
+	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers, 
 			ArrayList<PlayingCharacter> activeEnemies) {
-
-		for (PlayingCharacter c: activePlayers)
-		{
-			if (c.isDead())
-=======
-	public void updateBattleView(ArrayList<PlayingCharacter> passedIn) {
-
-		for (PlayingCharacter e: passedIn)
+		for (PlayingCharacter e: activePlayers)
 		{
 			if (e.isDead())
->>>>>>> origin/jeffworkspace
+			{
+				
+			//remove sprite from screen
+			}
+			else
+			{
+				// output names/health of those alive
+			}
+		}
+		
+		for (PlayingCharacter e: activeEnemies)
+		{
+			if (e.isDead())
 			{
 				
 			//remove sprite from screen

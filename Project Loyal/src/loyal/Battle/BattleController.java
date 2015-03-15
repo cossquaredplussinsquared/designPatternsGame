@@ -10,16 +10,10 @@ public interface BattleController {
 	
 	public void setMenu(Level menu);
 	
-<<<<<<< HEAD
-	public void tick(ArrayList<Object> activePlayers, ArrayList<Object> activeEnemies);
-			
-	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers,
-			ArrayList<PlayingCharacter> activeEnemies);
-=======
 	public void tick(ArrayList<PlayingCharacter> activePlayers, ArrayList<PlayingCharacter> activeEnemies);
 			
-	public void updateBattleView(ArrayList<PlayingCharacter> passedIn);
->>>>>>> origin/jeffworkspace
+	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers, 
+			ArrayList<PlayingCharacter> activeEnemies);
 	
 // needs to be more
 	
