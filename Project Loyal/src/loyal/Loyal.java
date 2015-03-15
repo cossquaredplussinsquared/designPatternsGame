@@ -128,16 +128,11 @@ public class Loyal extends Canvas implements Runnable {
 			}
 
 			if (shouldRender) {
-
 				render();
-			}
-			
+			}		
 
 			if (System.currentTimeMillis() - lastTimer >= 1000) {
 				lastTimer += 1000;
-				
-
-
 
 			}
 		}
