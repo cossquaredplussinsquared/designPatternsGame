@@ -51,6 +51,9 @@ public class Pointer extends Mob {
 				game.level = LevelInitializer.VILLAGE;
 				game.level.music.loop();
 			}
+			if(position == 4){
+				System.exit(8);
+			}
 		}else if(level == LevelInitializer.BATTLE){
 			DecisionFactory.SWITCHBATTLESTATE.update();
 		}

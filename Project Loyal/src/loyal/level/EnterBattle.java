@@ -80,7 +80,6 @@ public class EnterBattle implements Decision
 		game.level.addEntity(battleCharacter6);
 		game.level.addEntity(battleCharacter7);
 		
-		
 	}
 
 	@Override

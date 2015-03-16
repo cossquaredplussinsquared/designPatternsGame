@@ -28,6 +28,9 @@ public class BattleMenu implements BattleController {
 	@Override
 	public void tick() {
 		int winner = currentBattle.startBattle();
+		
+		updateBattleView();
+		
 		// index = battleMenu.checkIndex();
 		if (!currentBattle.isPlayerTurn()) {
 			DecisionFactory.SWITCHBATTLECONTROLLER.update();
@@ -70,11 +73,11 @@ public class BattleMenu implements BattleController {
 
 		for (PlayingCharacter e : currentBattle.getActivePlayers("thing")) {
 			playerVal
-					.add(e.getName() + " " + e.getState().getStat(Stat.HEALTH));
+					.add(e.getName() + " " + (int)e.getState().getStat(Stat.HEALTH));
 		}
 
 		for (PlayingCharacter e : currentBattle.getActiveEnemies("thing")) {
-			enemyVal.add(e.getName() + " " + e.getState().getStat(Stat.HEALTH));
+			enemyVal.add(e.getName() + " " + (int)e.getState().getStat(Stat.HEALTH));
 		}
 
 		battleMenu.setEnemyName(enemyVal);
