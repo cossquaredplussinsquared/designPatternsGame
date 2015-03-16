@@ -20,7 +20,7 @@ public class TauntSingleTargetDefenSiveAbility extends SingleTargetDefensiveAbil
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
+	public void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)

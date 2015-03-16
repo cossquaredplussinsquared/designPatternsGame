@@ -1,3 +1,4 @@
+
 package loyal.entities;
 
 import java.lang.Thread.State;
@@ -11,7 +12,7 @@ public class Wizzard extends PlayingCharacter
 	public Wizzard(String name, CharacterType type)
 	{
 		super(name, type);
-		state.setStat(Stat.HEALTH, 100);
+		state.setStat(Stat.HEALTH, 900);
 		state.setStat(Stat.MANA, 20);
 		state.setStat(Stat.STRENGTH, 80);
 		state.setStat(Stat.MAGICPOWER, 140);

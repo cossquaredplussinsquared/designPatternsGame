@@ -1,3 +1,4 @@
+
 package loyal.entities;
 
 import java.lang.Thread.State;
@@ -11,7 +12,7 @@ public class Cleric extends PlayingCharacter
 	public Cleric(String name, CharacterType type)
 	{
 		super(name, type);
-		state.setStat(Stat.HEALTH, 100);
+		state.setStat(Stat.HEALTH, 950);
 		state.setStat(Stat.MANA, 30);
 		state.setStat(Stat.STRENGTH, 90);
 		state.setStat(Stat.MAGICPOWER, 140);

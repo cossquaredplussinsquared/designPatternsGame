@@ -8,7 +8,7 @@ public abstract class DefensiveAbility extends Ability
 	public DefensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		abilityType = AbilityType.OFFENSIVE;
+		abilityType = AbilityType.DEFENSIVE;
 	}
 	
 	protected boolean canCastOn(PlayingCharacter target)

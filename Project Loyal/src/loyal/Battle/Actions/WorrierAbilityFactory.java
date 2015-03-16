@@ -1,3 +1,4 @@
+
 package loyal.Battle.Actions;
 
 import loyal.Battle.Characters.CharacterType;
@@ -48,7 +49,7 @@ public class WorrierAbilityFactory implements AbilityFactory
 				
 			case "desperate move":
 				ability = new DesperateMoveMultiTargetOffensiveAbility(playingCharacter);
-				ability.setValues(180, 16, 6);
+				ability.setValues(150, 13, 6);
 				break;
 				
 			default:

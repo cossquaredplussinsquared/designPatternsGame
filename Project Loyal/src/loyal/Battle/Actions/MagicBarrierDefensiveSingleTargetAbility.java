@@ -20,7 +20,7 @@ public class MagicBarrierDefensiveSingleTargetAbility extends SingleTargetDefens
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
+	public void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double upgrade = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
 		upgrade += baseValue + perLevel + level;

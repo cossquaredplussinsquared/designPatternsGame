@@ -23,7 +23,7 @@ public class BackSlashSingleTargetOffenSiveAbility extends SingleTargetOffensive
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> targets)
+	public void applyAbility(ArrayList<PlayingCharacter> targets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
 		damage += baseValue + perLevel + level;

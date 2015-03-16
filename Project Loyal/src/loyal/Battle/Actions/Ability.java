@@ -1,3 +1,4 @@
+
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public abstract class Ability implements CharacterAction
 		}
 	}
 
-	protected abstract void applyAbility(ArrayList<PlayingCharacter> targets);
+	public abstract void applyAbility(ArrayList<PlayingCharacter> targets);
 
 	protected abstract ArrayList<PlayingCharacter> getTargets(PlayingCharacter target);
 

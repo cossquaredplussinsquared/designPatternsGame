@@ -1,5 +1,15 @@
+
 package loyal.level;
 
-public class BattleLevel {
+import loyal.Sound;
+
+public class BattleLevel extends Level
+{
+
+	public BattleLevel(int id, String imagePath, Sound music)
+	{
+		super(id, imagePath, music);
+		
+	}
 
 }

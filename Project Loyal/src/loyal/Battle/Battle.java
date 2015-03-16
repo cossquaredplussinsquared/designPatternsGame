@@ -1,4 +1,4 @@
-	package loyal.Battle;
+package loyal.Battle;
 
 import java.util.ArrayList;
 
@@ -163,3 +163,4 @@ public class Battle {
 		return playersTurn;
 	}
 }
+
