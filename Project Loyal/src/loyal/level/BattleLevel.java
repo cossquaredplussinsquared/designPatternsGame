@@ -27,22 +27,22 @@ public class BattleLevel extends Level {
 	public void setPlayerName(ArrayList<String> playerNames) {
 		Entity Names = new MenuItems(this, playerNames, PLAYERNAMESX, PLAYERNAMESY);
 
-		entities.remove(0);
-		entities.add(0, Names);
+		entities.remove(1);
+		entities.add(1, Names);
 	}
 
 	public void setEnemyName(ArrayList<String> monsterNames) {
 		Entity Names = new MenuItems(this, monsterNames, ENEMYNAMESX, ENEMYNAMESY);
 
-		entities.remove(1);
-		entities.add(1, Names);
+		entities.remove(2);
+		entities.add(2, Names);
 	}
 
 	public void setMenu(ArrayList<String> menuOptions) {
 		Entity options = new MenuItems(this, menuOptions, MENUSTARTX, MENUSTARTY);
 
-		entities.remove(2);
-		entities.add(2, options);
+		entities.remove(3);
+		entities.add(3, options);
 	}
 
 	public int getIndex() {

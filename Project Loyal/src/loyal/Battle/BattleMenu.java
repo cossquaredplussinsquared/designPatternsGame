@@ -86,6 +86,7 @@ public class BattleMenu implements BattleController {
 
 	@Override
 	public void advanceState() {
+		index = battleMenu.getIndex();
 		i++;
 	}
 

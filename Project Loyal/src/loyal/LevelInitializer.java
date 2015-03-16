@@ -52,6 +52,9 @@ public class LevelInitializer {
 		VILLAGE.setPlayerDefaultX(150);
 		VILLAGE.setPlayerDefaultY(250);
 		
+		BATTLE.setPlayerDefaultX(16);
+		BATTLE.setPlayerDefaultY(240);
+		
 		game.level = STARTMENU;
 		startMenuCreation();
 		addMonsters();
