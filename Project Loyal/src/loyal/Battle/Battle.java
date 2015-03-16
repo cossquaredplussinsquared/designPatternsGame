@@ -128,7 +128,7 @@ public class Battle {
 		return getActionNames(attacker.getActions());
 	}
 
-	private void setAction(int index) {
+	protected void setAction(int index) {
 		this.action = attacker.getActions().get(index);
 		if (action.getAbilityType() == AbilityType.DEFENSIVE)
 			swapTargets();

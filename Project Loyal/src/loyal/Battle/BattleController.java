@@ -17,6 +17,7 @@ public interface BattleController {
 
 	void setBattle(Battle currentBattle);
 	
+	void advanceState();
 	
 // needs to be more
 	

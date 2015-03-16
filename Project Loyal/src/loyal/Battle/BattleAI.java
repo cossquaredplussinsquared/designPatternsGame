@@ -10,125 +10,76 @@ import loyal.level.DecisionFactory;
 import loyal.level.Level;
 
 public class BattleAI implements BattleController {
-	
-	private BattleLevel battleMenu;
-	private PlayingCharacter player = null;
-	private ArrayList<CharacterAction> attacks = null;
-	private ArrayList<PlayingCharacter> target = null;
-	private CharacterAction attack = null;
+
 	private Battle currentBattle;
+	private String[] State = new String[] { "Player", "Waiting", "Attack",
+			"Waiting", "Target" };
+	private BattleLevel battleMenu;
+	private int i = 0;
 
 	@Override
 	public void setMenu(BattleLevel menu) {
-		this.battleMenu = menu;		
+		this.battleMenu = menu;
 	}
-	
+
 	@Override
-	public void setBattle(Battle currentBattle){
+	public void setBattle(Battle currentBattle) {
 		this.currentBattle = currentBattle;
 	}
-	
-	
+
 	@Override
 	public void tick() {
 		int index = -1;
-		ArrayList<PlayingCharacter> activePlayers = currentBattle.getActivePlayers();
-		ArrayList<PlayingCharacter> activeEnemies = currentBattle.getActiveEnemies();
-		
-		if(currentBattle.isPlayerTurn()){
+		// index = battleMenu.checkIndex();
+		if (!currentBattle.isPlayerTurn()) {
 			DecisionFactory.SWITCHBATTLECONTROLLER.update();
 			return;
 		}
-	
-		if (player == null)
-		{
-			do
-			{
-				index = (int) Math.random() * 10;
-			} while (index > activePlayers.size());
-			player = activePlayers.get(index);
-			index = -1;
-		}
-		
-		//attacks = Battle.getAttack(player);
-		
-		if (attack == null)
-		{
-			do
-			{
-				index = (int) Math.random() * 10;
-			} while (index > attacks.size());
-			attack = attacks.get(index);
-		}
-
-		if (target == null)
-		{
-			if (attack.getAbilityType() == AbilityType.OFFENSIVE)
-			{
-				do
-				{
-					index = (int) Math.random() * 10;
-				} while (index > activeEnemies.size() + 1);
-				//for group attacks
-				if (index == activeEnemies.size() + 1)
-					for(PlayingCharacter e: activeEnemies)
-						target.add(e);
-				//for single attacks
-				else
-					target.add(activePlayers.get(index));
-				index = -1;
+		while (State.length > i) {
+			if (State[i].equals("Waiting")) {
 			}
-			
-			else
-			{
-				do
-				{
-					index = (int) Math.random() * 10;
-				} while (index > activePlayers.size());
-				//for group defense
-				if (index == activeEnemies.size() + 1)
-					for(PlayingCharacter e: activeEnemies)
-						target.add(e);
-				//for single defense
-				else
-					target.add(activePlayers.get(index));
-				index = -1;
+			if (State[i].equals("Player")) {
+				index = (int) (currentBattle.getActivePlayers().size() * Math
+						.random());
+				currentBattle.setActivePlayer(index);
 			}
-				
-			index = -1;
+			if (State[i].equals("Attack")) {
+				index = (int) (currentBattle.getAttacks().size() * Math
+						.random());
+				currentBattle.setAction(index);
+			}
+			if (State[i].equals("Target")) {
+				index = (int) (currentBattle.getActiveEnemies().size() * Math
+						.random());
+				currentBattle.setTargetAndTriggerAction(index);
+			}
 		}
-		
-		player.setTargets(target);
-		updateBattleView(activePlayers, activeEnemies);
 	}
 
-	//checks to remove any dead sprites	
+	// checks to remove any dead sprites
 	@Override
-	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers, 
+	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers,
 			ArrayList<PlayingCharacter> activeEnemies) {
-		for (PlayingCharacter e: activePlayers)
-		{
-			if (e.isDead())
-			{
-			//remove sprite from screen
-			}
-			else
-			{
+		for (PlayingCharacter e : activePlayers) {
+			if (e.isDead()) {
+				// remove sprite from screen
+			} else {
 				// output names/health of those alive
 			}
 		}
-		
-		for (PlayingCharacter e: activeEnemies)
-		{
-			if (e.isDead())
-			{
-				
-			//remove sprite from screen
-			}
-			else
-			{
+
+		for (PlayingCharacter e : activeEnemies) {
+			if (e.isDead()) {
+
+				// remove sprite from screen
+			} else {
 				// output names/health of those alive
 			}
 		}
+	}
+
+	@Override
+	public void advanceState() {
+		// TODO Auto-generated method stub
 	}
 }
