@@ -9,8 +9,6 @@ import loyal.Battle.Characters.PlayingCharacter;
 import loyal.entities.CharacterStore;
 import loyal.entities.GeneratorOfParties;
 import loyal.entities.SimpleCharacterFactory;
-import loyal.entities.Warrior;
-import loyal.entities.Wizzard;
 
 public class Tester
 {
@@ -144,3 +142,5 @@ public class Tester
 	}
 
 }
+
+

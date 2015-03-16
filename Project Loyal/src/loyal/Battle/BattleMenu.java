@@ -26,7 +26,7 @@ public class BattleMenu implements BattleController {
 	@Override
 	public void tick() {
 		int index = -1;
-		index = battleMenu.checkIndex();
+		//index = battleMenu.checkIndex();
 		if(!currentBattle.isPlayerTurn()){
 			DecisionFactory.SWITCHBATTLECONTROLLER.update();
 			return;

@@ -12,7 +12,7 @@ import loyal.level.Level;
 
 public class MapPlayer extends Mob {
 
-	private final int StaminaSize = 2000;
+	private final int StaminaSize = 20000;
 	private int color = Colors.get(-1, 200, 020, 321);
 	private int color2 = Colors.get(-1, 200, 020, 543);
 	private int scale = 1;
@@ -145,7 +145,7 @@ public class MapPlayer extends Mob {
 
 		}
 		if (input.shift.isPressed() && canRun == true) {
-			this.speed = 4;
+			this.speed = 6;
 			this.walkingSpeed = 3;
 			runCheck = true;
 			stamina--;

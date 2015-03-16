@@ -27,4 +27,10 @@ public class SwitchBattleController implements Decision {
 
 	}
 
+	@Override
+	public void gameValue(int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

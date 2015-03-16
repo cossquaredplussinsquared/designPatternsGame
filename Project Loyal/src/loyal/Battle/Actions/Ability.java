@@ -124,5 +124,4 @@ public abstract class Ability implements CharacterAction
 		return this.abilityType;
 	}
 	
-	
 }

@@ -14,48 +14,60 @@ public class BattleCharacters extends Entity
 	private int tickCount = 0;
 	private int scale = 1;
 	int[] colors;
-	private boolean attack = true;
+	public boolean attack = false;
 	private int xTile = 0;
 	private int yTile = 20;
 	private int counter = 0;
 	private int direction = 0;
 	private int jumpOffset = 0;
+	private boolean badGuy = false;
 	
-	public BattleCharacters(Level level, int x, int y, int[] colors)
+	public BattleCharacters(Level level, int x, int y, int[] colors, boolean badGuy)
 	{
 		super(level);
 		this.x = x;
 		this.y = y;
 		this.colors = colors;
+		this.badGuy = badGuy;
+		if(badGuy)
+		{
+			xTile = 12;
+		}
 	}
 
 	@Override
 	public void tick()
 	{
+		int speed = 4;
+		int countSpeed = 4;
+		if(badGuy)
+		{
+			speed = speed*(-1);
+		}
 		if(attack == true)
 		{
 			if(direction == 0)
 			{
 				xTile+=4;
 				direction=1;
-				counter+=4;
-				this.x+=4;
+				counter+=countSpeed;
+				this.x = this.x + speed;
 				this.y--;
 			}
-			else if(direction == 1 && counter < 220)
+			else if(direction == 1 && counter < 204)
 			{
-				counter+=4;
-				this.x+=4;
+				counter+=countSpeed;
+				this.x = this.x + speed;
 				if(counter%40 == 0)
 				{
 					this.y = this.y - 2;
 				}	
 			}
 			
-			else if(direction == 1 && counter >= 220 && counter < 440)
+			else if(direction == 1 && counter >= 204 && counter < 408)
 			{
-				counter+=4;
-				this.x+=4;
+				counter+=countSpeed;
+				this.x = this.x + speed;
 				if(counter%40 == 0)
 				{
 					this.y = this.y + 2;
@@ -63,11 +75,11 @@ public class BattleCharacters extends Entity
 			}
 			
 			
-			else if(direction == 1 && counter == 440)
+			else if(direction == 1 && counter == 408)
 			{
 				direction = 2;
-				counter-=4;
-				this.x-=4;
+				counter-=countSpeed;
+				this.x = this.x - speed;
 				if(counter%40 == 0)
 				{
 					this.y = this.y - 2;
@@ -75,20 +87,20 @@ public class BattleCharacters extends Entity
 				xTile-=4;
 			}
 			
-			else if(direction == 2 && counter >=220 && counter < 440)
+			else if(direction == 2 && counter >=204 && counter < 408)
 			{
-				counter-=4;
-				this.x-=4;
+				counter-=countSpeed;
+				this.x = this.x - speed;
 				if(counter%40 == 0)
 				{
 					this.y = this.y - 2;
 				}	
 			}
 			
-			else if(direction == 2 && counter < 220 && counter > 0)
+			else if(direction == 2 && counter < 204 && counter > 0)
 			{
-				counter-=4;
-				this.x-=4;
+				counter-=countSpeed;
+				this.x = this.x - speed;
 				if(counter%40 == 0)
 				{
 					this.y = this.y + 2;
@@ -97,6 +109,7 @@ public class BattleCharacters extends Entity
 			
 			else if(direction == 2 && counter == 0)
 			{
+				this.y = this.y+3;
 				direction = 0;
 				attack = false;
 				xTile-=4;

@@ -1,3 +1,4 @@
+
 package loyal.Battle;
 
 import java.lang.reflect.Array;
@@ -95,24 +96,6 @@ public class Battle {
 		}
 		return 1;
 	}
-
-	// can you create/print out a list of the names/health for both
-
-	// public void setMenu(ArrayList<PlayingCharacter> activePlayers,
-	// ArrayList<PlayingCharacter> activeEnemies) {
-	//
-	// ArrayList<String> players = new ArrayList<String>();
-	// ArrayList<String> enemies = new ArrayList<String>();
-	//
-	// for (PlayingCharacter c: activePlayers)
-	// players.add(c.getName());
-	// //health
-	// for (PlayingCharacter e: activeEnemies)
-	// enemies.add(e.getName());
-	// //health
-	//
-	// //create a menu entity to print them out
-	// }
 
 	private void checkAliveParty() {
 		for (PlayingCharacter p : activePlayers)
