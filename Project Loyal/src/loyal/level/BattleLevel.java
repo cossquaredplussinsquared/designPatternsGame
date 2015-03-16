@@ -10,13 +10,17 @@ import loyal.entities.MenuItems;
 import loyal.entities.Pointer;
 
 public class BattleLevel extends Level {
-	final int PLAYERNAMESY = 20;
-	final int ENEMYNAMESY = 20;
+	final int PLAYERNAMESY = 8;
+	final int ENEMYNAMESY = 8;
 	final int MENUSTARTY = 232;
 	
 	final int PLAYERNAMESX = 16;
-	final int ENEMYNAMESX = 440;
+	final int ENEMYNAMESX = 340;
 	final int MENUSTARTX = 32;
+	
+	final int POINTERJUMP = 16;
+	final int PLAYERJUMP = 44;
+	final int ENEMYJUMP = 44;
 
 	public BattleLevel(int id, String imagePath, Sound music) {
 		super(id, imagePath, music);
@@ -25,21 +29,21 @@ public class BattleLevel extends Level {
 	}
 
 	public void setPlayerName(ArrayList<String> playerNames) {
-		Entity Names = new MenuItems(this, playerNames, PLAYERNAMESX, PLAYERNAMESY);
+		Entity Names = new MenuItems(this, playerNames, PLAYERNAMESX, PLAYERNAMESY, PLAYERJUMP);
 
 		entities.remove(1);
 		entities.add(1, Names);
 	}
 
 	public void setEnemyName(ArrayList<String> monsterNames) {
-		Entity Names = new MenuItems(this, monsterNames, ENEMYNAMESX, ENEMYNAMESY);
+		Entity Names = new MenuItems(this, monsterNames, ENEMYNAMESX, ENEMYNAMESY, ENEMYJUMP);
 
 		entities.remove(2);
 		entities.add(2, Names);
 	}
 
 	public void setMenu(ArrayList<String> menuOptions) {
-		Entity options = new MenuItems(this, menuOptions, MENUSTARTX, MENUSTARTY);
+		Entity options = new MenuItems(this, menuOptions, MENUSTARTX, MENUSTARTY, POINTERJUMP);
 
 		entities.remove(3);
 		entities.add(3, options);

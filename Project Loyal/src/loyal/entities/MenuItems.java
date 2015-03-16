@@ -13,12 +13,14 @@ public class MenuItems extends Entity {
 	private ArrayList<String> words;
 	private int startY;
 	private int startX;
+	private int jump;
 	
-	public MenuItems(Level level, ArrayList<String> words, int startX, int startY) {
+	public MenuItems(Level level, ArrayList<String> words, int startX, int startY, int jump) {
 		super(level);
 		this.words = words;
 		this.startX = startX;
 		this.startY = startY;
+		this.jump = jump;
 	}
 
 	@Override
@@ -30,7 +32,7 @@ public class MenuItems extends Entity {
 	public void render(Screen screen) {
 		for(int i=0; i<this.words.size(); i++)
 		{
-			Font.render(this.words.get(i),screen,startX,startY+16*i,Colors.get(-1,-1,-1,555),1);
+			Font.render(this.words.get(i),screen,startX,startY+jump*i,Colors.get(-1,-1,-1,555),1);
 		}
 	}
 
