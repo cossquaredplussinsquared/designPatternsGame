@@ -13,7 +13,7 @@ public class DarkOrbOffensiveSingleTargetAbility extends SingleTargetOffensiveAb
 	public DarkOrbOffensiveSingleTargetAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WIZZARD;
+		type = CharacterType.WIZARD;
 		checkCompability();
 		name = "Dark Orb";
 		description = "Abyss sorcery, very effective against enemies with high physical deffense";

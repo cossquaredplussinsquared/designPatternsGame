@@ -14,7 +14,7 @@ public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
 	public SoulArrowOffensiveSingleTarget(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WIZZARD;
+		type = CharacterType.WIZARD;
 		checkCompability();
 		name = "Soul Arrow";
 		description = "An elementary sorcery. Fires a soul arrow straight ahead.";

@@ -2,7 +2,7 @@ package loyal.Battle.Characters;
 
 public enum CharacterType
 {
-	WARRIOR("Warrior"), WIZZARD("Wizzard"), CLERIC("Cleric"), HUNTER("Hunter");
+	WARRIOR("Warrior"), WIZARD("Wizard"), CLERIC("Cleric"), HUNTER("Hunter");
 	
 	private String charType;
 	

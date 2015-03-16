@@ -13,7 +13,7 @@ public class SoulShowerMultiTargetOffensiveAbility extends MultiTargetOffensiveA
 	public SoulShowerMultiTargetOffensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WIZZARD;
+		type = CharacterType.WIZARD;
 		checkCompability();
 		name = "Soul Shower";
 		description = "Hurls a huge soul mass which splits into smaller souls that rain from above.";

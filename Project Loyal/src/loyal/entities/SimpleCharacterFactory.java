@@ -10,7 +10,7 @@ public class SimpleCharacterFactory {
 	public PlayingCharacter createCharacter(String name,CharacterType type)
 	{
 		PlayingCharacter character = null;
-		if(type.equals(CharacterType.WIZZARD))
+		if(type.equals(CharacterType.WIZARD))
 		{
 			character = new Wizard(name, type);
 		}

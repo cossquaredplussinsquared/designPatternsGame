@@ -12,7 +12,7 @@ public class MagicShieldDefensiveSingleTargetAbility extends SingleTargetDefensi
 	public MagicShieldDefensiveSingleTargetAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		type = CharacterType.WIZZARD;
+		type = CharacterType.WIZARD;
 		checkCompability();
 		name = "Magic shield";
 		description = "Summon a protective aura around the player that reduces damage.";
