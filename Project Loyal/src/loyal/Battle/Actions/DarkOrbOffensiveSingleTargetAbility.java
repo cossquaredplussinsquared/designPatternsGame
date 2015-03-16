@@ -48,5 +48,10 @@ public class DarkOrbOffensiveSingleTargetAbility extends SingleTargetOffensiveAb
 		
 	}
 	
+	@Override
+	public AbilityType getTargetType() {
+		// TODO Auto-generated method stub
+		return super.targetType;
+	}
 }
 

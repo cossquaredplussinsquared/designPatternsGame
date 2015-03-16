@@ -2,7 +2,6 @@ package loyal.level;
 
 import loyal.LevelInitializer;
 import loyal.Loyal;
-import loyal.Battle.BattleMenu;
 import loyal.Graphics.Colors;
 import loyal.entities.BattleCharacters;
 import loyal.entities.Pointer;

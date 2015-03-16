@@ -48,4 +48,8 @@ public class TauntSingleTargetDefenSiveAbility extends SingleTargetDefensiveAbil
 		}
 		
 	}
+	@Override
+	public AbilityType getTargetType() {
+		return super.targetType;
+	}
 }

@@ -11,7 +11,7 @@ public class ClericAbilityFactory implements AbilityFactory
 	protected LightningSpearOffensiveSingleTarget lightningSpear;
 	protected MagicBarrierDefensiveSingleTargetAbility magicBarrier;
 	protected SacredOathMultiTargetDefensiveAbility sacredOath;
-	protected SootingSunlightDefensiveSingleTargetAbility sootingSunlight;
+	protected ShootingSunlightDefensiveSingleTargetAbility sootingSunlight;
 	protected PlayingCharacter playingCharacter;
 	
 	public ClericAbilityFactory()
@@ -20,7 +20,7 @@ public class ClericAbilityFactory implements AbilityFactory
 		lightningSpear = new LightningSpearOffensiveSingleTarget(playingCharacter);
 		magicBarrier = new MagicBarrierDefensiveSingleTargetAbility(playingCharacter);
 		sacredOath = new SacredOathMultiTargetDefensiveAbility(playingCharacter);
-		sootingSunlight = new SootingSunlightDefensiveSingleTargetAbility(playingCharacter);
+		sootingSunlight = new ShootingSunlightDefensiveSingleTargetAbility(playingCharacter);
 	}
 	
 
@@ -43,7 +43,7 @@ public class ClericAbilityFactory implements AbilityFactory
 				break;
 			
 			case "sooting sunlight":
-				ability = new SootingSunlightDefensiveSingleTargetAbility(playingCharacter);
+				ability = new ShootingSunlightDefensiveSingleTargetAbility(playingCharacter);
 				ability.setValues(120, 8, 4);
 				break;
 				

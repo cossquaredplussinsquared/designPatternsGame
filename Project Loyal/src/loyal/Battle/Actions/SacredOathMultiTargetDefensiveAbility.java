@@ -57,6 +57,10 @@ public class SacredOathMultiTargetDefensiveAbility extends MultiTargetDefensiveA
 		}
 		
 	}
-	
+	@Override
+	public AbilityType getTargetType() {
+		// TODO Auto-generated method stub
+		return super.targetType;
+	}
 }
 

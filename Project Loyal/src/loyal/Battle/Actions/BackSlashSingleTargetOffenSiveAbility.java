@@ -10,10 +10,10 @@ import loyal.Battle.Characters.PlayingCharacter;
 
 
 
-public class BackSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveAbility
+public class BackSlashSingleTargetOffensiveAbility extends SingleTargetOffensiveAbility
 {
 	
-	public BackSlashSingleTargetOffenSiveAbility(PlayingCharacter playingCharacter)
+	public BackSlashSingleTargetOffensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
 		type = CharacterType.WARRIOR;
@@ -52,6 +52,12 @@ public class BackSlashSingleTargetOffenSiveAbility extends SingleTargetOffensive
 		
 		
 		
+	}
+
+	@Override
+	public AbilityType getTargetType() {
+		// TODO Auto-generated method stub
+		return super.targetType;
 	}
 }
 

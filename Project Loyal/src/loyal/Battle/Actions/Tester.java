@@ -29,7 +29,7 @@ public class Tester
 		
 		PlayingCharacter targetCharacter = store.orderCharacter("TestCharacterWarrior", CharacterType.WARRIOR);
 		
-		WizzardAbilityFactory wizzardAbilityFactory = new WizzardAbilityFactory();
+		WizardAbilityFactory wizzardAbilityFactory = new WizardAbilityFactory();
 		
 		Ability darkOrb = wizzardAbilityFactory.createCharacterAction("dark orb", testCharacter);
 		
@@ -70,7 +70,7 @@ public class Tester
 		
 		PlayingCharacter WorrierCharacter = store.orderCharacter("Warrior", CharacterType.WARRIOR);
 		
-		WorrierAbilityFactory warriorFactory = new WorrierAbilityFactory();
+		WarriorAbilityFactory warriorFactory = new WarriorAbilityFactory();
 		
 		PlayingCharacter clericCharacter = store.orderCharacter("cleric", CharacterType.CLERIC);
 		

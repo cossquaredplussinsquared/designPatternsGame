@@ -47,4 +47,8 @@ public class SoulShowerMultiTargetOffensiveAbility extends MultiTargetOffensiveA
 		}
 		
 	}
+	@Override
+	public AbilityType getTargetType() {
+		return super.targetType;
+	}
 }

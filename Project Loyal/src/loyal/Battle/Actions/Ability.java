@@ -20,6 +20,7 @@ public abstract class Ability implements CharacterAction
 	protected int perLevel;
 	protected Random gen;
 	protected AbilityType abilityType;
+	protected AbilityType targetType;
 	
 	public Ability(PlayingCharacter playingCharacter)
 	{

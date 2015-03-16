@@ -52,5 +52,10 @@ public class DesperateMoveMultiTargetOffensiveAbility extends MultiTargetOffensi
 		playingCharacter.getState().setStat(Stat.HEALTH, 1);
 	}
 
+	@Override
+	public AbilityType getTargetType() {
+		// TODO Auto-generated method stub
+		return super.targetType;
+	}
 }
 

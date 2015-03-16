@@ -49,5 +49,11 @@ public class PoisonousStabMultiTargetOffensiveAbility extends SingleTargetOffens
 		}
 		
 	}
+
+	@Override
+	public AbilityType getTargetType() {
+		// TODO Auto-generated method stub
+		return super.targetType;
+	}
 	
 }

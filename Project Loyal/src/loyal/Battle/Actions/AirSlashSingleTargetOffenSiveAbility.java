@@ -6,16 +6,16 @@ import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
 
-public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveAbility
+public class AirSlashSingleTargetOffensiveAbility extends SingleTargetOffensiveAbility
 {
 	
-	public AirSlashSingleTargetOffenSiveAbility(PlayingCharacter playingCharacter)
+	public AirSlashSingleTargetOffensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
 		type = CharacterType.WARRIOR;
 		checkCompability();
 		name = "Air Slash";
-		description = "Powerfull physical attack in the air";
+		description = "Powerful physical attack in the air";
 	}
 
 	@Override
@@ -46,6 +46,12 @@ public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveA
 			}
 		}
 		
+	}
+
+	@Override
+	public AbilityType getTargetType() {
+		// TODO Auto-generated method stub
+		return super.targetType;
 	}
 }
 
