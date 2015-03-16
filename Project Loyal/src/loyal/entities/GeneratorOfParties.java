@@ -26,6 +26,11 @@ public class GeneratorOfParties
 	
 	public ArrayList<PlayingCharacter> generateParty()
 	{
+		this.party = new ArrayList<PlayingCharacter>();
+		this.hunter = new Hunter("enemy hunter", CharacterType.HUNTER);
+		this.warrior = new Warrior("enemy warrior", CharacterType.WARRIOR);
+		this.cleric = new Cleric("enemy cleric", CharacterType.CLERIC);
+		this.wizzard = new Wizzard("enemy wizzard", CharacterType.WIZZARD);
 		this.party.add(this.hunter);
 		this.party.add(this.warrior);
 		this.party.add(this.cleric);
