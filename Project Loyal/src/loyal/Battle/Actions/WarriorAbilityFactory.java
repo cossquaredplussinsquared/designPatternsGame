@@ -5,20 +5,20 @@ import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
 import loyal.entities.Warrior;
 
-public class WorrierAbilityFactory implements AbilityFactory
+public class WarriorAbilityFactory implements AbilityFactory
 {
 
-	protected AirSlashSingleTargetOffenSiveAbility airSlash;
-	protected BackSlashSingleTargetOffenSiveAbility backSlash;
+	protected AirSlashSingleTargetOffensiveAbility airSlash;
+	protected BackSlashSingleTargetOffensiveAbility backSlash;
 	protected TauntSingleTargetDefenSiveAbility taunt;
 	protected DesperateMoveMultiTargetOffensiveAbility desperateMove;
 	protected PlayingCharacter playingCharacter;
 	
-	public WorrierAbilityFactory()
+	public WarriorAbilityFactory()
 	{
 		this.playingCharacter = new Warrior("", CharacterType.WARRIOR);
-		airSlash = new AirSlashSingleTargetOffenSiveAbility(playingCharacter);
-		backSlash = new BackSlashSingleTargetOffenSiveAbility(playingCharacter);
+		airSlash = new AirSlashSingleTargetOffensiveAbility(playingCharacter);
+		backSlash = new BackSlashSingleTargetOffensiveAbility(playingCharacter);
 		taunt = new TauntSingleTargetDefenSiveAbility(playingCharacter);
 		desperateMove = new DesperateMoveMultiTargetOffensiveAbility(playingCharacter);
 	}
@@ -33,12 +33,12 @@ public class WorrierAbilityFactory implements AbilityFactory
 		switch(abilityName.toLowerCase())
 		{
 			case "air slash":
-				ability = new AirSlashSingleTargetOffenSiveAbility(playingCharacter);
+				ability = new AirSlashSingleTargetOffensiveAbility(playingCharacter);
 				ability.setValues(100, 14, 3);
 				break;
 				
 			case "back slash":
-				ability = new BackSlashSingleTargetOffenSiveAbility(playingCharacter);
+				ability = new BackSlashSingleTargetOffensiveAbility(playingCharacter);
 				ability.setValues(120, 9, 5);
 				break;
 			

@@ -10,7 +10,7 @@ public abstract class SingleTargetOffensiveAbility extends OffensiveAbility
 	public SingleTargetOffensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
-		
+		super.targetType = AbilityType.SINGLE;
 	}
 
 	@Override

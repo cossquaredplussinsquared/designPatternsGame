@@ -50,6 +50,12 @@ public class ArrowRainMultiTargetOffensiveAbility extends MultiTargetOffensiveAb
 		}
 			
 	}
+
+	@Override
+	public AbilityType getTargetType() {
+		// TODO Auto-generated method stub
+		return super.targetType;
+	}
 	
 }
 

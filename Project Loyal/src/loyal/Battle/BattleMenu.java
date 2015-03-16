@@ -7,17 +7,12 @@ import loyal.Battle.Actions.CharacterAction;
 import loyal.Battle.Characters.PlayingCharacter;
 import loyal.level.BattleLevel;
 import loyal.level.DecisionFactory;
-import loyal.level.Level;
 
 public class BattleMenu implements BattleController { 
 	
-	private BattleLevel battleMenu;
 	private Battle currentBattle;
-	private PlayingCharacter player = null;
-	private ArrayList<String> attacks = null;
-	private ArrayList<PlayingCharacter> target = null;
-	private CharacterAction attack = null;
 	private String State = "Starting";
+	private BattleLevel battleMenu;
 	
 	@Override
 	public void setMenu(BattleLevel menu) {
@@ -31,7 +26,7 @@ public class BattleMenu implements BattleController {
 	@Override
 	public void tick() {
 		int index = -1;
-		
+		index = battleMenu.checkIndex();
 		if(!currentBattle.isPlayerTurn()){
 			DecisionFactory.SWITCHBATTLECONTROLLER.update();
 			return;

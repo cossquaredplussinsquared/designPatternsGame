@@ -44,4 +44,10 @@ public class MagicBarrierDefensiveSingleTargetAbility extends SingleTargetDefens
 		
 	}
 
+	
+	@Override
+	public AbilityType getTargetType() {
+		// TODO Auto-generated method stub
+		return super.targetType;
+	}
 }

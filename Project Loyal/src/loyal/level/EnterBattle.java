@@ -2,7 +2,6 @@ package loyal.level;
 
 import loyal.LevelInitializer;
 import loyal.Loyal;
-import loyal.Battle.BattleMenu;
 import loyal.Graphics.Colors;
 import loyal.entities.BattleCharacters;
 import loyal.entities.Pointer;
@@ -43,7 +42,7 @@ public class EnterBattle implements Decision
 	
 	public void addBattleParticipants()
 	{
-		game.currentBattle = new BattleMenu();
+		//game.currentBattle = new BattleMenu();
 		
 		pointer = new Pointer(game.level, "pointer", 16, 240, 16, 240, 296, game);
 		game.level.addEntity(pointer);

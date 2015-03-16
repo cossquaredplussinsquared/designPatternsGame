@@ -10,6 +10,7 @@ public abstract class MultiTargetDefensiveAbility extends DefensiveAbility
 	public MultiTargetDefensiveAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
+		super.targetType = AbilityType.MULTI;
 	}
 
 	

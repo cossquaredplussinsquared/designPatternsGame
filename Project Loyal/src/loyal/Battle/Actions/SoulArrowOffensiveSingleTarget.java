@@ -49,5 +49,8 @@ public class SoulArrowOffensiveSingleTarget extends SingleTargetOffensiveAbility
 		}
 		
 	}
-
+	@Override
+	public AbilityType getTargetType() {
+		return super.targetType;
+	}
 }

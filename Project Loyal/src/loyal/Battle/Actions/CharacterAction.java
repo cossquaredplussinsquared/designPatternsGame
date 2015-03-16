@@ -12,5 +12,6 @@ public interface CharacterAction
 	public String toString();
 	public AbilityType getAbilityType();
 	public void applyAbility(ArrayList<PlayingCharacter> arrayOftargets);
+	public AbilityType getTargetType();
 
 }

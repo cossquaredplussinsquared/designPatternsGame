@@ -7,10 +7,10 @@ import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
 
-public class SootingSunlightDefensiveSingleTargetAbility extends MultiTargetDefensiveAbility
+public class ShootingSunlightDefensiveSingleTargetAbility extends MultiTargetDefensiveAbility
 {
 
-	public SootingSunlightDefensiveSingleTargetAbility(PlayingCharacter playingCharacter)
+	public ShootingSunlightDefensiveSingleTargetAbility(PlayingCharacter playingCharacter)
 	{
 		super(playingCharacter);
 		type = CharacterType.CLERIC;
@@ -44,5 +44,8 @@ public class SootingSunlightDefensiveSingleTargetAbility extends MultiTargetDefe
 		}
 		
 	}
-
+	@Override
+	public AbilityType getTargetType() {
+		return super.targetType;
+	}
 }
