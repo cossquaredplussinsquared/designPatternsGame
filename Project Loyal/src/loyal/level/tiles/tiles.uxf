@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>64</x>
+      <y>520</y>
+      <w>312</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>loyal.level.tiles::AnimatedTile
+--
+-animationTileCoards: int[][]
+-currentAnimationIndex: int
+-lastIterationTime: long
+-animationSwitchDelay: int
+--
++AnimatedTile(int id, int[][] animationCoards, int tileColor, int levelColor, int animationSwitchDelay, int width, int height): ctor
++tick(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>512</x>
+      <y>556</y>
+      <w>216</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>loyal.level.tiles::BasicSolidTile
+--
+--
++BasicSolidTile(int id, int x, int y, int tileColor, int levelColor, int width, int height): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>332</x>
+      <y>376</y>
+      <w>204</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>loyal.level.tiles::BasicTile
+--
+#tileId: int
+#tileColor: int
+~id: int
+--
++BasicTile(int id, int x, int y, int tileColor, int levelColor, int width, int height): ctor
++tick(): void
++render(Screen screen, Level level, int x, int y): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>0</y>
+      <w>320</w>
+      <h>316</h>
+    </coordinates>
+    <panel_attributes>/loyal.level.tiles::Tile/
+--
++tiles = new Tile[256]: Tile[]
++VOID = new BasicSolidTile(0, 0, 0, Colors.get(000, -1, -1, -1), 0xFF000000, 1, 1): Tile
++STONE = new BasicSolidTile(1, 1, 0, Colors.get(-1, 333, -1, -1), 0xFF555555, 1, 1): Tile
++GRASS = new BasicTile(2, 2, 0, Colors.get(-1, 131, 141, -1), 0xFF00FF00, 1, 1): Tile
++WATER = new AnimatedTile(3, new int[][] { { 0, 4 }, { 1, 4 }, { 2, 4 } }, Colors.get(-1, 004, 115, -1), 0xFF0000FF, 500, 1, 1): Tile
++ROAD = new BasicTile(4, 5, 0, Colors.get(-1, 300, 400, -1), 0xFFA52A2A, 1, 1): Tile
++WHEAT = new AnimatedTile(5, new int[][] { { 3, 4 }, { 5, 4 } }, Colors.get(-1, 131, 550, -1), 0xFFFFFF00, 700, 1, 1): Tile
++MOUNTAIN1 = new BasicSolidTile(6, 0, 2, Colors.get(020, 110, 020, 555), 0xFFFF0000, 2, 2): Tile
++MOUNTAIN2 = new BasicSolidTile(7, 1, 2, Colors.get(020, 110, 020, 555), 0xFFFF0000, 2, 2): Tile
++MOUNTAIN3 = new BasicSolidTile(8, 2, 2, Colors.get(-1, 110, 020, 555), 0xFFFF0000, 2, 2): Tile
++MOUNTAIN4 = new BasicSolidTile(9, 3, 2, Colors.get(-1, 110, 020, 555), 0xFFFF0000, 2, 2): Tile
++Tree1 = new BasicSolidTile(10, 4, 2, Colors.get(131, 121, 110, 500), 0xFF009600, 2, 2): Tile
++Tree2 = new BasicSolidTile(11, 5, 2, Colors.get(131, 121, 110, 500), 0xFF009600, 2, 2): Tile
++Tree3 = new BasicSolidTile(12, 6, 2, Colors.get(131, 121, 110, 500), 0xFF009600, 2, 2): Tile
++Tree4 = new BasicSolidTile(13, 7, 2, Colors.get(131, 121, 110, 500), 0xFF009600, 2, 2): Tile
++HOUSE = new BasicSolidTile(14, 6, 0, Colors.get(-1, 311, 411, -1), 0xFFD2B48C, 1, 1): Tile
++ROOF = new BasicSolidTile(15, 1, 0, Colors.get(-1, 211, -1, -1), 0xFF310C0C, 1, 1): Tile
++DOOR = new BasicSolidTile(16, 1, 0, Colors.get(-1, 211, -1, -1), 0xFFC73627, 1, 1): Tile
++DOORNOB = new BasicSolidTile(17, 7, 0, Colors.get(211, -1, -1, 555), 0xFFFFA500, 1, 1): Tile
++BoarderTop = new BasicSolidTile(18, 8, 0, Colors.get(002, 005, -1, -1), 0xFF000020, 1, 1): Tile
++BoarderBottom = new BasicSolidTile(19, 9, 0, Colors.get(002, 005, -1, -1), 0xFF000040, 1, 1): Tile
++BoarderRight = new BasicSolidTile(20, 11, 0, Colors.get(002, 005, -1, -1), 0xFF000060, 1, 1): Tile
++BoarderLeft = new BasicSolidTile(21, 10, 0, Colors.get(002, 005, -1, -1), 0xFF000080, 1, 1): Tile
++BoarderCorner1 = new BasicSolidTile(22, 12, 0, Colors.get(002, 005, -1, -1), 0xFF0000A0, 1, 1): Tile
++BoarderCorner2 = new BasicSolidTile(23, 13, 0, Colors.get(002, 005, -1, -1), 0xFF0000E0, 1, 1): Tile
++BoarderCorner3 = new BasicSolidTile(24, 14, 0, Colors.get(002, 005, -1, -1), 0xFF0000F0, 1, 1): Tile
++BoarderCorner4 = new BasicSolidTile(25, 15, 0, Colors.get(002, 005, -1, -1), 0xFF0000C0, 1, 1): Tile
+#id: byte
+#solid: boolean
+#emitter: boolean
+-levelColor: int
+#isBig = false: boolean
+#width: int
+#height: int
+--
++Tile(int id, boolean isSolid, boolean isEmitter, int levelColor, int width, int height): ctor
++getId(): byte
++isSolid(): boolean
++isEmitter(): boolean
++getLevelColor(): int
++getWidth(): int
++getHeight(): int
++tick(): void
++render(Screen screen, Level level, int x, int y): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>212</x>
+      <y>436</y>
+      <w>184</w>
+      <h>92</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>440.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>488</x>
+      <y>436</y>
+      <w>144</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;340.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>312</y>
+      <w>16</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>196</x>
+      <y>184</y>
+      <w>144</w>
+      <h>236</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;430.0;340.0;570.0</additional_attributes>
+  </element>
+</diagram>

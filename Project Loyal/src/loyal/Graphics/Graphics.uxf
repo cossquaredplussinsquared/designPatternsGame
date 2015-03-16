@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.2">
-  <zoom_level>6</zoom_level>
+<diagram program="umlet" version="13.1">
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>552</x>
-      <y>336</y>
-      <w>204</w>
-      <h>54</h>
+      <x>30</x>
+      <y>40</y>
+      <w>330</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>loyal.Graphics::Colors
 --
@@ -21,10 +21,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>156</x>
-      <y>378</y>
-      <w>378</w>
-      <h>54</h>
+      <x>430</x>
+      <y>30</y>
+      <w>620</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>loyal.Graphics::Font
 --
@@ -38,10 +38,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>372</x>
-      <y>114</y>
-      <w>282</w>
-      <h>174</h>
+      <x>530</x>
+      <y>150</y>
+      <w>460</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>loyal.Graphics::Screen
 --
@@ -66,10 +66,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>156</y>
-      <w>120</w>
-      <h>90</h>
+      <x>130</x>
+      <y>230</y>
+      <w>210</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>loyal.Graphics::SpriteSheet
 --
@@ -86,34 +86,12 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>282</x>
-      <y>198</y>
-      <w>102</w>
-      <h>18</h>
+      <x>330</x>
+      <y>280</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>342</x>
-      <y>282</y>
-      <w>72</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;160.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>636</x>
-      <y>396</y>
-      <w>60</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>Unsure of exact use location</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
   </element>
 </diagram>
