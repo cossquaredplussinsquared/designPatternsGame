@@ -1,5 +1,6 @@
 package loyal.level;
 
+import loyal.LevelInitializer;
 import loyal.Loyal;
 import loyal.Battle.BattleAI;
 import loyal.Battle.BattleController;
@@ -11,6 +12,8 @@ public class SwitchBattleController implements Decision {
 
 	@Override
 	public void update() {
+		otherController.setBattle(game.currentBattle.getBattle());
+		otherController.setMenu(LevelInitializer.BATTLE);
 		BattleController temp = game.currentBattle;
 		game.currentBattle = this.otherController ;
 		otherController = temp;

@@ -46,24 +46,19 @@ public class BattleLevel extends Level {
 	}
 
 	public int getIndex() {
-		/*
-		 * if(entities.get(0).getPosition()) {
-		 * 
-		 * }
-		 */
 
-		return -1;
+		return ((Pointer)entities.get(0)).getPosition();
 	}
 
-	// TESTING
-	@Override
-	public String inputRun(InputHandler input){
-		super.inputRun(input);
-		System.out.println(((Pointer)entities.get(0)).getPosition());
-		if(input.enter.isPressed()){
-			((BattleCharacters)entities.get(((Pointer)entities.get(0)).getPosition())).attack = true;
-		}
-		
-		return "";
-	}
+//	// TESTING
+//	@Override
+//	public String inputRun(InputHandler input){
+//		super.inputRun(input);
+//		System.out.println(((Pointer)entities.get(0)).getPosition());
+//		if(input.enter.isPressed()){
+//			((BattleCharacters)entities.get(((Pointer)entities.get(0)).getPosition())).attack = true;
+//		}
+//		
+//		return "";
+//	}
 }

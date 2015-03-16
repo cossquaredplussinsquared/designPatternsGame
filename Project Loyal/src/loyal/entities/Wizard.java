@@ -7,9 +7,9 @@ import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
 
-public class Wizzard extends PlayingCharacter
+public class Wizard extends PlayingCharacter
 {
-	public Wizzard(String name, CharacterType type)
+	public Wizard(String name, CharacterType type)
 	{
 		super(name, type);
 		state.setStat(Stat.HEALTH, 900);

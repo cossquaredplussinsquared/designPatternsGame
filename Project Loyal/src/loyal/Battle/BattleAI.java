@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import loyal.Battle.Actions.AbilityType;
 import loyal.Battle.Actions.CharacterAction;
+import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.PlayingCharacter;
 import loyal.level.BattleLevel;
 import loyal.level.DecisionFactory;
@@ -15,7 +16,7 @@ public class BattleAI implements BattleController {
 	private String[] State = new String[] { "Player", "Waiting", "Attack",
 			"Waiting", "Target" };
 	private BattleLevel battleMenu;
-	private int i = 0;
+	private int i = 0, index = 0;
 
 	@Override
 	public void setMenu(BattleLevel menu) {
@@ -29,14 +30,15 @@ public class BattleAI implements BattleController {
 
 	@Override
 	public void tick() {
-		int index = -1;
+		
+		currentBattle.startBattle();
 
 		// index = battleMenu.checkIndex();
 		if (!currentBattle.isPlayerTurn()) {
 			DecisionFactory.SWITCHBATTLECONTROLLER.update();
 			return;
 		}
-		while (State.length > i) {
+
 			if (State[i].equals("Waiting")) {
 			}
 			if (State[i].equals("Player")) {
@@ -54,34 +56,33 @@ public class BattleAI implements BattleController {
 						.random());
 				currentBattle.setTargetAndTriggerAction(index);
 			}
-		}
 
 	}
 
-	// checks to remove any dead sprites
 	@Override
-	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers,
-			ArrayList<PlayingCharacter> activeEnemies) {
-		for (PlayingCharacter e : activePlayers) {
-			if (e.isDead()) {
-				// remove sprite from screen
-			} else {
-				// output names/health of those alive
-			}
+	public void updateBattleView() {
+		ArrayList<String> playerVal = new ArrayList<String>(), enemyVal = new ArrayList<String>();
+		
+		for (PlayingCharacter e : currentBattle.getActivePlayers("thing")) {
+			playerVal.add(e.getName() + " " + e.getState().getStat(Stat.HEALTH));
 		}
 
-		for (PlayingCharacter e : activeEnemies) {
-			if (e.isDead()) {
-
-				// remove sprite from screen
-			} else {
-				// output names/health of those alive
-			}
+		for (PlayingCharacter e : currentBattle.getActiveEnemies("thing")) {
+			enemyVal.add(e.getName() + " " + e.getState().getStat(Stat.HEALTH));
 		}
+		
+		battleMenu.setEnemyName(enemyVal);
+		battleMenu.setPlayerName(playerVal);
 	}
 
 	@Override
 	public void advanceState() {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public Battle getBattle() {
+		// TODO Auto-generated method stub
+		return currentBattle;
 	}
 }

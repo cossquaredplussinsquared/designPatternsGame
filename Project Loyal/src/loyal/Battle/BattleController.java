@@ -12,12 +12,12 @@ public interface BattleController {
 	
 	public void tick();
 			
-	public void updateBattleView(ArrayList<PlayingCharacter> activePlayers, 
-			ArrayList<PlayingCharacter> activeEnemies);
+	public void updateBattleView();
 
 	void setBattle(Battle currentBattle);
 	
 	void advanceState();
+	Battle getBattle();
 	
 // needs to be more
 	

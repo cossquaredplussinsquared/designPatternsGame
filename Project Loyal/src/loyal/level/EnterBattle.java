@@ -3,9 +3,11 @@ package loyal.level;
 
 import loyal.LevelInitializer;
 import loyal.Loyal;
+import loyal.Battle.Battle;
 import loyal.Battle.BattleMenu;
 import loyal.Graphics.Colors;
 import loyal.entities.BattleCharacters;
+import loyal.entities.GeneratorOfParties;
 import loyal.entities.Pointer;
 
 public class EnterBattle implements Decision
@@ -43,8 +45,12 @@ public class EnterBattle implements Decision
 	
 	public void addBattleParticipants()
 	{
-		//game.currentBattle = new BattleMenu();
-		
+		GeneratorOfParties gen = new GeneratorOfParties();
+		Battle bat = new Battle(gen.generateParty(), gen.generateEnemyParty());
+		game.currentBattle = new BattleMenu();
+
+		game.currentBattle.setBattle(bat);
+		game.currentBattle.setMenu(LevelInitializer.BATTLE);
 		pointer = new Pointer(game.level, "pointer", 16, 240, 16, 240, 296, game);
 		game.level.addEntity(0, pointer);
 		

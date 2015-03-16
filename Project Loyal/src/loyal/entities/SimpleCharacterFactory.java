@@ -12,7 +12,7 @@ public class SimpleCharacterFactory {
 		PlayingCharacter character = null;
 		if(type.equals(CharacterType.WIZZARD))
 		{
-			character = new Wizzard(name, type);
+			character = new Wizard(name, type);
 		}
 		
 		else if (type.equals(CharacterType.WARRIOR))

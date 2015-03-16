@@ -23,7 +23,7 @@ public class LevelInitializer {
 	public static final Level STARTMENU = new Level(3, "/Levels/menu.png",
 			Sound.MenuMusic);
 	
-	public static final Level BATTLE = new BattleLevel(4, "/Levels/BattleMap.png", Sound.BattleMusic);
+	public static final BattleLevel BATTLE = new BattleLevel(4, "/Levels/BattleMap.png", Sound.BattleMusic);
 
 	private Loyal game;
 

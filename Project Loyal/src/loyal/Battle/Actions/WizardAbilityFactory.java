@@ -3,7 +3,7 @@ package loyal.Battle.Actions;
 
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
-import loyal.entities.Wizzard;
+import loyal.entities.Wizard;
 
 public class WizardAbilityFactory implements AbilityFactory
 {
@@ -16,7 +16,7 @@ public class WizardAbilityFactory implements AbilityFactory
 	
 	public WizardAbilityFactory()
 	{
-		this.playingCharacter = new Wizzard("", CharacterType.WIZZARD);
+		this.playingCharacter = new Wizard("", CharacterType.WIZZARD);
 		darkOrb = new DarkOrbOffensiveSingleTargetAbility(playingCharacter);
 		soulArrow = new SoulArrowOffensiveSingleTarget(playingCharacter);
 		soulShower = new SoulShowerMultiTargetOffensiveAbility(playingCharacter);
