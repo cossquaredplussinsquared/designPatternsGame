@@ -19,7 +19,7 @@ public class AirSlashSingleTargetOffenSiveAbility extends SingleTargetOffensiveA
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
+	public void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
 		damage += baseValue + perLevel + level;

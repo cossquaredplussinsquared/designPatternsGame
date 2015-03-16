@@ -20,7 +20,7 @@ public class SharpEyeDefensiveSingleTargetAbility extends SingleTargetDefensiveA
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> arrayOfTargets)
+	public void applyAbility(ArrayList<PlayingCharacter> arrayOfTargets)
 	{	
 		
 		for(int i = 0; i < arrayOfTargets.size(); i++)

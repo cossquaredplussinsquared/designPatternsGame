@@ -20,7 +20,7 @@ public class LightningSpearOffensiveSingleTarget extends SingleTargetOffensiveAb
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
+	public void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.MAGICPOWER) * scaling;
 		damage += baseValue + perLevel + level;

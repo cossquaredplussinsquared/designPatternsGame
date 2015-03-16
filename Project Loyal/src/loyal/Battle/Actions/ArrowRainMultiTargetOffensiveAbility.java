@@ -20,7 +20,7 @@ public class ArrowRainMultiTargetOffensiveAbility extends MultiTargetOffensiveAb
 	}
 
 	@Override
-	protected void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
+	public void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.DEXTERITY) * scaling 
 			      + playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;

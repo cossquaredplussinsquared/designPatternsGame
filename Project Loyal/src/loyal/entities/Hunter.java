@@ -11,7 +11,7 @@ public class Hunter extends PlayingCharacter
 	public Hunter(String name, CharacterType type)
 	{
 		super(name, type);
-		state.setStat(Stat.HEALTH, 110);
+		state.setStat(Stat.HEALTH, 1000);
 		state.setStat(Stat.MANA, 70);
 		state.setStat(Stat.STRENGTH, 110);
 		state.setStat(Stat.MAGICPOWER, 30);

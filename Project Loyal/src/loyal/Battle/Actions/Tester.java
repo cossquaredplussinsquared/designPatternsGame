@@ -92,8 +92,29 @@ public class Tester
 		System.out.println("the health of the cleric after attak is:" +
 				clericCharacter.getState().getStat(Stat.HEALTH));
 				
-				System.out.println("the health of the cleric after attak is:" +
+		System.out.println("the health of the cleric after attak is:" +
 						testCharacter.getState().getStat(Stat.HEALTH));
+		
+		System.out.println("the health of the warrior after performing desperate move is: " +
+				WorrierCharacter.getState().getStat(Stat.HEALTH));
+		
+		PlayingCharacter ClericCharacter = store.orderCharacter("Warrior", CharacterType.CLERIC);
+		
+		ClericAbilityFactory clericAbilityFactory = new ClericAbilityFactory();
+		
+		Ability lightningSpear = clericAbilityFactory.createCharacterAction("lightning spear", ClericCharacter);
+		
+		ClericCharacter.addAction(lightningSpear);
+		
+		ArrayList<PlayingCharacter> ClericTargets = new ArrayList<PlayingCharacter>();
+		
+		ClericTargets.add(WorrierCharacter);
+		
+		System.out.println("Warrior health before lightning attack: " + WorrierCharacter.getState().getStat(Stat.HEALTH));
+		
+		ClericCharacter.getActions().get(0).applyAbility(ClericTargets);
+		
+		System.out.println("Warrior health after lightning attack: " + WorrierCharacter.getState().getStat(Stat.HEALTH));
 		
 		
 	}
