@@ -1,11 +1,17 @@
 
+
 package loyal.level;
+
+import java.util.ArrayList;
 
 import loyal.LevelInitializer;
 import loyal.Loyal;
+import loyal.Battle.Battle;
 import loyal.Battle.BattleMenu;
 import loyal.Graphics.Colors;
 import loyal.entities.BattleCharacters;
+import loyal.entities.GeneratorOfParties;
+import loyal.entities.MenuItems;
 import loyal.entities.Pointer;
 
 public class EnterBattle implements Decision
@@ -43,10 +49,17 @@ public class EnterBattle implements Decision
 	
 	public void addBattleParticipants()
 	{
-		//game.currentBattle = new BattleMenu();
-		
+		GeneratorOfParties gen = new GeneratorOfParties();
+		Battle bat = new Battle(gen.generateParty(), gen.generateEnemyParty());
+		game.currentBattle = new BattleMenu();
+
+		game.currentBattle.setBattle(bat);
+		game.currentBattle.setMenu(LevelInitializer.BATTLE);
 		pointer = new Pointer(game.level, "pointer", 16, 240, 16, 240, 296, game);
 		game.level.addEntity(0, pointer);
+		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0));
+		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0));
+		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0));
 		
 		BattleCharacters battleCharacter = new BattleCharacters(game.level, 16, 180, new int[] {color}, false);
 		BattleCharacters battleCharacter1 = new BattleCharacters(game.level, 16, 130, new int[] {color}, false);
@@ -76,4 +89,3 @@ public class EnterBattle implements Decision
 		
 	}
 }
-

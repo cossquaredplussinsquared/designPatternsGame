@@ -20,7 +20,7 @@ public class Battle {
 	private CharacterAction action;
 	private ArrayList<PlayingCharacter> targets;
 
-	private Battle(ArrayList<PlayingCharacter> activePlayers,
+	public Battle(ArrayList<PlayingCharacter> activePlayers,
 			ArrayList<PlayingCharacter> activeEnemies) {
 		this.activeEnemies = activeEnemies;
 		this.activePlayers = activePlayers;
@@ -127,6 +127,9 @@ public class Battle {
 	public ArrayList<String> getActivePlayers() {
 		return getPlayerNames(activePlayers);
 	}
+	public ArrayList<PlayingCharacter> getActivePlayers(String temp){
+		return activePlayers;
+	}
 
 	public ArrayList<String> getActiveEnemies() {
 		return getPlayerNames(activeEnemies);
@@ -134,5 +137,10 @@ public class Battle {
 
 	public boolean isPlayerTurn() {
 		return playersTurn;
+	}
+
+	public ArrayList<PlayingCharacter> getActiveEnemies(String string) {
+		// TODO Auto-generated method stub
+		return activeEnemies;
 	}
 }
