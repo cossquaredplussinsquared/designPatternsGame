@@ -7,6 +7,7 @@ import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
 import loyal.entities.CharacterStore;
+import loyal.entities.GeneratorOfParties;
 import loyal.entities.SimpleCharacterFactory;
 import loyal.entities.Warrior;
 import loyal.entities.Wizzard;
@@ -115,6 +116,29 @@ public class Tester
 		ClericCharacter.getActions().get(0).applyAbility(ClericTargets);
 		
 		System.out.println("Warrior health after lightning attack: " + WorrierCharacter.getState().getStat(Stat.HEALTH));
+		
+		GeneratorOfParties partyGenerator = new GeneratorOfParties();
+		
+		ArrayList<PlayingCharacter> party = partyGenerator.generateParty();
+		
+		PlayingCharacter warriorCharacter = store.orderCharacter("TestCharacterWarrior", CharacterType.WARRIOR);
+		
+		
+		System.out.println("before desperate move");
+		
+		for(int i = 0; i < party.size(); i++)
+		{
+			System.out.println(party.get(i).getName() + " health is: "+ party.get(i).getState().getStat(Stat.HEALTH));
+		}
+		
+		desperateMove.applyAbility(party);
+		
+		System.out.println("after desperate move");
+		
+		for(int i = 0; i < party.size(); i++)
+		{
+			System.out.println(party.get(i).getName() + " health is: "+ party.get(i).getState().getStat(Stat.HEALTH));
+		}
 		
 		
 	}
