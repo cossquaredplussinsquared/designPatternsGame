@@ -36,5 +36,10 @@ public class MenuItems extends Entity {
 		// TODO Auto-generated method stub
 		return "";
 	}
+	
+	public int getStart()
+	{
+		return start;
+	}
 
 }

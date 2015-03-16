@@ -12,8 +12,14 @@ public class BattleCharacters extends Entity
 {
 	
 	private int tickCount = 0;
-	private int scale = 2;
+	private int scale = 1;
 	int[] colors;
+	private boolean attack = true;
+	private int xTile = 0;
+	private int yTile = 20;
+	private int counter = 0;
+	private int direction = 0;
+	private int jumpOffset = 0;
 	
 	public BattleCharacters(Level level, int x, int y, int[] colors)
 	{
@@ -26,14 +32,88 @@ public class BattleCharacters extends Entity
 	@Override
 	public void tick()
 	{
+		if(attack == true)
+		{
+			if(direction == 0)
+			{
+				xTile+=4;
+				direction=1;
+				counter+=4;
+				this.x+=4;
+				this.y--;
+			}
+			else if(direction == 1 && counter < 220)
+			{
+				counter+=4;
+				this.x+=4;
+				if(counter%40 == 0)
+				{
+					this.y = this.y - 2;
+				}	
+			}
+			
+			else if(direction == 1 && counter >= 220 && counter < 440)
+			{
+				counter+=4;
+				this.x+=4;
+				if(counter%40 == 0)
+				{
+					this.y = this.y + 2;
+				}	
+			}
+			
+			
+			else if(direction == 1 && counter == 440)
+			{
+				direction = 2;
+				counter-=4;
+				this.x-=4;
+				if(counter%40 == 0)
+				{
+					this.y = this.y - 2;
+				}	
+				xTile-=4;
+			}
+			
+			else if(direction == 2 && counter >=220 && counter < 440)
+			{
+				counter-=4;
+				this.x-=4;
+				if(counter%40 == 0)
+				{
+					this.y = this.y - 2;
+				}	
+			}
+			
+			else if(direction == 2 && counter < 220 && counter > 0)
+			{
+				counter-=4;
+				this.x-=4;
+				if(counter%40 == 0)
+				{
+					this.y = this.y + 2;
+				}	
+			}
+			
+			else if(direction == 2 && counter == 0)
+			{
+				direction = 0;
+				attack = false;
+				xTile-=4;
+			}
+			
+			if(direction == 1 && counter == 344)
+			{
+				xTile+=4;
+			}
+		}
 		tickCount++;
 	}
 
 	@Override
 	public void render(Screen screen)
 	{
-		int xTile = 0;
-		int yTile = 20;
+		
 
 		int modifier = 8 * scale;
 		int xOffset = x - modifier / 2;

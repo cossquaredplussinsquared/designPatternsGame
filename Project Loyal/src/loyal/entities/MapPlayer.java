@@ -142,7 +142,7 @@ public class MapPlayer extends Mob {
 
 		}
 		if (input.shift.isPressed() && canRun == true) {
-			this.speed = 2;
+			this.speed = 4;
 			this.walkingSpeed = 3;
 			runCheck = true;
 			stamina--;
