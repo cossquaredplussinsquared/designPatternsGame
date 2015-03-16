@@ -1,4 +1,5 @@
 
+
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ import loyal.Battle.Characters.PlayingCharacter;
 import loyal.entities.CharacterStore;
 import loyal.entities.GeneratorOfParties;
 import loyal.entities.SimpleCharacterFactory;
+import loyal.entities.Warrior;
+import loyal.entities.Wizard;
 
 public class Tester
 {
@@ -27,7 +30,7 @@ public class Tester
 		
 		PlayingCharacter targetCharacter = store.orderCharacter("TestCharacterWarrior", CharacterType.WARRIOR);
 		
-		WizardAbilityFactory wizzardAbilityFactory = new WizardAbilityFactory();
+		WizzardAbilityFactory wizzardAbilityFactory = new WizzardAbilityFactory();
 		
 		Ability darkOrb = wizzardAbilityFactory.createCharacterAction("dark orb", testCharacter);
 		
@@ -138,9 +141,27 @@ public class Tester
 			System.out.println(party.get(i).getName() + " health is: "+ party.get(i).getState().getStat(Stat.HEALTH));
 		}
 		
+		System.out.println();
 		
+		ArrayList<PlayingCharacter> partyThatHasAbilities = partyGenerator.generateParty();
+		
+		ArrayList<PlayingCharacter> partyThatHasAbilitiesTarget = partyGenerator.generateParty();
+		
+		for(int i = 0; i < partyThatHasAbilitiesTarget.size(); i++)
+		{
+			System.out.println(partyThatHasAbilities.get(i).getName() + " health is: "+ partyThatHasAbilitiesTarget.get(i).getState().getStat(Stat.HEALTH));
+		}
+		
+		CharacterAction ability = partyThatHasAbilities.get(0).getActions().get(3);
+		ability.applyAbility(partyThatHasAbilitiesTarget);
+		
+		System.out.println();
+		
+		for(int i = 0; i < partyThatHasAbilitiesTarget.size(); i++)
+		{
+			System.out.println(partyThatHasAbilitiesTarget.get(i).getName() + " health is: "+ partyThatHasAbilitiesTarget.get(i).getState().getStat(Stat.HEALTH));
+		}
 	}
 
 }
-
 

@@ -6,7 +6,7 @@ import loyal.Battle.Characters.CharacterType;
 import loyal.Battle.Characters.PlayingCharacter;
 import loyal.entities.Wizard;
 
-public class WizardAbilityFactory implements AbilityFactory
+public class WizzardAbilityFactory implements AbilityFactory
 {
 
 	protected DarkOrbOffensiveSingleTargetAbility darkOrb;
@@ -15,7 +15,7 @@ public class WizardAbilityFactory implements AbilityFactory
 	protected MagicShieldDefensiveSingleTargetAbility magicShield;
 	protected PlayingCharacter playingCharacter;
 	
-	public WizardAbilityFactory()
+	public WizzardAbilityFactory()
 	{
 		this.playingCharacter = new Wizard("", CharacterType.WIZZARD);
 		darkOrb = new DarkOrbOffensiveSingleTargetAbility(playingCharacter);
