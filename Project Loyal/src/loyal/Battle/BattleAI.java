@@ -5,25 +5,41 @@ import java.util.ArrayList;
 import loyal.Battle.Actions.AbilityType;
 import loyal.Battle.Actions.CharacterAction;
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.level.BattleLevel;
+import loyal.level.DecisionFactory;
 import loyal.level.Level;
 
 public class BattleAI implements BattleController {
 	
-	private Level temp;
+	private BattleLevel battleMenu;
 	private PlayingCharacter player = null;
 	private ArrayList<CharacterAction> attacks = null;
 	private ArrayList<PlayingCharacter> target = null;
 	private CharacterAction attack = null;
+	private Battle currentBattle;
 
 	@Override
-	public void setMenu(Level menu) {
-		this.temp = menu;		
+	public void setMenu(BattleLevel menu) {
+		this.battleMenu = menu;		
 	}
-
+	
 	@Override
-	public void tick(ArrayList<PlayingCharacter> activePlayers, ArrayList<PlayingCharacter> activeEnemies) {
+	public void setBattle(Battle currentBattle){
+		this.currentBattle = currentBattle;
+	}
+	
+	
+	@Override
+	public void tick() {
 		int index = -1;
+		ArrayList<PlayingCharacter> activePlayers = currentBattle.getActivePlayers();
+		ArrayList<PlayingCharacter> activeEnemies = currentBattle.getActiveEnemies();
 		
+		if(currentBattle.isPlayerTurn()){
+			DecisionFactory.SWITCHBATTLECONTROLLER.update();
+			return;
+		}
+	
 		if (player == null)
 		{
 			do
@@ -34,7 +50,7 @@ public class BattleAI implements BattleController {
 			index = -1;
 		}
 		
-		attacks = Battle.getAttack(player);
+		//attacks = Battle.getAttack(player);
 		
 		if (attack == null)
 		{
@@ -94,7 +110,6 @@ public class BattleAI implements BattleController {
 		{
 			if (e.isDead())
 			{
-				
 			//remove sprite from screen
 			}
 			else

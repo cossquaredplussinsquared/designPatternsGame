@@ -3,66 +3,43 @@ package loyal.Battle;
 
 import java.util.ArrayList;
 
+import loyal.Battle.Actions.CharacterAction;
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.level.BattleLevel;
+import loyal.level.DecisionFactory;
 import loyal.level.Level;
-import loyal.Battle.Actions.*;
 
 public class BattleMenu implements BattleController { 
 	
-	private Level temp;
+	private BattleLevel battleMenu;
+	private Battle currentBattle;
 	private PlayingCharacter player = null;
-	private ArrayList<CharacterAction> attacks = null;
+	private ArrayList<String> attacks = null;
 	private ArrayList<PlayingCharacter> target = null;
 	private CharacterAction attack = null;
+	private String State = "Starting";
 	
 	@Override
-	public void setMenu(Level menu) {
-		this.temp = menu;		
+	public void setMenu(BattleLevel menu) {
+		this.battleMenu = menu;		
+	}
+	@Override
+	public void setBattle(Battle currentBattle){
+		this.currentBattle = currentBattle;
 	}
 
 	@Override
-	public void tick(ArrayList<PlayingCharacter> activePlayers, ArrayList<PlayingCharacter> activeEnemies) {
+	public void tick() {
 		int index = -1;
 		
-		if (player == null)
-		{
-			while (index == -1)
-				index = getIndex(activePlayers);
-			index = -1;
+		if(!currentBattle.isPlayerTurn()){
+			DecisionFactory.SWITCHBATTLECONTROLLER.update();
+			return;
 		}
 		
-		attacks = Battle.getAttack(player);
-		
-		if (attack == null)
-		{
-			while (attack == null)
-				attack = getAttack(attacks);
-		}
-
-		if (target == null)
-		{
-			if (attack.getAbilityType() == AbilityType.OFFENSIVE)
-			{
-				while (index == -1)
-				index = getIndex(activeEnemies);
+		if(State.equals("Starting")){
 			
-				target.add(activeEnemies.get(index));
-			}
-			
-			else
-			{
-				while (index == -1)
-					index = getIndex(activePlayers);
-				
-				target.add(activePlayers.get(index));
-				index = -1;
-			}
-				
-			index = -1;
 		}
-		
-		player.setTargets(target);
-		updateBattleView(activePlayers, activeEnemies);
 	}
 
 	private CharacterAction getAttack(ArrayList<CharacterAction> attacks) {

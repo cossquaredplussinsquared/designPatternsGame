@@ -85,14 +85,12 @@ public class LevelInitializer {
 		menuItems.add("Option");
 		menuItems.add("Quit");
 
-
 		Entity player = new Pointer(game.level, "pointer", 20, 100, 16, 100, 148,
 				game);
 		Entity menu = new MenuItems(game.level, menuItems, 100);
 		game.level.addEntity(player);
 		game.level.addEntity(menu);
-		
-		
+
 		game.level.music.loop();
 	}
 	

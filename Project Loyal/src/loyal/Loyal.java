@@ -10,6 +10,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import loyal.Battle.BattleController;
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
 import loyal.level.DecisionFactory;
@@ -38,11 +39,11 @@ public class Loyal extends Canvas implements Runnable {
 			.getData();
 	private int[] colors = new int[6 * 6 * 6];
 	private Screen screen;
+	
+	public BattleController currentBattle;
 
 	public InputHandler input;
 	public Level level;
-
-//keep ^ 
 
 	public Loyal() {
 		setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -143,6 +144,9 @@ public class Loyal extends Canvas implements Runnable {
 	public void tick() {
 		tickCount++;
 		level.tick();
+		if(currentBattle != null){
+			currentBattle.tick();
+		}
 		inputRun();
 	}
 

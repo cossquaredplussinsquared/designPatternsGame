@@ -4,7 +4,11 @@ import loyal.Loyal;
 
 public class DecisionFactory
 {
-	public static final EnterBattle ENTERBATTLE = new EnterBattle();
+	public static final Decision ENTERBATTLE = new EnterBattle();
+
+	public static final Decision SWITCHBATTLECONTROLLER = new SwitchBattleController();
+	
+	public static final Decision EDGECOLLISIONDECITION = new EdgesCollisionDecision();
 	
 	private Loyal game;
 	
@@ -16,6 +20,8 @@ public class DecisionFactory
 	public void init()
 	{
 		ENTERBATTLE.setGame(game);
+		SWITCHBATTLECONTROLLER.setGame(game);
+		EDGECOLLISIONDECITION.setGame(game);
 	}
 
 }

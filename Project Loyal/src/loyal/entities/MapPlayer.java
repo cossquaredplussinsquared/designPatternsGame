@@ -4,6 +4,8 @@ import loyal.InputHandler;
 import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
+import loyal.level.Decision;
+import loyal.level.DecisionFactory;
 import loyal.level.EdgesCollisionDecision;
 import loyal.level.Level;
 
@@ -160,12 +162,10 @@ public class MapPlayer extends Mob {
 		if (xa != 0 || ya != 0) {
 			move(xa, ya);
 			isMoving = true;
-			// /TESTING REMOVE
-			level.currentDecision = new EdgesCollisionDecision();
-			level.currentDecision.setGame(game);
-			// /TESTING REMOVE
-			if (0 != level.newLevelIdentifier(this.x, this.y))
-				level.spawnNewLevel();
+			if (0 != level.newLevelIdentifier(this.x, this.y)){
+				DecisionFactory.EDGECOLLISIONDECITION.sync();
+				DecisionFactory.EDGECOLLISIONDECITION.update();
+			}
 
 		} else {
 			isMoving = false;
