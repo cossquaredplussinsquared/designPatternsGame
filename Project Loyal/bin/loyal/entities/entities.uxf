@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>561</x>
+      <y>129</y>
+      <w>147</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>loyal.entities::BattleCharacters
+--
+-tickCount = 0: int
+-scale = 1: int
+~colors: int[]
++attack = false: boolean
+-xTile = 0: int
+-yTile = 20: int
+-counter = 0: int
+-direction = 0: int
+-jumpOffset = 0: int
+-badGuy = false: boolean
+--
++BattleCharacters(Level level, int x, int y, int[] colors, boolean badGuy): ctor
++tick(): void
++render(Screen screen): void
++inputRun(InputHandler input): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>432</x>
+      <y>24</y>
+      <w>75</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>/loyal.entities::Entity/
+--
+#x, y: int
+#level: Level
+--
++Entity(Level level): ctor
++init(Level level): void
++getX(): int
++getY(): int
++tick(): void
++render(Screen screen): void
++inputRun(InputHandler input): String
++setX(int defaultX): void
++setY(int defaultY): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>261</y>
+      <w>180</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>loyal.entities::MapMoblin
+--
+-color = Colors.get(-1, 000, 500, 555): int
+-scale = 1: int
+-random = new Random(): Random
+#move = 1: int
+#stalkDistance: int
+#decision: Decision
+--
++MapMoblin(Level level, int x, int y, int speed, int stalkDistance): ctor
++hasCollided(int xa, int ya): boolean
+-intBattle(): void
+-playerCheck(): boolean
++tick(): void
++stalk(int stalkDistance): void
++Pathfinder(Tile[][] tiles, int width): int
++pathScoring(int curr, int tile, AStarTile[] AStarTiles, int distance, int width, int end): AStarTile[]
++lowestScore(AStarTile[] AStarTiles, int curr, int width, int end): int
++render(Screen screen): void
++inputRun(InputHandler input): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>279</y>
+      <w>141</w>
+      <h>93</h>
+    </coordinates>
+    <panel_attributes>loyal.entities::MapPlayer
+--
+-StaminaSize = 20000: int
+-color = Colors.get(-1, 200, 020, 321): int
+-color2 = Colors.get(-1, 200, 020, 543): int
+-scale = 1: int
+-tickCount: int
+-game: Loyal
+-walkingSpeed = 4: int
+-stamina = StaminaSize: int
+-runCheck = false: boolean
+-canRun = true: boolean
+--
++MapPlayer(Level level, int x, int y, InputHandler input, Loyal game): ctor
++hasCollided(int xa, int ya): boolean
++tick(): void
++render(Screen screen): void
++inputRun(InputHandler input): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>186</x>
+      <y>171</y>
+      <w>147</w>
+      <h>57</h>
+    </coordinates>
+    <panel_attributes>loyal.entities::MenuItems
+--
+-words: ArrayList&lt;String&gt;
+-startY: int
+-startX: int
+--
++MenuItems(Level level, ArrayList&lt;String&gt; words, int startX, int startY): ctor
++tick(): void
++render(Screen screen): void
++inputRun(InputHandler input): String
++getStart(): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>414</x>
+      <y>120</y>
+      <w>111</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>/loyal.entities::Mob/
+--
+#name: String
+#speed: int
+#numSteps = 0: int
+#isMoving: boolean
+#movingDir = 1: int
+#scale = 1: int
+#position = 1: int
+#direction = 0: int
+#isSwimming = false: boolean
+#tallGrass = false: boolean
+~walkingSpeed = 4: int
+--
++Mob(Level level, String name, int x, int y, int speed): ctor
++move(int xa, int ya): void
++hasCollided(int xa, int ya): boolean
+#isSolidTile(int xa, int ya, int x, int y): boolean
+#isWater(int xa, int ya, int x, int y): boolean
++getName(): String
++tileCheck(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>345</x>
+      <y>291</y>
+      <w>96</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>loyal.entities::NPCMen
+--
+-color = Colors.get(-1, 211, 002, 543): int
+-color2 = Colors.get(-1, 211, 411, 543): int
+-scale = 1: int
+-tickCount: int
+-random = new Random(): Random
+#move = 5: int
+--
++NPCMen(Level level, int x, int y, int speed): ctor
++hasCollided(int xa, int ya): boolean
++tick(): void
++render(Screen screen): void
++inputRun(InputHandler input): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>702</x>
+      <y>255</y>
+      <w>171</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>loyal.entities::Pointer
+--
+-color = Colors.get(-1, -1, -1, 555): int
+-scale = 1: int
+-time = 0: long
+-curTime: long
+-prevTime = System.currentTimeMillis(): long
+-jump: int
+-start: int
+-end: int
+-game: Loyal
+--
++Pointer(Level level, String name, int x, int y, int jump, int start, int end, Loyal game): ctor
++hasCollided(int xa, int ya): boolean
++tick(): void
++decisionStateChange(): void
++getPosition(): int
++render(Screen screen): void
++inputRun(InputHandler input): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>93</y>
+      <w>9</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>93</y>
+      <w>150</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;480.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>237</x>
+      <y>225</y>
+      <w>183</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>590.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>384</x>
+      <y>225</y>
+      <w>75</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>225</y>
+      <w>63</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>225</y>
+      <w>267</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;870.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>93</y>
+      <w>192</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>620.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>642</x>
+      <y>48</y>
+      <w>105</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>Level</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>51</y>
+      <w>144</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>460.0;10.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>111</x>
+      <y>327</y>
+      <w>63</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>51</x>
+      <y>324</y>
+      <w>66</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>Loyal</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>501</x>
+      <y>414</y>
+      <w>87</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>Decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>753</x>
+      <y>411</y>
+      <w>87</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Loyal</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>366</y>
+      <w>12</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;160.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>786</x>
+      <y>351</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

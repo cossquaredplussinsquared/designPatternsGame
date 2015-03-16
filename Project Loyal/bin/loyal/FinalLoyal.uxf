@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.2">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>116</x>
+      <y>0</y>
+      <w>196</w>
+      <h>292</h>
+    </coordinates>
+    <panel_attributes>loyal.level::Level
+--
+-PIXEL_SCALER = 8: int
++tiles: byte[]
++width: int
++height: int
++entities = new ArrayList&lt;Entity&gt;(): List&lt;Entity&gt;
++music: Sound
+-imagePath: String
+-image: BufferedImage
+-id: int
+-decisionMap = new HashMap&lt;String, Decision&gt;(): Map&lt;String, Decision&gt;
++currentDecision: Decision
++hasBeenPlayed = false: boolean
+-defaultY: int
+-defaultX: int
+-exitValuesArray: ArrayList&lt;int[]&gt;
+-LevelChanged: boolean
+--
++Level(int id, String imagePath, Sound music): ctor
+-loadLevelFromFile(): void
+-loadTiles(): void
+-saveLevelToFile(): void
++alterTile(int x, int y, Tile newTile): void
+-generateLevel(): void
++tick(): void
++inputRun(InputHandler input): String
++renderTiles(Screen screen, int xOffset, int yOffset): void
++renderEntities(Screen screen): void
++getTile(int x, int y): Tile
++addEntity(Entity entity): void
++addEntity(int pos, Entity entity): void
++removeEntity(Entity entity): void
++removeEntity(int pos): void
++getEntity(int pos): Entity
++getEntitySize(): int
++spawnNewLevel(): void
++newLevelIdentifier(int x, int y): int
++getId(): int
++setPlayerDefaultX(int X): void
++setPlayerDefaultY(int Y): void
++setExitValues(ArrayList&lt;int[]&gt; exitValuesArray): void
++addExitValueArray(int[] exitValueArray): void
++spawnNewBattleLevel(Entity e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>44</y>
+      <w>256</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>loyal::Loyal
+--
+-serialVersionUID = 1L: long
++WIDTH = 504: int
++HEIGHT = 304: int
++SCALE = 2: int
++NAME = "Loyal": String
++tickCount = 0: int
++running = false: boolean
+-frame: JFrame
+-image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB): BufferedImage
+-pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData(): int[]
+-colors = new int[6 * 6 * 6]: int[]
+-screen: Screen
++currentBattle: BattleController
++input: InputHandler
++level: Level
+--
++Loyal(): ctor
++init(): void
+-colorBasicFill(): void
++start(): void
++stop(): void
++run(): void
+-inputRun(): String
++tick(): void
++render(): void
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>572</y>
+      <w>264</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>loyal.Battle::Battle
+--
+-currentBattle: Battle
+-playerWin = 1, playerEscape = 2, computerWin = 3: int
+-playersTurn = false: boolean
+-playerMenu = new BattleMenu(): BattleController
+-AI = new BattleAI(): BattleController
+-activePlayers, activeEnemies: ArrayList&lt;PlayingCharacter&gt;
+-inactivePlayers, inactiveEnemies: ArrayList&lt;PlayingCharacterCounter&gt;
+-attacker: PlayingCharacter
+-action: CharacterAction
+--
+-Battle(ArrayList&lt;PlayingCharacter&gt; activePlayers, ArrayList&lt;PlayingCharacter&gt; activeEnemies): ctor
++startBattle(): int
++setActivePlayer(int index): void
++getTargets(): ArrayList&lt;String&gt;
+-getPlayerNames(ArrayList&lt;PlayingCharacter&gt; passedIn): ArrayList&lt;String&gt;
+-getActionNames(ArrayList&lt;CharacterAction&gt; passedIn): ArrayList&lt;String&gt;
+-startingTurnDecision(): boolean
+#checkWinner(): int
+-isAlive(ArrayList&lt;PlayingCharacter&gt; characterGroup): int
+-checkAliveParty(): void
+#getAttacks(): ArrayList&lt;String&gt;
+-setAction(int index): void
++getActivePlayers(): ArrayList&lt;PlayingCharacter&gt;
++getActiveEnemies(): ArrayList&lt;PlayingCharacter&gt;
++isPlayerTurn(): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1244</x>
+      <y>128</y>
+      <w>180</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>/loyal.Battle.Characters::PlayingCharacter/
+--
+-name: String
+-targets: ArrayList&lt;PlayingCharacter&gt;
+-actions: ArrayList&lt;CharacterAction&gt;
+-currentAction: CharacterAction
+-allies: ArrayList&lt;PlayingCharacter&gt;
+#state: State
+-type: CharacterType
+--
++PlayingCharacter(String name, CharacterType type): ctor
++getState(): State
++setState(State state): void
++getTargets(): ArrayList&lt;PlayingCharacter&gt;
++setTargets(ArrayList&lt;PlayingCharacter&gt; targets): void
++getActions(): ArrayList&lt;CharacterAction&gt;
++addAction(CharacterAction action): void
++removeActions(ArrayList&lt;CharacterAction&gt; removedActions): void
++setAction(CharacterAction action): void
++getType(): CharacterType
++getAllies(): ArrayList&lt;PlayingCharacter&gt;
++compareTo(PlayingCharacter pi): int
++getCharacterType(): CharacterType
++setType(CharacterType type): void
++getName(): String
++getTartgets(): ArrayList&lt;PlayingCharacter&gt;
++isDead(): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>344</x>
+      <y>416</y>
+      <w>296</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>loyal.Battle::BattleMenu
+--
+-battleMenu: BattleLevel
+-currentBattle: Battle
+-player = null: PlayingCharacter
+-attacks = null: ArrayList&lt;String&gt;
+-target = null: ArrayList&lt;PlayingCharacter&gt;
+-attack = null: CharacterAction
+-State = "Starting": String
+--
++setMenu(BattleLevel menu): void
++setBattle(Battle currentBattle): void
++tick(): void
+-getAttack(ArrayList&lt;CharacterAction&gt; attacks): CharacterAction
++updateBattleView(ArrayList&lt;PlayingCharacter&gt; activePlayers, ArrayList&lt;PlayingCharacter&gt; activeEnemies): void
++getIndex(ArrayList&lt;PlayingCharacter&gt; display): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>656</x>
+      <y>416</y>
+      <w>296</w>
+      <h>92</h>
+    </coordinates>
+    <panel_attributes>loyal.Battle::BattleAI
+--
+-battleMenu: BattleLevel
+-player = null: PlayingCharacter
+-attacks = null: ArrayList&lt;CharacterAction&gt;
+-target = null: ArrayList&lt;PlayingCharacter&gt;
+-attack = null: CharacterAction
+-currentBattle: Battle
+--
++setMenu(BattleLevel menu): void
++setBattle(Battle currentBattle): void
++tick(): void
++updateBattleView(ArrayList&lt;PlayingCharacter&gt; activePlayers, ArrayList&lt;PlayingCharacter&gt; activeEnemies): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1024</x>
+      <y>208</y>
+      <w>116</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>loyal.level::EnterBattle
+--
+-game: Loyal
+~pointer: Pointer
+~battleCharacter: BattleCharacters
+~color = Colors.get(-1, 222, 333, 444): int
+--
++update(): void
+-cleanBattle(): void
++setGame(Loyal game): void
++sync(): void
++addBattleParticipants(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>144</x>
+      <y>404</y>
+      <w>156</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>loyal.entities::BattleCharacters
+--
+-tickCount = 0: int
+-scale = 2: int
+~colors: int[]
+--
++BattleCharacters(Level level, int x, int y, int[] colors): ctor
++tick(): void
++render(Screen screen): void
++inputRun(InputHandler input): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>404</y>
+      <w>136</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>loyal.MenuItems::MenuItem
+--
+~game: Loyal
+~input: InputHandler
+--
++MenuItem(Loyal game, InputHandler input): ctor
++attack(): void
++run(): void
++start(): void
++useitem(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>904</x>
+      <y>96</y>
+      <w>200</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>loyal.level::DecisionFactory
+--
++ENTERBATTLE = new EnterBattle(): Decision
++SWITCHBATTLECONTROLLER = new SwitchBattleController(): Decision
++EDGECOLLISIONDECITION = new EdgesCollisionDecision(): Decision
+-game: Loyal
+--
++DecisionFactory(Loyal game): ctor
++init(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>280</y>
+      <w>296</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+loyal.Battle::BattleController
+--
+--
++setMenu(BattleLevel menu): void
++tick(): void
++updateBattleView(ArrayList&lt;PlayingCharacter&gt; activePlayers, ArrayList&lt;PlayingCharacter&gt; activeEnemies): void
+~setBattle(Battle currentBattle): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>852</x>
+      <y>208</y>
+      <w>136</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>loyal.level::SwitchBattleController
+--
+-game: Loyal
+-otherController = new BattleAI(): BattleController
+--
++update(): void
++sync(): void
++setGame(Loyal game): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>960</x>
+      <y>12</y>
+      <w>84</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+loyal.level::Decision
+--
+--
+~update(): void
+~sync(): void
+~setGame(Loyal game): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>64</x>
+      <y>328</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>loyal.level::BattleLevel
+--
+--
++BattleLevel(int id, String imagePath, Sound music): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>136</x>
+      <y>356</y>
+      <w>92</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;210.0;60.0;210.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>56</x>
+      <y>376</y>
+      <w>92</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>136</x>
+      <y>288</y>
+      <w>72</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;160.0;50.0;10.0;50.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>308</x>
+      <y>160</y>
+      <w>200</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>480.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>996</x>
+      <y>60</y>
+      <w>12</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>156</y>
+      <w>88</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>200.0;10.0;200.0;60.0;10.0;60.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>996</x>
+      <y>176</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;220.0;10.0;220.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>796</x>
+      <y>264</y>
+      <w>120</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;120.0;280.0;120.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>344</y>
+      <w>176</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>420.0;10.0;420.0;130.0;10.0;130.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>644</x>
+      <y>392</y>
+      <w>168</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0;400.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>804</x>
+      <y>316</y>
+      <w>548</w>
+      <h>364</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..4</panel_attributes>
+    <additional_attributes>1330.0;10.0;1330.0;90.0;1000.0;90.0;1000.0;890.0;10.0;890.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>212</x>
+      <y>340</y>
+      <w>168</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0;400.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>376</y>
+      <w>476</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>1170.0;100.0;1170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>528</y>
+      <w>224</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>540.0;110.0;540.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>668</x>
+      <y>504</y>
+      <w>148</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;120.0;350.0;120.0;350.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>752</x>
+      <y>132</y>
+      <w>160</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;380.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>240</y>
+      <w>12</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>4</y>
+      <w>524</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0;1290.0;10.0;1290.0;600.0;1170.0;600.0</additional_attributes>
+  </element>
+</diagram>

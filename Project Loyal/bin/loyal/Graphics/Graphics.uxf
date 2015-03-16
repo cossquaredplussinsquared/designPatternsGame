@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>40</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>loyal.Graphics::Colors
+--
+--
++get(int color1, int color2, int color3, int color4): int
+-get(int color): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>30</y>
+      <w>620</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>loyal.Graphics::Font
+--
+-chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ      " + "0123456789.,:;'\"!?$%()-=+/      ": String
+--
++render(String msg, Screen screen, int x, int y, int color, int scale): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>150</y>
+      <w>460</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>loyal.Graphics::Screen
+--
++MAP_WIDTH = 64: int
++MAP_WIDTH_MASK = MAP_WIDTH - 1: int
++BIT_MIRROR_X = 0x01: byte
++BIT_MIRROR_Y = 0x02: byte
++pixels: int[]
++xOffset = 0: int
++yOffset = 0: int
++width: int
++height: int
++sheet: SpriteSheet
+--
++Screen(int width, int height, SpriteSheet sheet): ctor
++render(int xPos, int yPos, int tile, int color, int mirrorDir, int scale): void
++setOffset(int xOffset, int yOffset): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>130</x>
+      <y>230</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>loyal.Graphics::SpriteSheet
+--
++path: String
++width: int
++height: int
++pixels: int[]
+--
++SpriteSheet(String path): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>280</y>
+      <w>220</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
+  </element>
+</diagram>
