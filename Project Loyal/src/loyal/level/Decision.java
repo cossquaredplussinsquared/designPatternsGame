@@ -7,4 +7,5 @@ public interface Decision {
 	void update();
 	void sync();
 	void setGame(Loyal game);
+	void gameValue(int value);
 }

@@ -11,11 +11,14 @@ import loyal.level.Level;
 public class MenuItems extends Entity {
 
 	private ArrayList<String> words;
-	private int start;
-	public MenuItems(Level level, ArrayList<String> words, int start) {
+	private int startY;
+	private int startX;
+	
+	public MenuItems(Level level, ArrayList<String> words, int startX, int startY) {
 		super(level);
 		this.words = words;
-		this.start = start;
+		this.startX = startX;
+		this.startY = startY;
 	}
 
 	@Override
@@ -27,7 +30,7 @@ public class MenuItems extends Entity {
 	public void render(Screen screen) {
 		for(int i=0; i<this.words.size(); i++)
 		{
-			Font.render(this.words.get(i),screen,x+32,start-8+16*i,Colors.get(-1,-1,-1,555),1);
+			Font.render(this.words.get(i),screen,startX,startY+16*i,Colors.get(-1,-1,-1,555),1);
 		}
 	}
 
@@ -39,7 +42,7 @@ public class MenuItems extends Entity {
 	
 	public int getStart()
 	{
-		return start;
+		return startY;
 	}
 
 }

@@ -10,6 +10,7 @@ import loyal.entities.MapPlayer;
 import loyal.entities.MenuItems;
 import loyal.entities.NPCMen;
 import loyal.entities.Pointer;
+import loyal.level.BattleLevel;
 import loyal.level.Level;
 import loyal.level.tiles.Tile;
 
@@ -19,10 +20,10 @@ public class LevelInitializer {
 			Sound.VillageMusic);
 	public static final Level OVERWORLD = new Level(2,
 			"/Levels/OverWorldMap.png", Sound.OverWorldMusic);
-	public static final Level STARTMENU = new Level(3, "/Levels/test_menu.png",
+	public static final Level STARTMENU = new Level(3, "/Levels/menu.png",
 			Sound.MenuMusic);
 	
-	public static final Level BATTLE = new Level(4, "/Levels/BattleMap.png", Sound.BattleMusic);
+	public static final Level BATTLE = new BattleLevel(4, "/Levels/BattleMap.png", Sound.BattleMusic);
 
 	private Loyal game;
 
@@ -86,9 +87,9 @@ public class LevelInitializer {
 		menuItems.add("Option");
 		menuItems.add("Quit");
 
-		Entity player = new Pointer(game.level, "pointer", 20, 100, 16, 100, 148,
+		Entity player = new Pointer(game.level, "pointer", 216, 200, 16, 200, 248,
 				game);
-		Entity menu = new MenuItems(game.level, menuItems, 100);
+		Entity menu = new MenuItems(game.level, menuItems, 235, 192);
 		game.level.addEntity(player);
 		game.level.addEntity(menu);
 

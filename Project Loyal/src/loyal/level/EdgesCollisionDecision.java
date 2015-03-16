@@ -45,5 +45,11 @@ public class EdgesCollisionDecision implements Decision {
 		this.input = game.input;
 		
 	}
+
+	@Override
+	public void gameValue(int value) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

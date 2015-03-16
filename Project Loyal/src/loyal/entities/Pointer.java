@@ -8,6 +8,7 @@ import loyal.LevelInitializer;
 import loyal.Loyal;
 import loyal.Graphics.Colors;
 import loyal.Graphics.Screen;
+import loyal.level.DecisionFactory;
 import loyal.level.Level;
 
 public class Pointer extends Mob {
@@ -51,10 +52,11 @@ public class Pointer extends Mob {
 				game.level.music.loop();
 			}
 		}else if(level == LevelInitializer.BATTLE){
-			game.level.music.stop();
-			game.level = LevelInitializer.OVERWORLD;
-			game.level.music.loop();
+			DecisionFactory.SWITCHBATTLESTATE.update();
 		}
+	}
+	public int getPosition(){
+		return this.position;
 	}
 
 	public void render(Screen screen) {
@@ -78,14 +80,19 @@ public class Pointer extends Mob {
 
 			if (input.up.isPressed()) {
 				ya = ya - jump;
-				direction++;
+				direction--;
 			}
 			if (input.down.isPressed()) {
 				ya = ya + jump;
-				direction--;
+				direction++;
 			}
 			if (input.enter.isPressed()) {
 				decisionStateChange();
+			}
+			if(input.escape.isPressed()){
+				game.level.music.stop();
+				game.level = LevelInitializer.OVERWORLD;
+				game.level.music.loop();
 			}
 
 			if (xa != 0 || ya != 0) {
