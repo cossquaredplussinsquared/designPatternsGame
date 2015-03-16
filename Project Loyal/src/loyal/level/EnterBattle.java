@@ -43,7 +43,7 @@ public class EnterBattle implements Decision
 	
 	public void addBattleParticipants()
 	{
-		game.currentBattle = new BattleMenu();
+		//game.currentBattle = new BattleMenu();
 		
 		pointer = new Pointer(game.level, "pointer", 16, 240, 16, 240, 296, game);
 		game.level.addEntity(pointer);
