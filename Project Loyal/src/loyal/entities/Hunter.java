@@ -1,3 +1,4 @@
+
 package loyal.entities;
 
 import java.lang.Thread.State;
