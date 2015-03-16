@@ -10,13 +10,13 @@ import loyal.entities.MenuItems;
 import loyal.entities.Pointer;
 
 public class BattleLevel extends Level {
-	final int PLAYERNAMESY = 40;
-	final int ENEMYNAMESY = 50;
-	final int MENUSTARTY = 240;
+	final int PLAYERNAMESY = 20;
+	final int ENEMYNAMESY = 20;
+	final int MENUSTARTY = 232;
 	
-	final int PLAYERNAMESX = 40;
-	final int ENEMYNAMESX = 50;
-	final int MENUSTARTX = 240;
+	final int PLAYERNAMESX = 16;
+	final int ENEMYNAMESX = 440;
+	final int MENUSTARTX = 32;
 
 	public BattleLevel(int id, String imagePath, Sound music) {
 		super(id, imagePath, music);
