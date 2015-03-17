@@ -28,9 +28,9 @@ public class BattleMenu implements BattleController {
 	@Override
 	public void tick() {
 		int winner = currentBattle.startBattle();
-		
+
 		updateBattleView();
-		
+
 		// index = battleMenu.checkIndex();
 		if (!currentBattle.isPlayerTurn()) {
 			DecisionFactory.SWITCHBATTLECONTROLLER.update();
@@ -39,8 +39,10 @@ public class BattleMenu implements BattleController {
 
 		if (State[i].equals("Starting")) {
 			battleMenu.setMenu(currentBattle.getActivePlayers());
+			i++;
 		}
 		if (State[i].equals("Waiting")) {
+			advanceState();
 		}
 		if (State[i].equals("Player")) {
 			if (index < currentBattle.getActivePlayers().size()) {
@@ -62,8 +64,8 @@ public class BattleMenu implements BattleController {
 			else
 				i = 4;
 		}
-		if(winner == 1){
-			
+		if (winner == 1) {
+
 		}
 	}
 
@@ -72,12 +74,13 @@ public class BattleMenu implements BattleController {
 		ArrayList<String> playerVal = new ArrayList<String>(), enemyVal = new ArrayList<String>();
 
 		for (PlayingCharacter e : currentBattle.getActivePlayers("thing")) {
-			playerVal
-					.add(e.getName() + " " + (int)e.getState().getStat(Stat.HEALTH));
+			playerVal.add(e.getName() + " "
+					+ (int) e.getState().getStat(Stat.HEALTH));
 		}
 
 		for (PlayingCharacter e : currentBattle.getActiveEnemies("thing")) {
-			enemyVal.add(e.getName() + " " + (int)e.getState().getStat(Stat.HEALTH));
+			enemyVal.add(e.getName() + " "
+					+ (int) e.getState().getStat(Stat.HEALTH));
 		}
 
 		battleMenu.setEnemyName(enemyVal);
@@ -87,12 +90,14 @@ public class BattleMenu implements BattleController {
 	@Override
 	public void advanceState() {
 		index = battleMenu.getIndex();
-		i++;
+		long lastTime = System.nanoTime(), currentTime = System.nanoTime(), delay = 500;
+		if((currentTime - delay )> lastTime){
+			i++;
+		}
 	}
 
 	@Override
 	public Battle getBattle() {
-		// TODO Auto-generated method stub
 		return currentBattle;
 	}
 }
