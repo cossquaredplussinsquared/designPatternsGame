@@ -76,8 +76,13 @@ public class BattleMenu implements BattleController {
 				i = 4;
 		}
 		winner = currentBattle.checkWinner();
-		if (winner == 1) {		
+		if (winner == 1)
+		{		
 			DecisionFactory.EXITBATTLWIN.update();
+		}
+		else if(winner == 2)
+		{
+			DecisionFactory.EXITBATTLELOSS.update();
 		}
 	}
 

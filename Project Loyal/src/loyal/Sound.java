@@ -8,11 +8,11 @@ public class Sound
 {
 	private Clip clip;
 	
-	public static Sound MenuMusic = new Sound("/music/TheLegend.wav");
-	public static Sound VillageMusic = new Sound("/music/LittleDropofPeace.wav");
-	public static Sound OverWorldMusic = new Sound("/music/Loyalty.wav");
-	public static Sound VictoryMusic = new Sound("/music/VictoryFanfare.wav");
-	public static Sound BattleMusic = new Sound("/music/PointZero.wav");
+	public static Sound MenuMusic = new Sound("./music/TheLegend.wav");
+	public static Sound VillageMusic = new Sound("./music/LittleDropofPeace.wav");
+	public static Sound OverWorldMusic = new Sound("./music/Loyalty.wav");
+	public static Sound VictoryMusic = new Sound("./music/VictoryFanfare.wav");
+	public static Sound BattleMusic = new Sound("./music/PointZero.wav");
 
 	public Sound(String fileName)
 	{
