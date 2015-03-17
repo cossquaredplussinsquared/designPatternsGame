@@ -23,19 +23,8 @@ public class GeneratorOfParties {
 		this.cleric = new Cleric("enemy cleric", CharacterType.CLERIC);
 		this.wizzard = new Wizard("enemy wizzard", CharacterType.WIZARD);
 	}
-<<<<<<< HEAD
 
 	public ArrayList<PlayingCharacter> generateParty() {
-		ArrayList<PlayingCharacter> enemies = new ArrayList<PlayingCharacter>();
-		enemies.add(new Warrior("War", CharacterType.WARRIOR));
-		enemies.add(new Cleric("Cle", CharacterType.CLERIC));
-		enemies.add(new Wizard("Wiz", CharacterType.WIZARD));
-		enemies.add(new Hunter("Hunt", CharacterType.HUNTER));
-		return enemies;
-=======
-	
-	public ArrayList<PlayingCharacter> generateParty()
-	{
 
 		ArrayList<PlayingCharacter> allies = new ArrayList<PlayingCharacter>();
 		allies.add(new Hunter("Hunt", CharacterType.HUNTER));
@@ -46,16 +35,12 @@ public class GeneratorOfParties {
 
 	}
 
->>>>>>> d094e6f53973f77f0682d6bd2899a030d226ef46
-
-	}
-
 	public ArrayList<PlayingCharacter> generateEnemyParty() {
 		Random gen = new Random();
 		int numberOfEnemies;
-		do{
+		do {
 			numberOfEnemies = gen.nextInt(4);
-		}while (numberOfEnemies < 1);
+		} while (numberOfEnemies < 1);
 		this.randomEnemyParty = new ArrayList<PlayingCharacter>();
 
 		for (int i = 0; i < numberOfEnemies; i++) {
@@ -70,8 +55,7 @@ public class GeneratorOfParties {
 			} else if (randomClass == 2) {
 				this.cleric = new Cleric("enemy cleric", CharacterType.CLERIC);
 				this.randomEnemyParty.add(this.cleric);
-			}
-			else if (randomClass == 3) {
+			} else if (randomClass == 3) {
 				this.hunter = new Hunter("enemy hunter", CharacterType.HUNTER);
 				this.randomEnemyParty.add(this.hunter);
 			} else {
@@ -85,4 +69,3 @@ public class GeneratorOfParties {
 	}
 
 }
-

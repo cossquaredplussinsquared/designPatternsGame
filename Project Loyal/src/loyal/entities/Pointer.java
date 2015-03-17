@@ -1,8 +1,6 @@
 
 package loyal.entities;
 
-import java.util.ArrayList;
-
 import loyal.InputHandler;
 import loyal.LevelInitializer;
 import loyal.Loyal;

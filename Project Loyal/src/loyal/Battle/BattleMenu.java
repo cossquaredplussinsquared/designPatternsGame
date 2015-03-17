@@ -45,14 +45,13 @@ public class BattleMenu implements BattleController {
 			i++;
 		}
 		if (State[i].equals("Waiting")) {
-			advanceState();
 		}
 		if (State[i].equals("Player")) {
 			if (index < currentBattle.getActivePlayers().size()) {
 				currentBattle.setActivePlayer(index);
 				battleMenu.setMenu(currentBattle.getAttacks());
 				index = 0;
-				i++;
+				++i;
 			} else
 				i = 0;
 		}
@@ -68,7 +67,9 @@ public class BattleMenu implements BattleController {
 		if (State[i].equals("Target")) {
 			if (index < currentBattle.getActiveEnemies().size()) {
 				currentBattle.setTargetAndTriggerAction(index);
+				updateBattleView();
 				index = 0;
+				i = 0;
 			} else
 				i = 4;
 		}
@@ -101,6 +102,9 @@ public class BattleMenu implements BattleController {
 		long lastTime = System.nanoTime(), currentTime = System.nanoTime(), delay = 500;
 		if ((currentTime - delay) > lastTime || index != 0) {
 			i++;
+		}
+		if(i == 7){
+			i = 0;
 		}
 	}
 

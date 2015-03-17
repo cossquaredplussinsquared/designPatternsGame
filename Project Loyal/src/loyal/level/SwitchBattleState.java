@@ -4,9 +4,11 @@ import loyal.Loyal;
 
 public class SwitchBattleState implements Decision {
 
+	private Loyal game;
+
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		game.currentBattle.advanceState();
 
 	}
 
@@ -18,7 +20,7 @@ public class SwitchBattleState implements Decision {
 
 	@Override
 	public void setGame(Loyal game) {
-		// TODO Auto-generated method stub
+		this.game = game;
 
 	}
 
