@@ -14,7 +14,7 @@ public class BattleCharacters extends Entity
 	private int tickCount = 0;
 	private int scale = 1;
 	int[] colors;
-	public boolean attack = false;
+	
 	private int xTile = 0;
 	private int yTile = 20;
 	private int counter = 0;
@@ -159,5 +159,7 @@ public class BattleCharacters extends Entity
 	{
 		return null;
 	}
+	
+	
 
 }

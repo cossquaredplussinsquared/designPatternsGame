@@ -6,6 +6,7 @@ import loyal.Battle.Actions.AbilityType;
 import loyal.Battle.Actions.CharacterAction;
 import loyal.Battle.Characters.CharacterState.Stat;
 import loyal.Battle.Characters.PlayingCharacter;
+import loyal.entities.BattleCharacters;
 import loyal.level.BattleLevel;
 import loyal.level.DecisionFactory;
 import loyal.level.Level;
@@ -79,6 +80,8 @@ public class BattleAI implements BattleController {
 		
 		battleMenu.setEnemyName(enemyVal);
 		battleMenu.setPlayerName(playerVal);
+		
+		battleMenu.entities.get(4+i).setAttack(true);
 	}
 
 	@Override

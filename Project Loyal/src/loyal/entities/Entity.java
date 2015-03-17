@@ -8,6 +8,7 @@ import loyal.level.Level;
 public abstract class Entity {
 	protected int x, y;
 	protected Level level;
+	protected boolean attack = false;
 
 	public Entity(Level level) {
 		init(level);
@@ -37,6 +38,11 @@ public abstract class Entity {
 
 	public void setY(int defaultY) {
 		this.y = defaultY;
+	}
+	
+	public void setAttack(boolean attack)
+	{
+		this.attack = attack;
 	}
 
 }

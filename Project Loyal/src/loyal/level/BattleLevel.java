@@ -21,6 +21,7 @@ public class BattleLevel extends Level {
 	final int POINTERJUMP = 16;
 	final int PLAYERJUMP = 50;
 	final int ENEMYJUMP = 50;
+	
 
 	public BattleLevel(int id, String imagePath, Sound music) {
 		super(id, imagePath, music);
