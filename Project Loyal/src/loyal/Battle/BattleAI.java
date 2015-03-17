@@ -42,16 +42,19 @@ public class BattleAI implements BattleController {
 		}
 
 			if (State[i].equals("Waiting")) {
-			}
+				advanceState();
+				}
 			if (State[i].equals("Player")) {
 				index = (int) (currentBattle.getActivePlayers().size() * Math
 						.random());
 				currentBattle.setActivePlayer(index);
+				i++;
 			}
 			if (State[i].equals("Attack")) {
 				index = (int) (currentBattle.getAttacks().size() * Math
 						.random());
 				currentBattle.setAction(index);
+				i++;
 			}
 			if (State[i].equals("Target")) {
 				index = (int) (currentBattle.getActiveEnemies().size() * Math

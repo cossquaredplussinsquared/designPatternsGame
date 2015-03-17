@@ -29,10 +29,10 @@ public class GeneratorOfParties
 	public ArrayList<PlayingCharacter> generateParty()
 	{
 		ArrayList<PlayingCharacter> enemies = new ArrayList<PlayingCharacter>();
-		enemies.add(new Hunter("Hunt", CharacterType.HUNTER));
 		enemies.add(new Warrior("War", CharacterType.WARRIOR));
 		enemies.add(new Cleric("Cle", CharacterType.CLERIC));
 		enemies.add(new Wizard("Wiz", CharacterType.WIZARD));
+		enemies.add(new Hunter("Hunt", CharacterType.HUNTER));
 		return enemies;
 	}
 
