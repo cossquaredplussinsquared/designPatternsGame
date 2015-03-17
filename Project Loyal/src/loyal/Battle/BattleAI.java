@@ -13,10 +13,9 @@ import loyal.level.Level;
 public class BattleAI implements BattleController {
 
 	private Battle currentBattle;
-	private String[] State = new String[] { "Player", "Waiting", "Attack",
-			"Waiting", "Target" };
+	private String[] State = new String[] { "Player", "Attack", "Target" };
 	private BattleLevel battleMenu;
-	private int i = 0, index = 0;
+	private int i = 0, index = 0, winner;
 
 	@Override
 	public void setMenu(BattleLevel menu) {
@@ -30,13 +29,15 @@ public class BattleAI implements BattleController {
 
 	@Override
 	public void tick() {
-		
-		currentBattle.startBattle();
+		if(winner == -1){
+			currentBattle.startBattle();
+			winner = 0;
+		}
 		
 		updateBattleView();
 
 		// index = battleMenu.checkIndex();
-		if (!currentBattle.isPlayerTurn()) {
+		if (currentBattle.isPlayerTurn()) {
 			DecisionFactory.SWITCHBATTLECONTROLLER.update();
 			return;
 		}

@@ -13,7 +13,7 @@ public class BattleMenu implements BattleController {
 	private String[] State = new String[] { "Starting", "Waiting", "Player",
 			"Waiting", "Attack", "Waiting", "Target" };
 	private BattleLevel battleMenu;
-	private int i = 0, index = 0;
+	private int i = 0, index = 0, winner = -1;
 
 	@Override
 	public void setMenu(BattleLevel menu) {
@@ -27,7 +27,10 @@ public class BattleMenu implements BattleController {
 
 	@Override
 	public void tick() {
-		int winner = currentBattle.startBattle();
+		if(winner == -1){
+			currentBattle.startBattle();
+			winner = 0;
+		}
 
 		updateBattleView();
 
