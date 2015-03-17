@@ -57,9 +57,9 @@ public class EnterBattle implements Decision
 		game.currentBattle.setMenu(LevelInitializer.BATTLE);
 		pointer = new Pointer(game.level, "pointer", 16, 240, 16, 240, 296, game);
 		game.level.addEntity(0, pointer);
-		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0));
-		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0));
-		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0));
+		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0, 0));
+		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0, 0));
+		game.level.addEntity(new MenuItems(game.level, new ArrayList<String>(), 0, 0, 0));
 		
 		BattleCharacters battleCharacter = new BattleCharacters(game.level, 16, 180, new int[] {color}, false);
 		BattleCharacters battleCharacter1 = new BattleCharacters(game.level, 16, 130, new int[] {color}, false);
