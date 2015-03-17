@@ -48,6 +48,8 @@ public class BattleMenu implements BattleController {
 			if (index < currentBattle.getActivePlayers().size()) {
 				currentBattle.setActivePlayer(index);
 				battleMenu.setMenu(currentBattle.getAttacks());
+				index = 0;
+				i++;
 			} else
 				i = 0;
 		}
@@ -55,13 +57,16 @@ public class BattleMenu implements BattleController {
 			if (index < currentBattle.getAttacks().size()) {
 				currentBattle.setAction(index);
 				battleMenu.setMenu(currentBattle.getActiveEnemies());
+				index = 0;
+				i++;
 			} else
 				i = 2;
 		}
 		if (State[i].equals("Target")) {
-			if (index < currentBattle.getActiveEnemies().size())
+			if (index < currentBattle.getActiveEnemies().size()) {
 				currentBattle.setTargetAndTriggerAction(index);
-			else
+				index = 0;
+			} else
 				i = 4;
 		}
 		if (winner == 1) {
@@ -91,7 +96,7 @@ public class BattleMenu implements BattleController {
 	public void advanceState() {
 		index = battleMenu.getIndex();
 		long lastTime = System.nanoTime(), currentTime = System.nanoTime(), delay = 500;
-		if((currentTime - delay )> lastTime){
+		if ((currentTime - delay) > lastTime || index != 0) {
 			i++;
 		}
 	}

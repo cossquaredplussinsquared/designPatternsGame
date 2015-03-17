@@ -29,6 +29,10 @@ public class Battle {
 	public int startBattle() {
 		int winner = checkWinner();
 		playersTurn = startingTurnDecision();
+		if (playersTurn)
+			targets = activeEnemies;
+		else
+			targets = activePlayers;
 		return winner;
 	}
 
