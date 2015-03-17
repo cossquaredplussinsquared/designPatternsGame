@@ -7,7 +7,7 @@ public class SwitchBattleState implements Decision {
 	private Loyal game;
 
 	@Override
-	public void update() {
+	synchronized public void update() {
 		game.currentBattle.advanceState();
 
 	}
@@ -19,7 +19,7 @@ public class SwitchBattleState implements Decision {
 	}
 
 	@Override
-	public void setGame(Loyal game) {
+	synchronized public void setGame(Loyal game) {
 		this.game = game;
 
 	}

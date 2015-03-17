@@ -143,7 +143,7 @@ public class Loyal extends Canvas implements Runnable {
 		return level.inputRun(input);
 	}
 
-	public void tick() {
+	synchronized public void tick() {
 		tickCount++;
 		level.tick();
 		if(currentBattle != null){

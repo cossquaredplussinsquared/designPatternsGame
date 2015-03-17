@@ -26,7 +26,7 @@ public class BattleMenu implements BattleController {
 	}
 
 	@Override
-	public void tick() {
+	synchronized public void tick() {
 		if(winner == -1){
 			currentBattle.startBattle();
 			winner = 0;
@@ -41,12 +41,13 @@ public class BattleMenu implements BattleController {
 		}
 
 		if (State[i].equals("Starting")) {
+			printState();
 			battleMenu.setMenu(currentBattle.getActivePlayers());
 			i++;
 		}
-		if (State[i].equals("Waiting")) {
-		}
+
 		if (State[i].equals("Player")) {
+			printState();
 			if (index < currentBattle.getActivePlayers().size()) {
 				currentBattle.setActivePlayer(index);
 				battleMenu.setMenu(currentBattle.getAttacks());
@@ -56,6 +57,7 @@ public class BattleMenu implements BattleController {
 				i = 0;
 		}
 		if (State[i].equals("Attack")) {
+			printState();
 			if (index < currentBattle.getAttacks().size()) {
 				currentBattle.setAction(index);
 				battleMenu.setMenu(currentBattle.getActiveEnemies());
@@ -65,17 +67,22 @@ public class BattleMenu implements BattleController {
 				i = 2;
 		}
 		if (State[i].equals("Target")) {
+			printState();
 			if (index < currentBattle.getActiveEnemies().size()) {
 				currentBattle.setTargetAndTriggerAction(index);
-				updateBattleView();
 				index = 0;
 				i = 0;
 			} else
 				i = 4;
 		}
-		if (winner == 1) {
-
+		winner = currentBattle.checkWinner();
+		if (winner == 1) {		
+			DecisionFactory.EXITBATTLWIN.update();
 		}
+	}
+
+	private void printState() {
+		System.out.println(State[i]);		
 	}
 
 	@Override
@@ -98,14 +105,16 @@ public class BattleMenu implements BattleController {
 
 	@Override
 	public void advanceState() {
-		index = battleMenu.getIndex();
-		long lastTime = System.nanoTime(), currentTime = System.nanoTime(), delay = 500;
+		
+		printState();
+		
+		index = battleMenu.getIndex() - 1;
+		
+		long lastTime = System.nanoTime(), currentTime = System.nanoTime(), delay = 100;
 		if ((currentTime - delay) > lastTime || index != 0) {
 			i++;
 		}
-		if(i == 7){
-			i = 0;
-		}
+
 	}
 
 	@Override

@@ -75,7 +75,7 @@ public class LevelInitializer {
 		
 		int MonsterX = random.nextInt(399);
 		int MonsterY = random.nextInt(399);
-		for(int i = 0; i<1; i++)
+		for(int i = 0; i<20; i++)
 		{
 			Tile tile = OVERWORLD.getTile(MonsterX,MonsterY);
 			while(tile.isSolid()==true || OVERWORLD.tiles[MonsterX+MonsterY*OVERWORLD.width] == 3)
@@ -84,7 +84,7 @@ public class LevelInitializer {
 				MonsterY = random.nextInt(399);
 				tile = OVERWORLD.getTile(MonsterX,MonsterY);
 			}
-			MapMoblin monster = new MapMoblin(OVERWORLD, 130, 130, 1, 64);
+			MapMoblin monster = new MapMoblin(OVERWORLD, MonsterX*8, MonsterY*8, 1, 64);
 			OVERWORLD.addEntity(monster);
 			MonsterX = random.nextInt(399);
 			MonsterY = random.nextInt(399);

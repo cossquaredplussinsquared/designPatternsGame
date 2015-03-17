@@ -11,6 +11,8 @@ public class DecisionFactory
 	public static final Decision EDGECOLLISIONDECITION = new EdgesCollisionDecision();
 
 	public static final Decision SWITCHBATTLESTATE = new SwitchBattleState();
+
+	public static final Decision EXITBATTLWIN = new ExitBattleWin();
 	
 	private Loyal game;
 	
@@ -25,6 +27,7 @@ public class DecisionFactory
 		SWITCHBATTLECONTROLLER.setGame(game);
 		EDGECOLLISIONDECITION.setGame(game);
 		SWITCHBATTLESTATE.setGame(game);
+		EXITBATTLWIN.setGame(game);
 	}
 
 }
