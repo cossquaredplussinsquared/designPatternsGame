@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.1">
-  <zoom_level>4</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>64</x>
-      <y>520</y>
-      <w>312</w>
-      <h>64</h>
+      <x>0</x>
+      <y>1040</y>
+      <w>624</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>loyal.level.tiles::AnimatedTile
 --
@@ -25,10 +25,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>512</x>
-      <y>556</y>
-      <w>216</w>
-      <h>24</h>
+      <x>896</x>
+      <y>1112</y>
+      <w>432</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>loyal.level.tiles::BasicSolidTile
 --
@@ -41,10 +41,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>332</x>
-      <y>376</y>
-      <w>204</w>
-      <h>64</h>
+      <x>536</x>
+      <y>752</y>
+      <w>408</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>loyal.level.tiles::BasicTile
 --
@@ -62,10 +62,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>288</x>
+      <x>448</x>
       <y>0</y>
-      <w>320</w>
-      <h>316</h>
+      <w>640</w>
+      <h>632</h>
     </coordinates>
     <panel_attributes>/loyal.level.tiles::Tile/
 --
@@ -120,10 +120,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>212</x>
-      <y>436</y>
-      <w>184</w>
-      <h>92</h>
+      <x>296</x>
+      <y>872</y>
+      <w>368</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>440.0;10.0;10.0;210.0</additional_attributes>
@@ -131,10 +131,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>436</y>
-      <w>144</w>
-      <h>128</h>
+      <x>848</x>
+      <y>872</y>
+      <w>288</w>
+      <h>256</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;340.0;300.0</additional_attributes>
@@ -142,10 +142,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>312</y>
-      <w>16</w>
-      <h>72</h>
+      <x>736</x>
+      <y>624</y>
+      <w>32</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>20.0;10.0;10.0;160.0</additional_attributes>
@@ -153,12 +153,58 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>196</x>
-      <y>184</y>
-      <w>144</w>
-      <h>236</h>
+      <x>264</x>
+      <y>368</y>
+      <w>288</w>
+      <h>472</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>230.0;10.0;10.0;430.0;340.0;570.0</additional_attributes>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>340.0;570.0;10.0;430.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>936</x>
+      <y>808</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>464</y>
+      <w>96</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>464</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Screen</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1032</x>
+      <y>800</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Level</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
