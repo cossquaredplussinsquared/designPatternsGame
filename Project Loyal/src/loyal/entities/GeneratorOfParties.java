@@ -23,6 +23,7 @@ public class GeneratorOfParties {
 		this.cleric = new Cleric("enemy cleric", CharacterType.CLERIC);
 		this.wizzard = new Wizard("enemy wizzard", CharacterType.WIZARD);
 	}
+<<<<<<< HEAD
 
 	public ArrayList<PlayingCharacter> generateParty() {
 		ArrayList<PlayingCharacter> enemies = new ArrayList<PlayingCharacter>();
@@ -31,6 +32,21 @@ public class GeneratorOfParties {
 		enemies.add(new Wizard("Wiz", CharacterType.WIZARD));
 		enemies.add(new Hunter("Hunt", CharacterType.HUNTER));
 		return enemies;
+=======
+	
+	public ArrayList<PlayingCharacter> generateParty()
+	{
+
+		ArrayList<PlayingCharacter> allies = new ArrayList<PlayingCharacter>();
+		allies.add(new Hunter("Hunt", CharacterType.HUNTER));
+		allies.add(new Warrior("War", CharacterType.WARRIOR));
+		allies.add(new Cleric("Cle", CharacterType.CLERIC));
+		allies.add(new Wizard("Wiz", CharacterType.WIZARD));
+		return allies;
+
+	}
+
+>>>>>>> d094e6f53973f77f0682d6bd2899a030d226ef46
 
 	}
 
@@ -69,3 +85,4 @@ public class GeneratorOfParties {
 	}
 
 }
+

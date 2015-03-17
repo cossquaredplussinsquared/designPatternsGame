@@ -1,5 +1,4 @@
 
-
 package loyal.Battle.Actions;
 
 import java.util.ArrayList;

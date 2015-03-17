@@ -224,8 +224,6 @@ public class MapMoblin extends Mob {
 			while (AStarTiles[AStarTiles[curr].getParent()].getId() != start) {
 				curr = AStarTiles[AStarTiles[curr].getParent()].getId();
 			}
-		} else {
-			System.out.println("it me");
 		}
 
 		if (curr == start - width - 1) {
