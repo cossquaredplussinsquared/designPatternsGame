@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import loyal.Battle.BattleController;
 import loyal.Graphics.Screen;
 import loyal.Graphics.SpriteSheet;
+import loyal.entities.MapPlayer;
 import loyal.level.DecisionFactory;
 import loyal.level.Level;
 
@@ -148,7 +149,27 @@ public class Loyal extends Canvas implements Runnable {
 		if(currentBattle != null){
 			currentBattle.tick();
 		}
+		
+		
+		if(Winner())
+		{
+			level.music.stop();
+			
+			level = LevelInitializer.END;
+			MapPlayer player = new MapPlayer(level, 252, 220, input, this);
+			level.addEntity(0, player);
+			level.music.play();
+		}
 		inputRun();
+	}
+
+	private boolean Winner()
+	{
+		if(level.entities.size()==1 && level == LevelInitializer.OVERWORLD)
+		{
+			return true;
+		}
+		return false;
 	}
 
 	public void render() {
