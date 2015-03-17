@@ -24,6 +24,7 @@ public class LevelInitializer {
 			Sound.MenuMusic);
 	
 	public static final BattleLevel BATTLE = new BattleLevel(4, "/Levels/BattleMap.png", Sound.BattleMusic);
+	public static final Level END = new Level(5, "/Levels/End.png", Sound.VictoryMusic);
 
 	private Loyal game;
 
@@ -36,14 +37,18 @@ public class LevelInitializer {
 		// this allows us to decide the exit points in one array rather than
 		// multiple arrays values are id, xMin, xMax, yMin, yMax
 		ArrayList<int[]> villageExitValues = new ArrayList<int[]>();
-		villageExitValues.add(new int[] { 2, 99, 100, 0, 100 });
+		villageExitValues.add(new int[] { 2, 99, 100, 0, 100, });
 
 		ArrayList<int[]> overworldExitValues = new ArrayList<int[]>();
 		overworldExitValues.add(new int[] { 1, 0, 0, 0, 100 });
+		
+		ArrayList<int[]> endExitValues = new ArrayList<int[]>();
+		endExitValues.add(new int[] { 1, 501, 502, 301, 302 });
 
 		// Sets the values for change map conditions.
 		VILLAGE.setExitValues(villageExitValues);
 		OVERWORLD.setExitValues(overworldExitValues);
+		END.setExitValues(endExitValues);
 
 		// sets default player X and Y
 		OVERWORLD.setPlayerDefaultX(8);
@@ -54,6 +59,9 @@ public class LevelInitializer {
 		
 		BATTLE.setPlayerDefaultX(16);
 		BATTLE.setPlayerDefaultY(240);
+		
+		END.setPlayerDefaultX(252);
+		END.setPlayerDefaultY(190);
 		
 		game.level = STARTMENU;
 		startMenuCreation();
@@ -67,7 +75,7 @@ public class LevelInitializer {
 		
 		int MonsterX = random.nextInt(399);
 		int MonsterY = random.nextInt(399);
-		for(int i = 0; i<100; i++)
+		for(int i = 0; i<1; i++)
 		{
 			Tile tile = OVERWORLD.getTile(MonsterX,MonsterY);
 			while(tile.isSolid()==true || OVERWORLD.tiles[MonsterX+MonsterY*OVERWORLD.width] == 3)
@@ -76,7 +84,7 @@ public class LevelInitializer {
 				MonsterY = random.nextInt(399);
 				tile = OVERWORLD.getTile(MonsterX,MonsterY);
 			}
-			MapMoblin monster = new MapMoblin(OVERWORLD, MonsterX*8, MonsterY*8, 1, 64);
+			MapMoblin monster = new MapMoblin(OVERWORLD, 130, 130, 1, 64);
 			OVERWORLD.addEntity(monster);
 			MonsterX = random.nextInt(399);
 			MonsterY = random.nextInt(399);
@@ -92,7 +100,7 @@ public class LevelInitializer {
 
 		Entity player = new Pointer(game.level, "pointer", 216, 200, 16, 200, 248,
 				game);
-		Entity menu = new MenuItems(game.level, menuItems, 235, 192);
+		Entity menu = new MenuItems(game.level, menuItems, 235, 192, 16);
 		game.level.addEntity(player);
 		game.level.addEntity(menu);
 

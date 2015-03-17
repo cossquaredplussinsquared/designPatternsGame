@@ -66,7 +66,6 @@ public class MapMoblin extends Mob {
 
 		if (Math.abs(this.x - level.getEntity(0).getX()) < collisionDistance
 				&& Math.abs(this.y - level.getEntity(0).getY()) < collisionDistance) {
-			System.out.println(this.x + " : X location \n" + this.y +" : Y location \n" + level.getEntity(0).getX() + " : PlayerX\n" + level.getEntity(0).getY() + " : Plyaer Y");
 			return true;
 
 		}

@@ -161,6 +161,23 @@ public class Tester
 		{
 			System.out.println(partyThatHasAbilitiesTarget.get(i).getName() + " health is: "+ partyThatHasAbilitiesTarget.get(i).getState().getStat(Stat.HEALTH));
 		}
+		
+		ArrayList<PlayingCharacter> enemyParty = partyGenerator.generateEnemyParty();
+		
+		CharacterAction ability2 = partyThatHasAbilities.get(1).getActions().get(2);
+		
+		for(int i = 0; i < enemyParty.size(); i++)
+		{
+			System.out.println(enemyParty.get(i).getName() + " health is: "+ enemyParty.get(i).getState().getStat(Stat.HEALTH));
+		}
+		
+		ability2.applyAbility(enemyParty);
+		
+		for(int i = 0; i < enemyParty.size(); i++)
+		{
+			System.out.println(enemyParty.get(i).getName() + " health is: "+ enemyParty.get(i).getState().getStat(Stat.HEALTH));
+		}
+		
 	}
 
 }

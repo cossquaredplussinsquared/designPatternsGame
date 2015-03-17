@@ -23,7 +23,7 @@ public class BackSlashSingleTargetOffensiveAbility extends SingleTargetOffensive
 	}
 
 	@Override
-	public void applyAbility(ArrayList<PlayingCharacter> targets)
+	public void applyAbility(ArrayList<PlayingCharacter> arrayOftargets)
 	{
 		double damage = playingCharacter.getState().getStat(Stat.STRENGTH) * scaling;
 		damage += baseValue + perLevel + level;
@@ -33,7 +33,6 @@ public class BackSlashSingleTargetOffensiveAbility extends SingleTargetOffensive
 			damage = damage * 2;
 		}
 		
-		ArrayList<PlayingCharacter> arrayOftargets = playingCharacter.getTargets();
 		
 		for(int i = 0; i < arrayOftargets.size(); i++)
 		{
@@ -55,8 +54,8 @@ public class BackSlashSingleTargetOffensiveAbility extends SingleTargetOffensive
 	}
 
 	@Override
-	public AbilityType getTargetType() {
-		// TODO Auto-generated method stub
+	public AbilityType getTargetType()
+	{
 		return super.targetType;
 	}
 }
