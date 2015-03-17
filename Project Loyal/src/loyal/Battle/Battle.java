@@ -53,12 +53,15 @@ public class Battle {
 		playersTurn = !playersTurn;
 		if (action.getTargetType() == AbilityType.MULTI) {
 			action.applyAbility(targets);
-			return;
-		}
+		} else{
 		ArrayList<PlayingCharacter> target = new ArrayList<PlayingCharacter>();
 		target.add(targets.get(index));
 		action.applyAbility(target);
-		
+		}
+		if (playersTurn)
+			targets = activeEnemies;
+		else
+			targets = activePlayers;
 	}
 
 	private ArrayList<String> getPlayerNames(
@@ -80,7 +83,7 @@ public class Battle {
 		return Math.random() > .005;
 	}
 
-	protected int checkWinner() {
+	synchronized protected int checkWinner() {
 		int winner = 0;
 		winner = isAlive(activePlayers);
 		if (winner == 1) {

@@ -88,12 +88,11 @@ public class Pointer extends Mob {
 				direction++;
 			}
 			if (input.enter.isPressed()) {
+				System.out.println("StateChangeCalled");
 				decisionStateChange();
 			}
 			if(input.escape.isPressed()){
-				game.level.music.stop();
-				game.level = LevelInitializer.OVERWORLD;
-				game.level.music.loop();
+				DecisionFactory.EXITBATTLWIN.update();
 			}
 
 			if (xa != 0 || ya != 0) {
